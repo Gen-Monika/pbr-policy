@@ -1,0 +1,3 @@
+# Preserve byte-exact content: this repository ships checksum manifests and
+# patches, so Git must not rewrite line endings.
+* -text
