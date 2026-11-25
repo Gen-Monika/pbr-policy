@@ -15,9 +15,29 @@ the formal verification certificate and the reproduction entry points.
 | Path | What it is |
 |---|---|
 | `code/` | Policy modules for the five hosts: header-only C++ for OpenFOAM/PETSc, ASPECT and MOOSE; a Fortran module for Elmer/Ice; a patch for LaMEM. Also the figure scripts (`code/figs/`) and the timing analysis (`code/wallclock_analysis/`). |
-| `data/` | Measured iteration traces and scan records. |
+| `data/` | Measured records: the phase-scan cost tables and their solver logs (`data/phase/`), the per-case decision traces of the C++ runs (`data/traces/`), and scan outputs of the supporting experiments. See `data/README.md`. |
 | `proof/` | Lean 4 certificate for the convergence claims in the theoretical section, with the verification record. |
 | `reproduce/` | Build and run paths for all five hosts, case inputs and reference values. |
+
+## Repository size, and cloning without the data
+
+The full clone is about 200 MB, of which roughly 180 MB is `data/`: the measured
+records plus the raw solver logs they were parsed from. That data is what makes
+the figures checkable, but you do not need it to read, build or use the policy.
+
+Take only the code if that is what you want:
+
+```bash
+git clone --depth 1 --filter=blob:none --sparse \
+    https://github.com/Gen-Monika/pbr-policy.git
+cd pbr-policy
+git sparse-checkout set code reproduce proof
+```
+
+Add `data` to the sparse set later with `git sparse-checkout add data`, or pull
+individual files from the web interface. The choice is deliberately yours: the
+records are shipped in full rather than summarised, so the repository is heavier
+than a code-only release would be.
 
 ## Requirements
 
