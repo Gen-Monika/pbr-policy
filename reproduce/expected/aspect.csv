@@ -1,0 +1,2 @@
+case,mode,steps,rebuilds,total_its,wall_s,source
+Blankenbach(refinement 5; End time 0.1),online,1626,"108,108,110","25402,25402,25454","302.5,297.0,319.0","475 版实测（stepB/phase_index 全量批 3 轮；PBR_POLICY=online PBR_BASE=100 PBR_UNIT=solve PBR_COND=off）"

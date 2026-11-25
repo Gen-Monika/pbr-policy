@@ -1,0 +1,3 @@
+case,mode,rebuilds,total_its,steps,source
+step6a,K1,819,2049,820,475 版实测 + 10-17 历史批次一致
+step6a,online,200,2049,820,475 版实测 + 10-17 历史批次一致

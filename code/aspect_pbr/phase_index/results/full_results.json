@@ -1,0 +1,1611 @@
+[
+  {
+    "case": "C1",
+    "variant": "index",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case1.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C1/r1_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case1.prm": "261a3394e57643832931a72d66fd676ad593be189db5800a105d64d67764fc60",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C1_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0025127,
+    "load_before": "19.81 20.68 20.27 25/7523 966387",
+    "rc": 0,
+    "wall_seconds": 78.12329525128007,
+    "peak_rss_bytes": 183046144,
+    "guard": null,
+    "end_epoch": 1792245038.1259959,
+    "load_after": "28.91 23.33 21.23 30/7611 967624"
+  },
+  {
+    "case": "C1",
+    "variant": "old",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case1.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C1/r1_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case1.prm": "261a3394e57643832931a72d66fd676ad593be189db5800a105d64d67764fc60",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C1_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0011728,
+    "load_before": "19.81 20.68 20.27 18/7519 966386",
+    "rc": 0,
+    "wall_seconds": 78.60924516804516,
+    "peak_rss_bytes": 182046720,
+    "guard": null,
+    "end_epoch": 1792245038.6105516,
+    "load_after": "28.91 23.33 21.23 32/7602 967632"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "old",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r1_old/trace.csv",
+      "LD_PRELOAD": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "601c0ee2ce38221ae9c261962c17fc6c3661c45309271d91997486b303c6446e",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0185714,
+    "load_before": "19.81 20.68 20.27 97/7543 966404",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 91.14116986468434,
+    "peak_rss_bytes": 180940800,
+    "guard": null,
+    "end_epoch": 1792245051.1598322,
+    "load_after": "29.07 23.64 21.37 32/7595 967789"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "index",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r1_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "5e06f4b84300e66289a3e517a6c2ebee095dfbfabd5d5595ac55799a9ba275e0",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.021451,
+    "load_before": "19.81 20.68 20.27 28/7546 966407",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 96.65790650434792,
+    "peak_rss_bytes": 181276672,
+    "guard": null,
+    "end_epoch": 1792245056.6794648,
+    "load_after": "28.82 23.68 21.39 27/7590 967863"
+  },
+  {
+    "case": "Blankenbach",
+    "variant": "index",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "case.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/Blankenbach/r1_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 1,
+      "seconds_each": 600,
+      "basis": "same refinement 5 input, old full time 275 s"
+    },
+    "inputs_sha256": {
+      "case.prm": "04352003584ce74def9ff4421a1c0cf7ca65b08e8a9bd3bff562eb468929a941"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/cmp_l5_t0.1_fix/r1_ONLINE",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0138962,
+    "load_before": "19.81 20.68 20.27 40/7539 966400",
+    "rc": 0,
+    "wall_seconds": 302.4783311020583,
+    "peak_rss_bytes": 189145088,
+    "guard": null,
+    "end_epoch": 1792245262.492421,
+    "load_after": "30.45 26.93 23.12 30/7580 971098"
+  },
+  {
+    "case": "Blankenbach",
+    "variant": "old",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "case.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/Blankenbach/r1_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 1,
+      "seconds_each": 600,
+      "basis": "same refinement 5 input, old full time 275 s"
+    },
+    "inputs_sha256": {
+      "case.prm": "04352003584ce74def9ff4421a1c0cf7ca65b08e8a9bd3bff562eb468929a941"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/cmp_l5_t0.1_fix/r1_ONLINE",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0130994,
+    "load_before": "19.81 20.68 20.27 46/7539 966400",
+    "rc": 0,
+    "wall_seconds": 304.4268315900117,
+    "peak_rss_bytes": 186429440,
+    "guard": null,
+    "end_epoch": 1792245264.440121,
+    "load_after": "30.09 26.91 23.13 81/7577 971115"
+  },
+  {
+    "case": "C5",
+    "variant": "index",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case5.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C5/r1_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case5.prm": "88ca1cfa0b9afb7beb12deec9d44bc9c11f90bf125dcf402bf1f54da0afd5e10",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C5_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0121577,
+    "load_before": "19.81 20.68 20.27 50/7539 966400",
+    "rc": 0,
+    "wall_seconds": 315.406311461702,
+    "peak_rss_bytes": 248840192,
+    "guard": null,
+    "end_epoch": 1792245275.4187095,
+    "load_after": "28.77 26.73 23.12 37/7563 971209"
+  },
+  {
+    "case": "C5",
+    "variant": "old",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case5.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C5/r1_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case5.prm": "88ca1cfa0b9afb7beb12deec9d44bc9c11f90bf125dcf402bf1f54da0afd5e10",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C5_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.009741,
+    "load_before": "19.81 20.68 20.27 26/7534 966395",
+    "rc": 0,
+    "wall_seconds": 323.00526732578874,
+    "peak_rss_bytes": 247250944,
+    "guard": null,
+    "end_epoch": 1792245283.0152104,
+    "load_after": "28.31 26.67 23.12 22/7557 971236"
+  },
+  {
+    "case": "C3",
+    "variant": "old",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case3.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C3/r1_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case3.prm": "160c87af53343763a0642db11fe9633db5ef2ceae36c1b7604e302c63dad0c85",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C3_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0037758,
+    "load_before": "19.81 20.68 20.27 27/7525 966388",
+    "rc": 0,
+    "wall_seconds": 520.230515031144,
+    "peak_rss_bytes": 248209408,
+    "guard": null,
+    "end_epoch": 1792245480.2344918,
+    "load_after": "22.30 24.63 23.00 37/7557 971879"
+  },
+  {
+    "case": "C3",
+    "variant": "index",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case3.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C3/r1_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case3.prm": "160c87af53343763a0642db11fe9633db5ef2ceae36c1b7604e302c63dad0c85",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C3_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0044096,
+    "load_before": "19.81 20.68 20.27 29/7531 966392",
+    "rc": 0,
+    "wall_seconds": 526.6463881451637,
+    "peak_rss_bytes": 248299520,
+    "guard": null,
+    "end_epoch": 1792245486.6509974,
+    "load_after": "22.04 24.53 22.98 19/7549 971892"
+  },
+  {
+    "case": "C4",
+    "variant": "index",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case4.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r1_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 1500,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case4.prm": "ec20823c9396b837e8d3aec0ce54c936bc2ad364d2167fdfb656b39d6385e6ac",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C4_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0064297,
+    "load_before": "19.81 20.68 20.27 27/7534 966395",
+    "rc": 0,
+    "wall_seconds": 802.5547770056874,
+    "peak_rss_bytes": 247922688,
+    "guard": null,
+    "end_epoch": 1792245762.5612643,
+    "load_after": "21.53 22.79 22.62 24/7540 972190"
+  },
+  {
+    "case": "C4",
+    "variant": "old",
+    "group": "full",
+    "round": 1,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case4.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r1_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 1500,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case4.prm": "ec20823c9396b837e8d3aec0ce54c936bc2ad364d2167fdfb656b39d6385e6ac",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C4_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244960.0058558,
+    "load_before": "19.81 20.68 20.27 27/7531 966392",
+    "rc": 0,
+    "wall_seconds": 819.0358603876084,
+    "peak_rss_bytes": 247214080,
+    "guard": null,
+    "end_epoch": 1792245779.0419009,
+    "load_after": "21.28 22.67 22.58 19/7534 972201"
+  },
+  {
+    "case": "C1",
+    "variant": "index",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case1.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C1/r2_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case1.prm": "261a3394e57643832931a72d66fd676ad593be189db5800a105d64d67764fc60",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C1_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.984993,
+    "load_before": "20.79 22.52 22.53 27/7543 972224",
+    "rc": 0,
+    "wall_seconds": 76.10671680606902,
+    "peak_rss_bytes": 182845440,
+    "guard": null,
+    "end_epoch": 1792245862.0918217,
+    "load_after": "28.86 24.65 23.28 29/7536 973458"
+  },
+  {
+    "case": "C1",
+    "variant": "old",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case1.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C1/r2_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case1.prm": "261a3394e57643832931a72d66fd676ad593be189db5800a105d64d67764fc60",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C1_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.985392,
+    "load_before": "20.79 22.52 22.53 26/7543 972224",
+    "rc": 0,
+    "wall_seconds": 78.59804890491068,
+    "peak_rss_bytes": 184791040,
+    "guard": null,
+    "end_epoch": 1792245864.5835667,
+    "load_after": "28.86 24.65 23.28 23/7528 973509"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "old",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r2_old/trace.csv",
+      "LD_PRELOAD": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "601c0ee2ce38221ae9c261962c17fc6c3661c45309271d91997486b303c6446e",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.9757168,
+    "load_before": "20.79 22.52 22.53 20/7527 972208",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 94.65971978195012,
+    "peak_rss_bytes": 180985856,
+    "guard": null,
+    "end_epoch": 1792245880.6356494,
+    "load_after": "27.93 24.71 23.33 75/7520 973712"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "index",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r2_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "5e06f4b84300e66289a3e517a6c2ebee095dfbfabd5d5595ac55799a9ba275e0",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.97532,
+    "load_before": "20.79 22.52 22.53 22/7526 972207",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 95.14137253910303,
+    "peak_rss_bytes": 181686272,
+    "guard": null,
+    "end_epoch": 1792245881.1178288,
+    "load_after": "27.93 24.71 23.33 28/7513 973718"
+  },
+  {
+    "case": "Blankenbach",
+    "variant": "index",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "case.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/Blankenbach/r2_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 1,
+      "seconds_each": 600,
+      "basis": "same refinement 5 input, old full time 275 s"
+    },
+    "inputs_sha256": {
+      "case.prm": "04352003584ce74def9ff4421a1c0cf7ca65b08e8a9bd3bff562eb468929a941"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/cmp_l5_t0.1_fix/r1_ONLINE",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.9762201,
+    "load_before": "20.79 22.52 22.53 22/7528 972209",
+    "rc": 0,
+    "wall_seconds": 296.9931048732251,
+    "peak_rss_bytes": 187170816,
+    "guard": null,
+    "end_epoch": 1792246082.969645,
+    "load_after": "24.93 24.18 23.35 23/7556 977005"
+  },
+  {
+    "case": "C5",
+    "variant": "index",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case5.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C5/r2_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case5.prm": "88ca1cfa0b9afb7beb12deec9d44bc9c11f90bf125dcf402bf1f54da0afd5e10",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C5_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.9778438,
+    "load_before": "20.79 22.52 22.53 28/7532 972213",
+    "rc": 0,
+    "wall_seconds": 300.4588382318616,
+    "peak_rss_bytes": 250695680,
+    "guard": null,
+    "end_epoch": 1792246086.4368532,
+    "load_after": "25.82 24.38 23.42 36/7551 977043"
+  },
+  {
+    "case": "Blankenbach",
+    "variant": "old",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "case.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/Blankenbach/r2_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 1,
+      "seconds_each": 600,
+      "basis": "same refinement 5 input, old full time 275 s"
+    },
+    "inputs_sha256": {
+      "case.prm": "04352003584ce74def9ff4421a1c0cf7ca65b08e8a9bd3bff562eb468929a941"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/cmp_l5_t0.1_fix/r1_ONLINE",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.9768045,
+    "load_before": "20.79 22.52 22.53 18/7529 972210",
+    "rc": 0,
+    "wall_seconds": 300.93011261336505,
+    "peak_rss_bytes": 187297792,
+    "guard": null,
+    "end_epoch": 1792246086.9070663,
+    "load_after": "25.82 24.38 23.42 23/7544 977047"
+  },
+  {
+    "case": "C5",
+    "variant": "old",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case5.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C5/r2_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case5.prm": "88ca1cfa0b9afb7beb12deec9d44bc9c11f90bf125dcf402bf1f54da0afd5e10",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C5_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.9792225,
+    "load_before": "20.79 22.52 22.53 27/7537 972218",
+    "rc": 0,
+    "wall_seconds": 323.52088579908013,
+    "peak_rss_bytes": 247791616,
+    "guard": null,
+    "end_epoch": 1792246109.5001757,
+    "load_after": "25.86 24.51 23.49 25/7538 977133"
+  },
+  {
+    "case": "C3",
+    "variant": "old",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case3.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C3/r2_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case3.prm": "160c87af53343763a0642db11fe9633db5ef2ceae36c1b7604e302c63dad0c85",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C3_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.984539,
+    "load_before": "20.79 22.52 22.53 28/7543 972224",
+    "rc": 0,
+    "wall_seconds": 509.19932952336967,
+    "peak_rss_bytes": 247959552,
+    "guard": null,
+    "end_epoch": 1792246295.1848946,
+    "load_after": "25.23 25.12 23.94 19/7534 977695"
+  },
+  {
+    "case": "C3",
+    "variant": "index",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case3.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C3/r2_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case3.prm": "160c87af53343763a0642db11fe9633db5ef2ceae36c1b7604e302c63dad0c85",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C3_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.9841294,
+    "load_before": "20.79 22.52 22.53 29/7543 972224",
+    "rc": 0,
+    "wall_seconds": 520.2638958990574,
+    "peak_rss_bytes": 248889344,
+    "guard": null,
+    "end_epoch": 1792246306.2481768,
+    "load_after": "23.96 24.85 23.87 20/7542 977721"
+  },
+  {
+    "case": "C4",
+    "variant": "index",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case4.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r2_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 1500,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case4.prm": "ec20823c9396b837e8d3aec0ce54c936bc2ad364d2167fdfb656b39d6385e6ac",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C4_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.9806275,
+    "load_before": "20.79 22.52 22.53 27/7537 972218",
+    "rc": 0,
+    "wall_seconds": 786.9823236204684,
+    "peak_rss_bytes": 249888768,
+    "guard": null,
+    "end_epoch": 1792246572.9631343,
+    "load_after": "27.04 24.92 24.12 20/7544 977989"
+  },
+  {
+    "case": "C4",
+    "variant": "old",
+    "group": "full",
+    "round": 2,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case4.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r2_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 1500,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case4.prm": "ec20823c9396b837e8d3aec0ce54c936bc2ad364d2167fdfb656b39d6385e6ac",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C4_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792245785.9817376,
+    "load_before": "20.79 22.52 22.53 29/7543 972224",
+    "rc": 0,
+    "wall_seconds": 800.6101189944893,
+    "peak_rss_bytes": 249372672,
+    "guard": null,
+    "end_epoch": 1792246586.5920599,
+    "load_after": "25.43 24.66 24.05 20/7533 977998"
+  },
+  {
+    "case": "C1",
+    "variant": "index",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case1.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C1/r3_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case1.prm": "261a3394e57643832931a72d66fd676ad593be189db5800a105d64d67764fc60",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C1_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.0467012,
+    "load_before": "25.08 24.60 24.04 22/7528 978005",
+    "rc": 0,
+    "wall_seconds": 75.10610943101346,
+    "peak_rss_bytes": 182599680,
+    "guard": null,
+    "end_epoch": 1792246669.1531,
+    "load_after": "29.11 25.82 24.50 32/7609 979233"
+  },
+  {
+    "case": "C1",
+    "variant": "old",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case1.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C1/r3_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case1.prm": "261a3394e57643832931a72d66fd676ad593be189db5800a105d64d67764fc60",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C1_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.046424,
+    "load_before": "25.08 24.60 24.04 21/7526 978003",
+    "rc": 0,
+    "wall_seconds": 76.09724766202271,
+    "peak_rss_bytes": 182571008,
+    "guard": null,
+    "end_epoch": 1792246670.1438172,
+    "load_after": "29.11 25.82 24.50 32/7602 979252"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "index",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r3_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "5e06f4b84300e66289a3e517a6c2ebee095dfbfabd5d5595ac55799a9ba275e0",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.0561845,
+    "load_before": "25.08 24.60 24.04 31/7544 978021",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 89.16266485489905,
+    "peak_rss_bytes": 182386688,
+    "guard": null,
+    "end_epoch": 1792246683.2189791,
+    "load_after": "28.79 25.91 24.55 27/7594 979415"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "old",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r3_old/trace.csv",
+      "LD_PRELOAD": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "601c0ee2ce38221ae9c261962c17fc6c3661c45309271d91997486b303c6446e",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.054622,
+    "load_before": "25.08 24.60 24.04 30/7542 978019",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 90.16374869272113,
+    "peak_rss_bytes": 181850112,
+    "guard": null,
+    "end_epoch": 1792246684.2184532,
+    "load_after": "28.79 25.91 24.55 27/7587 979429"
+  },
+  {
+    "case": "Blankenbach",
+    "variant": "old",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "case.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/Blankenbach/r3_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 1,
+      "seconds_each": 600,
+      "basis": "same refinement 5 input, old full time 275 s"
+    },
+    "inputs_sha256": {
+      "case.prm": "04352003584ce74def9ff4421a1c0cf7ca65b08e8a9bd3bff562eb468929a941"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/cmp_l5_t0.1_fix/r1_ONLINE",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.0531406,
+    "load_before": "25.08 24.60 24.04 30/7541 978018",
+    "rc": 0,
+    "wall_seconds": 298.90339992009103,
+    "peak_rss_bytes": 186028032,
+    "guard": null,
+    "end_epoch": 1792246892.9566867,
+    "load_after": "26.42 26.22 24.97 24/7583 982618"
+  },
+  {
+    "case": "C5",
+    "variant": "old",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case5.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C5/r3_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case5.prm": "88ca1cfa0b9afb7beb12deec9d44bc9c11f90bf125dcf402bf1f54da0afd5e10",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C5_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.050841,
+    "load_before": "25.08 24.60 24.04 23/7534 978011",
+    "rc": 0,
+    "wall_seconds": 314.42933299578726,
+    "peak_rss_bytes": 249815040,
+    "guard": null,
+    "end_epoch": 1792246908.4803593,
+    "load_after": "26.35 26.21 24.98 103/7572 982780"
+  },
+  {
+    "case": "Blankenbach",
+    "variant": "index",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "case.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/Blankenbach/r3_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 1,
+      "seconds_each": 600,
+      "basis": "same refinement 5 input, old full time 275 s"
+    },
+    "inputs_sha256": {
+      "case.prm": "04352003584ce74def9ff4421a1c0cf7ca65b08e8a9bd3bff562eb468929a941"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/cmp_l5_t0.1_fix/r1_ONLINE",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.0537224,
+    "load_before": "25.08 24.60 24.04 32/7541 978018",
+    "rc": 0,
+    "wall_seconds": 318.9544891156256,
+    "peak_rss_bytes": 186515456,
+    "guard": null,
+    "end_epoch": 1792246913.0084195,
+    "load_after": "26.33 26.21 24.99 20/7559 982819"
+  },
+  {
+    "case": "C5",
+    "variant": "index",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case5.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C5/r3_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case5.prm": "88ca1cfa0b9afb7beb12deec9d44bc9c11f90bf125dcf402bf1f54da0afd5e10",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C5_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.0512114,
+    "load_before": "25.08 24.60 24.04 31/7541 978018",
+    "rc": 0,
+    "wall_seconds": 319.0067303031683,
+    "peak_rss_bytes": 248467456,
+    "guard": null,
+    "end_epoch": 1792246913.0589597,
+    "load_after": "26.33 26.21 24.99 23/7558 982820"
+  },
+  {
+    "case": "C3",
+    "variant": "index",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case3.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C3/r3_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case3.prm": "160c87af53343763a0642db11fe9633db5ef2ceae36c1b7604e302c63dad0c85",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C3_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.0473413,
+    "load_before": "25.08 24.60 24.04 21/7528 978005",
+    "rc": 0,
+    "wall_seconds": 510.8062366321683,
+    "peak_rss_bytes": 247365632,
+    "guard": null,
+    "end_epoch": 1792247104.8537867,
+    "load_after": "23.67 24.82 24.66 19/7555 983402"
+  },
+  {
+    "case": "C3",
+    "variant": "old",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case3.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C3/r3_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case3.prm": "160c87af53343763a0642db11fe9633db5ef2ceae36c1b7604e302c63dad0c85",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C3_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.047019,
+    "load_before": "25.08 24.60 24.04 26/7528 978005",
+    "rc": 0,
+    "wall_seconds": 512.1548687685281,
+    "peak_rss_bytes": 246677504,
+    "guard": null,
+    "end_epoch": 1792247106.2019792,
+    "load_after": "23.62 24.79 24.65 18/7546 983407"
+  },
+  {
+    "case": "C4",
+    "variant": "index",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case4.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r3_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 1500,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case4.prm": "ec20823c9396b837e8d3aec0ce54c936bc2ad364d2167fdfb656b39d6385e6ac",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C4_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.0487735,
+    "load_before": "25.08 24.60 24.04 19/7530 978007",
+    "rc": 0,
+    "wall_seconds": 770.1022518556565,
+    "peak_rss_bytes": 247140352,
+    "guard": null,
+    "end_epoch": 1792247364.151117,
+    "load_after": "20.03 22.20 23.61 17/7543 983669"
+  },
+  {
+    "case": "C4",
+    "variant": "old",
+    "group": "full",
+    "round": 3,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case4.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r3_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 1500,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case4.prm": "ec20823c9396b837e8d3aec0ce54c936bc2ad364d2167fdfb656b39d6385e6ac",
+      "Tosi_base.prm": "ff0e7d18337dadc58e5b4af22979704e4fa8853d4a43441dd2720a12ba88278a"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C4_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792246594.0479813,
+    "load_before": "25.08 24.60 24.04 23/7529 978006",
+    "rc": 0,
+    "wall_seconds": 796.5944994017482,
+    "peak_rss_bytes": 250028032,
+    "guard": null,
+    "end_epoch": 1792247390.6437888,
+    "load_after": "19.99 22.04 23.52 20/7548 983686"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "index",
+    "group": "full",
+    "round": 4,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r4_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "5e06f4b84300e66289a3e517a6c2ebee095dfbfabd5d5595ac55799a9ba275e0",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792247390.6624174,
+    "load_before": "19.99 22.04 23.52 19/7538 983688",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 78.63768170773983,
+    "peak_rss_bytes": 182272000,
+    "guard": null,
+    "end_epoch": 1792247469.3001883,
+    "load_after": "22.12 22.49 23.57 21/7547 983745"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "old",
+    "group": "full",
+    "round": 4,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r4_old/trace.csv",
+      "LD_PRELOAD": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "601c0ee2ce38221ae9c261962c17fc6c3661c45309271d91997486b303c6446e",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792247390.6628911,
+    "load_before": "19.99 22.04 23.52 19/7538 983688",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 98.65884459577501,
+    "peak_rss_bytes": 182005760,
+    "guard": null,
+    "end_epoch": 1792247489.3218694,
+    "load_after": "21.10 22.23 23.47 21/7539 983753"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "index",
+    "group": "full",
+    "round": 5,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "index",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r5_index/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "5e06f4b84300e66289a3e517a6c2ebee095dfbfabd5d5595ac55799a9ba275e0",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792247489.3326883,
+    "load_before": "21.10 22.23 23.47 21/7539 983755",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 78.64568423852324,
+    "peak_rss_bytes": 181641216,
+    "guard": null,
+    "end_epoch": 1792247567.978689,
+    "load_after": "19.56 21.52 23.11 18/7550 983810"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "old",
+    "group": "full",
+    "round": 5,
+    "short": false,
+    "command": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/MOOSE/r5_old/trace.csv",
+      "LD_PRELOAD": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "601c0ee2ce38221ae9c261962c17fc6c3661c45309271d91997486b303c6446e",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792247489.3322997,
+    "load_before": "21.10 22.23 23.47 18/7539 983755",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 83.65139240026474,
+    "peak_rss_bytes": 182366208,
+    "guard": null,
+    "end_epoch": 1792247572.9838061,
+    "load_after": "19.68 21.51 23.10 21/7537 983812"
+  }
+]

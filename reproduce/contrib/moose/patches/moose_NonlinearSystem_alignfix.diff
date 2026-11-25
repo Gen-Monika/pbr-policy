@@ -1,0 +1,176 @@
+--- a/framework/src/systems/NonlinearSystem.C
++++ b/framework/src/systems/NonlinearSystem.C
+@@ -9,6 +9,9 @@
+ 
+ // moose includes
+ #include "NonlinearSystem.h"
++#include <cstdio>
++#include <cstdlib>
++#include <string>
+ #include "FEProblem.h"
+ #include "DisplacedProblem.h"
+ #include "TimeIntegrator.h"
+@@ -136,6 +139,151 @@
+   solver.set_snesmf_reuse_base(_fe_problem.useSNESMFReuseBase());
+ }
+ 
++
++// ---------------------------------------------------------------------------
++// PBR (preconditioner rebuild policy) — active only if env PBR_POLICY is set
++// and != off; otherwise nothing below is installed and MOOSE is unchanged.
++// Decision unit: one linear solve (one Newton Jacobian). The operator is always
++// the freshly assembled Jacobian; only PCSetUp (BoomerAMG setup) is skipped.
++// ---------------------------------------------------------------------------
++#include "pbr_policy.h"
++#include <petscksp.h>
++#include <mpi.h>
++namespace
++{
++long   pbr_solve = 0;
++int    pbr_built = 0;
++double pbr_t0 = 0.0, pbr_bms = 0.0;
++
++// C1b ALIGNFIX: per-rank, collective-free diagnostics (PBR_DIAG=<dir>).
++// One unbuffered file per rank: nothing interleaves, nothing can block.
++inline bool pbrAlignFixOn()
++{
++  const char * e = std::getenv("PBR_ALIGNFIX");
++  return e && std::string(e) == "on" && aspect::PBR::alignEnabled();
++}
++
++inline void pbrDiagLine(const std::string & s)
++{
++  const char * dg = std::getenv("PBR_DIAG");
++  if (!dg || !*dg)
++    return;
++  int rank = 0;
++  MPI_Comm_rank(PETSC_COMM_WORLD, &rank);
++  static FILE * fp = nullptr;
++  static int opened = -1;
++  if (opened != rank)
++  {
++    const std::string fn =
++        std::string(dg) + "/pbr_diag.r" + std::to_string(rank) + ".txt";
++    fp = std::fopen(fn.c_str(), "a");
++    opened = rank;
++  }
++  if (!fp)
++    return;
++  std::fputs("rank=", fp);
++  std::fputs(std::to_string(rank).c_str(), fp);
++  std::fputc(' ', fp);
++  std::fputs(s.c_str(), fp);
++  std::fputc('\n', fp);
++  std::fflush(fp);
++}
++
++inline std::string pbrPtrStr(const void * p)
++{
++  char buf[32];
++  std::snprintf(buf, sizeof(buf), "%p", p);
++  return std::string(buf);
++}
++
++PetscErrorCode PBRPreSolve(KSP ksp, Vec, Vec, void *ctx)
++{
++  PetscFunctionBeginUser;
++  PetscInt j = 0;
++  if (aspect::PBR::state().condIndex)
++    PetscCall(SNESGetIterationNumber(static_cast<SNES>(ctx), &j));
++  int rb = aspect::PBR::decide(pbr_solve, static_cast<long>(j)) ? 1 : 0;
++  rb = aspect::PBR::alignInt(rb, PETSC_COMM_WORLD);
++  PC pc;
++  PetscCall(KSPGetPC(ksp, &pc));
++  pbr_bms = 0.0;
++  // C1b ALIGNFIX: the branch below issues alignDouble() -> MPI_Bcast, so its
++  // predicate must be decided collectively.  rb is broadcast, but pbr_built is
++  // per-process state reset by a KSP pointer comparison, which does not agree
++  // across ranks; a subset then entered the block and blocked in a Bcast the
++  // others never reached.  Widen the predicate to "any rank needs a build",
++  // which is always safe (it can only cost a build, never skip one) and
++  // self-heals the replicated state.  PBR_ALIGNFIX=off leaves it untouched.
++  int       doBuild     = (rb || !pbr_built) ? 1 : 0;
++  const int builtBefore = pbr_built;
++  const int localBuild  = doBuild;
++  if (pbrAlignFixOn())
++  {
++    int any = 0;
++    MPI_Allreduce(&doBuild, &any, 1, MPI_INT, MPI_MAX, PETSC_COMM_WORLD);
++    doBuild = any;
++  }
++  pbrDiagLine("ev=pre solve=" + std::to_string(pbr_solve) + " rb=" + std::to_string(rb) +
++              " builtBefore=" + std::to_string(builtBefore) +
++              " localBuild=" + std::to_string(localBuild) +
++              " doBuild=" + std::to_string(doBuild) + " ksp=" + pbrPtrStr(ksp));
++  if (doBuild)
++  {
++    double t0 = MPI_Wtime();
++    PetscCall(PCSetReusePreconditioner(pc, PETSC_FALSE));
++    PetscCall(KSPSetReusePreconditioner(ksp, PETSC_FALSE));
++    PetscCall(KSPSetUp(ksp));
++    PetscCall(PCSetUp(pc));
++    pbr_bms = 1e3 * (MPI_Wtime() - t0);
++    pbr_bms = aspect::PBR::alignDouble(pbr_bms, PETSC_COMM_WORLD);
++    aspect::PBR::noteBuildTime(pbr_bms);
++    pbr_built = 1;
++  }
++  else
++    PetscCall(KSPSetReusePreconditioner(ksp, PETSC_TRUE));
++  (void)PetscPrintf(PETSC_COMM_WORLD, "PBR solve %ld rebuild %d build_ms %.3f rMed %.3f\n",
++              pbr_solve, rb, pbr_bms, aspect::PBR::state().rMed);
++  pbr_t0 = MPI_Wtime();
++  PetscFunctionReturn(PETSC_SUCCESS);
++}
++
++PetscErrorCode PBRPostSolve(KSP ksp, Vec, Vec, void *)
++{
++  PetscFunctionBeginUser;
++  PetscInt n = 0;
++  PetscCall(KSPGetIterationNumber(ksp, &n));
++  double ms = 1e3 * (MPI_Wtime() - pbr_t0);
++  ms = aspect::PBR::alignDouble(ms, PETSC_COMM_WORLD);
++  aspect::PBR::noteSolve((unsigned long)n, ms);
++  aspect::PBR::noteRatio();
++  ++pbr_solve;
++  PetscFunctionReturn(PETSC_SUCCESS);
++}
++
++void PBRInstall(SNES snes)
++{
++  // libMesh may re-create the SNES/KSP between solves, so (re)install the
++  // hooks before every nonlinear solve; record whether the KSP object changed.
++  static KSP last = nullptr;
++  aspect::PBR::init();
++  if (aspect::PBR::state().mode == "off" || !snes)
++    return;
++  KSP ksp;
++  (void)SNESGetKSP(snes, &ksp);
++  pbrDiagLine("ev=install solve=" + std::to_string(pbr_solve) +
++              " localNewKsp=" + std::to_string((ksp != last) ? 1 : 0) +
++              " ksp=" + pbrPtrStr(ksp) + " last=" + pbrPtrStr(last));
++  if (ksp != last)
++  {
++    (void)PetscPrintf(PETSC_COMM_WORLD, "PBR new KSP object at solve %ld\n", pbr_solve);
++    pbr_built = 0;   // a new KSP has no preconditioner yet
++    last = ksp;
++  }
++  (void)KSPSetPreSolve(ksp, PBRPreSolve, snes);
++  (void)KSPSetPostSolve(ksp, PBRPostSolve, nullptr);
++}
++}
++
+ void
+ NonlinearSystem::solve()
+ {
+@@ -178,7 +326,11 @@
+   if (time_integrator_solve)
+     _time_integrators.front()->solve();
+   else
++  {
++    if (std::getenv("PBR_POLICY"))
++      PBRInstall(getSNES());
+     system().solve();
++  }
+ 
+   for (auto & ti : _time_integrators)
+   {

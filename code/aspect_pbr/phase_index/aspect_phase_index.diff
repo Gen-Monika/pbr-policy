@@ -1,0 +1,11 @@
+--- a/source/simulator/assembly.cc
++++ b/source/simulator/assembly.cc
+@@ -398,7 +398,7 @@
+     if (PBR::state().mode != "off"
+         && Amg_preconditioner != nullptr
+         && PBR::decide(PBR::state().unitStep ? static_cast<long>(timestep_number)
+-                                              : PBR::state().solveGen) == false)
++                                              : PBR::state().solveGen, static_cast<long>(nonlinear_iteration)) == false)
+       {
+         pcout << "   Reusing Stokes preconditioner (PBR age "
+               << PBR::state().runAge << ")..." << std::flush;

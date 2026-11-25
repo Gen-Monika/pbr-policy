@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "comparison": "exact decisions and internal state, server legacy header vs new header",
+  "modes": ["PBR_COND=off with varying phase", "PBR_COND=index with phase identically zero"],
+  "recorded_events_per_mode": 5780,
+  "streams": {"Blankenbach": 1607, "MOOSE": 819, "Tosi_C1": 446, "Tosi_C3": 768, "Tosi_C4": 1650, "Tosi_C5": 490},
+  "behavioral_checks": "PASS: frozen offsets, unified model coordinate, no-aging high phase, raw rho, negative M, unknown phase, absent reference phase, mesh reset, raw-zero exclusion",
+  "limitation": "Historical CSV is rounded and omits zero/terminal observations. Compatibility was checked on identical recorded input streams, not claimed as exact reconstruction of every historical physical run."
+}

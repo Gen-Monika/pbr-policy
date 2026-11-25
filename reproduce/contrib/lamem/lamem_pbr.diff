@@ -1,0 +1,128 @@
+--- a/src/lsolve.cpp
++++ b/src/lsolve.cpp
+@@ -190,6 +190,40 @@
+ 	PetscFunctionReturn(0);
+ }
+ //---------------------------------------------------------------------------
++// PBR (preconditioner rebuild policy) bookkeeping
++//---------------------------------------------------------------------------
++#include "pbr_policy.h"
++static long     pbr_jac     = 0;
++static int      pbr_built   = 0;
++static int      pbr_in_guess = 0;
++static PetscInt pbr_ksp_its = 0;
++static double   pbr_ksp_ms  = 0.0, pbr_t0 = 0.0;
++static PetscErrorCode PBRPreSolve(KSP, Vec, Vec, void*)
++{ pbr_t0 = MPI_Wtime(); return 0; }
++static PetscErrorCode PBRPostSolve(KSP k, Vec, Vec, void*)
++{
++	PetscInt n = 0;
++	PetscCall(KSPGetIterationNumber(k, &n));
++	pbr_ksp_its += n;
++	double dt = 1e3*(MPI_Wtime() - pbr_t0);
++	MPI_Bcast(&dt, 1, MPI_DOUBLE, 0, PETSC_COMM_WORLD);
++	pbr_ksp_ms += dt;
++	return 0;
++}
++PetscErrorCode PBRInstallHooks(SNES snes)
++{
++	static int done = 0;
++	aspect::PBR::init();
++	if(done || aspect::PBR::state().mode == "off") return 0;
++	KSP ksp;
++	PetscCall(SNESGetKSP(snes, &ksp));
++	PetscCall(KSPSetPreSolve (ksp, PBRPreSolve,  NULL));
++	PetscCall(KSPSetPostSolve(ksp, PBRPostSolve, NULL));
++	done = 1;
++	return 0;
++}
++//---------------------------------------------------------------------------
++//---------------------------------------------------------------------------
+ PetscErrorCode PCDataSetup(PCData *pc, JacRes *jr)
+ {
+ 	PetscFunctionBeginUser;
+@@ -281,7 +315,64 @@
+ 		PetscCall(PMatMonoAssemble(&pc->pm));
+ 	}
+ 
+-	PetscCall(MGSetup(&pc->mg));
++	// ---- PBR: the operator (fine-level matrix) is always updated above;
++	//      only the multigrid hierarchy (R, P, Galerkin coarse operators,
++	//      coarse LU, PCMG setup) is optionally kept from the last rebuild.
++	aspect::PBR::init();
++	if(aspect::PBR::state().mode == "off")
++	{
++		PetscCall(MGSetup(&pc->mg));
++		PetscFunctionReturn(0);
++	}
++
++	// The initial-guess solve (ctrl.initGuess) is a different linear problem:
++	// keep it outside the policy (always rebuild, not learned from) and force a
++	// rebuild at the first Jacobian of the real time stepping.
++	if(jr->ctrl.initGuess)
++	{
++		PetscCall(MGSetup(&pc->mg));
++		PetscCall(PCSetReusePreconditioner(pc->mg.pc, PETSC_FALSE));
++		pbr_in_guess = 1;
++		PetscPrintf(PETSC_COMM_WORLD, "PBR initguess rebuild (outside policy)\n");
++		PetscFunctionReturn(0);
++	}
++	if(pbr_in_guess)
++	{
++		pbr_in_guess = 0;
++		pbr_ksp_its = 0; pbr_ksp_ms = 0.0;   // discard the initial-guess solve
++		aspect::PBR::markMatrixReset();
++	}
++
++	if(pbr_jac > 0)
++	{
++		aspect::PBR::noteSolve((unsigned long)pbr_ksp_its, pbr_ksp_ms);
++		aspect::PBR::noteRatio();
++	}
++	PetscInt solIts = pbr_ksp_its;
++	pbr_ksp_its = 0; pbr_ksp_ms = 0.0;
++
++	int rb = aspect::PBR::decide(pbr_jac) ? 1 : 0;
++	MPI_Bcast(&rb, 1, MPI_INT, 0, PETSC_COMM_WORLD);   // identical decision on all ranks
++
++	double bms = 0.0;
++	if(rb || !pbr_built)
++	{
++		double t0 = MPI_Wtime();
++		PetscCall(MGSetup(&pc->mg));
++		PetscCall(PCSetReusePreconditioner(pc->mg.pc, PETSC_FALSE));
++		PetscCall(PCSetUp(pc->mg.pc));
++		bms = 1e3*(MPI_Wtime() - t0);
++		MPI_Bcast(&bms, 1, MPI_DOUBLE, 0, PETSC_COMM_WORLD);
++		aspect::PBR::noteBuildTime(bms);
++		pbr_built = 1;
++	}
++	else
++	{
++		PetscCall(PCSetReusePreconditioner(pc->mg.pc, PETSC_TRUE));
++	}
++	PetscPrintf(PETSC_COMM_WORLD, "PBR jac %ld rebuild %d prev_its %" PetscInt_FMT " build_ms %.2f rMed %.3f\n",
++		pbr_jac, rb, solIts, bms, aspect::PBR::state().rMed);
++	pbr_jac++;
+ 
+ 	PetscFunctionReturn(0);
+ }
+
+--- a/src/nlsolve.cpp
++++ b/src/nlsolve.cpp
+@@ -174,6 +174,7 @@
+ 	PetscFunctionReturn(0);
+ }
+ //---------------------------------------------------------------------------
++PetscErrorCode PBRInstallHooks(SNES snes);   // lsolve.cpp (PBR)
+ PetscErrorCode FormJacobian(SNES snes, Vec x, Mat Amat, Mat Pmat, void *ctx)
+ {
+ 	Vec         r;
+@@ -260,6 +261,7 @@
+ 	//=====================
+ 	// setup preconditioner
+ 	//=====================
++	PetscCall(PBRInstallHooks(snes));
+ 	PetscCall(PCDataSetup(&nl->pc, jr));
+ 
+ 	// assembly preconditioner

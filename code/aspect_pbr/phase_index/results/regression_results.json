@@ -1,0 +1,249 @@
+[
+  {
+    "case": "Blankenbach",
+    "variant": "old",
+    "group": "regression",
+    "round": 1,
+    "short": true,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "case.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/regression/Blankenbach/r1_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 1,
+      "seconds_each": 600,
+      "basis": "same refinement 5 input, old full time 275 s"
+    },
+    "inputs_sha256": {
+      "case.prm": "755015ca4965903c42e60b8116bd4fd151cf6ca1dd9034843812b85d7234157f"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/cmp_l5_t0.1_fix/r1_ONLINE",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244756.6379745,
+    "load_before": "19.41 19.97 19.92 18/7537 965737",
+    "rc": 0,
+    "wall_seconds": 36.5733523145318,
+    "peak_rss_bytes": 179232768,
+    "guard": null,
+    "end_epoch": 1792244793.211649,
+    "load_after": "23.24 20.79 20.19 22/7533 966052"
+  },
+  {
+    "case": "Blankenbach",
+    "variant": "off",
+    "group": "regression",
+    "round": 1,
+    "short": true,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "case.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/regression/Blankenbach/r1_off/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 1,
+      "seconds_each": 600,
+      "basis": "same refinement 5 input, old full time 275 s"
+    },
+    "inputs_sha256": {
+      "case.prm": "755015ca4965903c42e60b8116bd4fd151cf6ca1dd9034843812b85d7234157f"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/cmp_l5_t0.1_fix/r1_ONLINE",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244756.6390018,
+    "load_before": "19.41 19.97 19.92 19/7539 965739",
+    "rc": 0,
+    "wall_seconds": 37.073935428634286,
+    "peak_rss_bytes": 179814400,
+    "guard": null,
+    "end_epoch": 1792244793.7130463,
+    "load_after": "23.24 20.79 20.19 36/7526 966054"
+  },
+  {
+    "case": "C1",
+    "variant": "old",
+    "group": "regression",
+    "round": 1,
+    "short": true,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect",
+      "Tosi_Case1.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/regression/C1/r1_old/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case1.prm": "261a3394e57643832931a72d66fd676ad593be189db5800a105d64d67764fc60",
+      "Tosi_base.prm": "983dc85555cb43d421a238b1a7504a0259db101c6296a367be3419011a25f130"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C1_ONLv",
+    "executable_sha256": "3e69b48e56f44e952ce2e5aa18217e944e9b8638610e0bdbf20060d6b3dcfb2c",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244795.361458,
+    "load_before": "22.90 20.76 20.18 22/7526 966058",
+    "rc": 0,
+    "wall_seconds": 39.07177930139005,
+    "peak_rss_bytes": 182464512,
+    "guard": null,
+    "end_epoch": 1792244834.4335654,
+    "load_after": "22.72 20.91 20.26 23/7536 966206"
+  },
+  {
+    "case": "C1",
+    "variant": "off",
+    "group": "regression",
+    "round": 1,
+    "short": true,
+    "command": [
+      "/root/autodl-tmp/envs/aspect-2.4/build-pbr3/aspect",
+      "Tosi_Case1.prm"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/regression/C1/r1_off/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 2,
+      "seconds_each": 900,
+      "basis": "official 13764 or 54148 DoFs; prior full online times 65/467/745/259 s; paired conservative estimate"
+    },
+    "inputs_sha256": {
+      "Tosi_Case1.prm": "261a3394e57643832931a72d66fd676ad593be189db5800a105d64d67764fc60",
+      "Tosi_base.prm": "983dc85555cb43d421a238b1a7504a0259db101c6296a367be3419011a25f130"
+    },
+    "source_input_dir": "/root/autodl-tmp/PBR/aspect_runs/tosi/C1_ONLv",
+    "executable_sha256": "8a6bea29668f7ee480b1ef974c9d9701f0b3fe29fb3f49be0b5820515d8f1796",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244795.361742,
+    "load_before": "22.90 20.76 20.18 24/7526 966058",
+    "rc": 0,
+    "wall_seconds": 39.5722577534616,
+    "peak_rss_bytes": 181841920,
+    "guard": null,
+    "end_epoch": 1792244834.934196,
+    "load_after": "22.72 20.91 20.26 20/7527 966208"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "old",
+    "group": "regression",
+    "round": 1,
+    "short": true,
+    "command": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "Executioner/num_steps=60",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/regression/MOOSE/r1_old/trace.csv",
+      "LD_PRELOAD": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "601c0ee2ce38221ae9c261962c17fc6c3661c45309271d91997486b303c6446e",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244834.9460242,
+    "load_before": "22.72 20.91 20.26 21/7527 966210",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 18.028478786349297,
+    "peak_rss_bytes": 179458048,
+    "guard": null,
+    "end_epoch": 1792244852.9746125,
+    "load_after": "24.55 21.38 20.42 18/7529 966245"
+  },
+  {
+    "case": "MOOSE",
+    "variant": "off",
+    "group": "regression",
+    "round": 1,
+    "short": true,
+    "command": [
+      "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt",
+      "-i",
+      "step6a_coupled.i",
+      "Outputs/exodus=false",
+      "Executioner/reuse_preconditioner=true",
+      "Executioner/reuse_preconditioner_max_linear_its=1000000",
+      "Executioner/num_steps=60",
+      "-log_view"
+    ],
+    "environment": {
+      "PBR_POLICY": "online",
+      "PBR_BASE": "100",
+      "PBR_UNIT": "solve",
+      "PBR_COND": "off",
+      "PBR_LOG": "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/regression/MOOSE/r1_off/trace.csv"
+    },
+    "estimate": {
+      "memory_gib_each": 0.7,
+      "seconds_each": 180,
+      "basis": "4422 unknowns, historical full runtime 75-90 s"
+    },
+    "inputs_sha256": {
+      "step6a_coupled.i": "0ec731d84d6b83912e88425b8da7d08cf89fb637d436153d6b660893120b95f0",
+      "step6b_transient_inflow.i": "5ce5916da66ef47014a4660935b24c5b1c0622cf8fd95ed5d43a9570f697597b",
+      "step6c_decoupled.i": "db7dba371405facd2a7f3900d46d26b36d87321811bc355e71f08e7924f81995"
+    },
+    "source_input_dir": "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/problems",
+    "executable_sha256": "5e06f4b84300e66289a3e517a6c2ebee095dfbfabd5d5595ac55799a9ba275e0",
+    "cgroup_memory_max": 66571993088,
+    "start_epoch": 1792244834.946496,
+    "load_before": "22.72 20.91 20.26 20/7527 966210",
+    "loaded_moose_libraries": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "rc": 0,
+    "wall_seconds": 17.027284912765026,
+    "peak_rss_bytes": 179261440,
+    "guard": null,
+    "end_epoch": 1792244851.973888,
+    "load_after": "24.55 21.38 20.42 17/7536 966245"
+  }
+]

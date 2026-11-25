@@ -1,0 +1,15 @@
+# Supplied by build_openfoam.sh: supports PETSC_ARCH, lib64 and pkg-config flags.
+# No silent /usr/local fallback or assumption that a global -lmpi is compatible.
+PBR_PETSC_CPPFLAGS ?= $(shell pkg-config --cflags PETSc)
+PBR_PETSC_LDFLAGS ?= $(shell pkg-config --libs PETSc)
+
+EXE_INC = \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    $(PBR_PETSC_CPPFLAGS)
+
+LIB_LIBS = \
+    -lfiniteVolume \
+    -lmeshTools \
+    -lOpenFOAM \
+    $(PBR_PETSC_LDFLAGS)

@@ -1,0 +1,16 @@
+round=1 K=1 wall_ms=61147 execTime=59.59 nStep=5866 nSolve=23464
+round=1 K=2 wall_ms=57782 execTime=56.23 nStep=5866 nSolve=23464
+round=1 K=3 wall_ms=48959 execTime=47.41 nStep=5866 nSolve=23464
+round=1 K=5 wall_ms=51612 execTime=50.12 nStep=5866 nSolve=23464
+round=1 K=8 wall_ms=49431 execTime=47.93 nStep=5867 nSolve=23468
+round=2 K=1 wall_ms=62128 execTime=60.27 nStep=5866 nSolve=23464
+round=2 K=2 wall_ms=53600 execTime=52.05 nStep=5866 nSolve=23464
+round=2 K=3 wall_ms=51333 execTime=49.77 nStep=5866 nSolve=23464
+round=2 K=5 wall_ms=47625 execTime=46.01 nStep=5866 nSolve=23464
+round=2 K=8 wall_ms=44634 execTime=43.17 nStep=5867 nSolve=23468
+round=3 K=1 wall_ms=57840 execTime=56.21 nStep=5866 nSolve=23464
+round=3 K=2 wall_ms=56721 execTime=55.01 nStep=5866 nSolve=23464
+round=3 K=3 wall_ms=52539 execTime=50.85 nStep=5866 nSolve=23464
+round=3 K=5 wall_ms=48480 execTime=46.96 nStep=5866 nSolve=23464
+round=3 K=8 wall_ms=55246 execTime=53.73 nStep=5867 nSolve=23468
+ST_DONE

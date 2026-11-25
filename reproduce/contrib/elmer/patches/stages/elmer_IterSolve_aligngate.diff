@@ -1,0 +1,42 @@
+--- elmer/IterSolve.F90.pre_aligngate	2026-11-07 18:51:10.794108600 +0800
++++ elmer/IterSolve.F90	2026-11-07 18:51:09.453718600 +0800
+@@ -284,6 +284,25 @@
+     CALL MPI_BCAST(aligned, 1, MPI_INTEGER, 0, ParEnv % ActiveComm, ierr)
+   END FUNCTION PBR_AlignInt
+ 
++  ! C1b ALIGNGATE: collective OR.  "If ANY rank needs it, ALL ranks take the
++  ! branch."  Used where a branch predicate is per-rank state but the branch
++  ! itself issues a collective: differing predicates would otherwise put ranks
++  ! into different collective sequences and hang.  Widening can only cost an
++  ! extra build, never skip a needed one.
++  FUNCTION PBR_AlignAny(val) RESULT(aligned)
++    LOGICAL, INTENT(IN) :: val
++    LOGICAL :: aligned
++    INTEGER :: local, any, ierr
++    aligned = val
++    IF (.NOT. pbrAlign) RETURN
++    IF (ParEnv % PEs <= 1) RETURN
++    local = 0
++    IF (val) local = 1
++    any = 0
++    CALL MPI_ALLREDUCE(local, any, 1, MPI_INTEGER, MPI_MAX, ParEnv % ActiveComm, ierr)
++    aligned = (any /= 0)
++  END FUNCTION PBR_AlignAny
++
+ END MODULE PBROnline
+ 
+ 
+@@ -1361,7 +1380,12 @@
+ 
+         PBRon = ListGetLogical( Params, 'Linear System Precondition Online', GotIt )
+         IF (PBRon) THEN
+-          IF (.NOT.(ASSOCIATED(A % ILUValues).OR.ASSOCIATED(A % CILUValues))) THEN
++          ! C1b ALIGNGATE: this predicate is a local pointer test, but the ELSE
++          ! branch and the later PBR_NoteBuild(PBR_AlignReal(...)) both issue
++          ! collectives.  If ranks disagreed, part of them would call a BCAST the
++          ! rest never match.  Decide it collectively: any rank needing a first
++          ! build makes all of them take that branch.
++          IF (PBR_AlignAny(.NOT.(ASSOCIATED(A % ILUValues).OR.ASSOCIATED(A % CILUValues)))) THEN
+             CALL PBR_FirstBuild(); PBRreb = .TRUE.
+           ELSE
+             PBRreb = PBR_AlignDecision(PBR_Decide())

@@ -1,0 +1,10 @@
+{
+  "recorded_on": "2026-10-17",
+  "type": "C4 common-endpoint accounting correction; policy and runtime inputs unchanged",
+  "evidence": "c4_window_audit.json; historical C4 fixed inputs use End time=.03 and their last recorded step at t<=.0063 is .00629005; online inputs use End time=.0063 and add 12 terminal-step solves",
+  "primary_cost_C4": "Use the common completed-step prefix t<=.00629005 for old, index and archived fixed; retain full counts separately",
+  "rho_common": "Unchanged: upper median pooled raw timing observations of the complete paired online runs",
+  "wallclock": "Unchanged: paired full online runs, both end at .0063",
+  "all_other_cases": "Unchanged",
+  "historical_clarification": "C4_ONLv has 1640 solves on the common prefix plus 12 at the shortened terminal step; 1652 vs K1's 1640 is fully explained by that endpoint difference, not policy-dependent nonlinear counts in those two records"
+}

@@ -1,0 +1,102 @@
+{
+  "full/Blankenbach/r1_index": {
+    "recorded_rows": 1610,
+    "solver_solves": 1626,
+    "mismatches": []
+  },
+  "full/Blankenbach/r2_index": {
+    "recorded_rows": 1599,
+    "solver_solves": 1626,
+    "mismatches": []
+  },
+  "full/Blankenbach/r3_index": {
+    "recorded_rows": 1607,
+    "solver_solves": 1626,
+    "mismatches": []
+  },
+  "full/C1/r1_index": {
+    "recorded_rows": 441,
+    "solver_solves": 461,
+    "mismatches": []
+  },
+  "full/C1/r2_index": {
+    "recorded_rows": 441,
+    "solver_solves": 461,
+    "mismatches": []
+  },
+  "full/C1/r3_index": {
+    "recorded_rows": 441,
+    "solver_solves": 461,
+    "mismatches": []
+  },
+  "full/C3/r1_index": {
+    "recorded_rows": 778,
+    "solver_solves": 865,
+    "mismatches": []
+  },
+  "full/C3/r2_index": {
+    "recorded_rows": 775,
+    "solver_solves": 865,
+    "mismatches": []
+  },
+  "full/C3/r3_index": {
+    "recorded_rows": 778,
+    "solver_solves": 865,
+    "mismatches": []
+  },
+  "full/C4/r1_index": {
+    "recorded_rows": 1650,
+    "solver_solves": 1652,
+    "mismatches": []
+  },
+  "full/C4/r2_index": {
+    "recorded_rows": 1650,
+    "solver_solves": 1652,
+    "mismatches": []
+  },
+  "full/C4/r3_index": {
+    "recorded_rows": 1651,
+    "solver_solves": 1653,
+    "mismatches": []
+  },
+  "full/C5/r1_index": {
+    "recorded_rows": 490,
+    "solver_solves": 492,
+    "mismatches": []
+  },
+  "full/C5/r2_index": {
+    "recorded_rows": 490,
+    "solver_solves": 492,
+    "mismatches": []
+  },
+  "full/C5/r3_index": {
+    "recorded_rows": 490,
+    "solver_solves": 492,
+    "mismatches": []
+  },
+  "full/MOOSE/r1_index": {
+    "recorded_rows": 819,
+    "solver_solves": 820,
+    "mismatches": []
+  },
+  "full/MOOSE/r2_index": {
+    "recorded_rows": 819,
+    "solver_solves": 820,
+    "mismatches": []
+  },
+  "full/MOOSE/r3_index": {
+    "recorded_rows": 819,
+    "solver_solves": 820,
+    "mismatches": []
+  },
+  "full/MOOSE/r4_index": {
+    "recorded_rows": 819,
+    "solver_solves": 820,
+    "mismatches": []
+  },
+  "full/MOOSE/r5_index": {
+    "recorded_rows": 819,
+    "solver_solves": 820,
+    "mismatches": []
+  }
+}

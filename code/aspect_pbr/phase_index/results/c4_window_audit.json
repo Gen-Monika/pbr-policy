@@ -1,0 +1,258 @@
+{
+  "/root/autodl-tmp/PBR/aspect_runs/tosi/C4_OFF": {
+    "last_three_steps": [
+      {
+        "t": 0.00625724,
+        "solves": 15,
+        "iterations": 232,
+        "rebuilds": 15
+      },
+      {
+        "t": 0.00627364,
+        "solves": 16,
+        "iterations": 242,
+        "rebuilds": 16
+      },
+      {
+        "t": 0.00629005,
+        "solves": 16,
+        "iterations": 245,
+        "rebuilds": 16
+      }
+    ],
+    "t_le_0.0063": {
+      "solves": 1640,
+      "iterations": 27313,
+      "rebuilds": 1640
+    },
+    "common_prefix_t_le_0.00629005": {
+      "solves": 1640,
+      "iterations": 27313,
+      "rebuilds": 1640
+    }
+  },
+  "/root/autodl-tmp/PBR/aspect_runs/tosi/C4_ONLv": {
+    "last_three_steps": [
+      {
+        "t": 0.00627364,
+        "solves": 16,
+        "iterations": 244,
+        "rebuilds": 1
+      },
+      {
+        "t": 0.00629005,
+        "solves": 16,
+        "iterations": 245,
+        "rebuilds": 3
+      },
+      {
+        "t": 0.0063,
+        "solves": 12,
+        "iterations": 175,
+        "rebuilds": 1
+      }
+    ],
+    "t_le_0.0063": {
+      "solves": 1652,
+      "iterations": 27491,
+      "rebuilds": 291
+    },
+    "common_prefix_t_le_0.00629005": {
+      "solves": 1640,
+      "iterations": 27316,
+      "rebuilds": 290
+    }
+  },
+  "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r1_old": {
+    "last_three_steps": [
+      {
+        "t": 0.00627364,
+        "solves": 16,
+        "iterations": 244,
+        "rebuilds": 2
+      },
+      {
+        "t": 0.00629005,
+        "solves": 16,
+        "iterations": 244,
+        "rebuilds": 1
+      },
+      {
+        "t": 0.0063,
+        "solves": 12,
+        "iterations": 175,
+        "rebuilds": 1
+      }
+    ],
+    "t_le_0.0063": {
+      "solves": 1652,
+      "iterations": 27494,
+      "rebuilds": 293
+    },
+    "common_prefix_t_le_0.00629005": {
+      "solves": 1640,
+      "iterations": 27319,
+      "rebuilds": 292
+    }
+  },
+  "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r1_index": {
+    "last_three_steps": [
+      {
+        "t": 0.00627364,
+        "solves": 16,
+        "iterations": 253,
+        "rebuilds": 0
+      },
+      {
+        "t": 0.00629005,
+        "solves": 16,
+        "iterations": 261,
+        "rebuilds": 0
+      },
+      {
+        "t": 0.0063,
+        "solves": 12,
+        "iterations": 190,
+        "rebuilds": 0
+      }
+    ],
+    "t_le_0.0063": {
+      "solves": 1652,
+      "iterations": 27852,
+      "rebuilds": 160
+    },
+    "common_prefix_t_le_0.00629005": {
+      "solves": 1640,
+      "iterations": 27662,
+      "rebuilds": 160
+    }
+  },
+  "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r2_index": {
+    "last_three_steps": [
+      {
+        "t": 0.00627364,
+        "solves": 16,
+        "iterations": 253,
+        "rebuilds": 0
+      },
+      {
+        "t": 0.00629005,
+        "solves": 16,
+        "iterations": 261,
+        "rebuilds": 0
+      },
+      {
+        "t": 0.0063,
+        "solves": 12,
+        "iterations": 190,
+        "rebuilds": 0
+      }
+    ],
+    "t_le_0.0063": {
+      "solves": 1652,
+      "iterations": 27852,
+      "rebuilds": 160
+    },
+    "common_prefix_t_le_0.00629005": {
+      "solves": 1640,
+      "iterations": 27662,
+      "rebuilds": 160
+    }
+  },
+  "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r2_old": {
+    "last_three_steps": [
+      {
+        "t": 0.00627364,
+        "solves": 16,
+        "iterations": 244,
+        "rebuilds": 2
+      },
+      {
+        "t": 0.00629005,
+        "solves": 16,
+        "iterations": 244,
+        "rebuilds": 1
+      },
+      {
+        "t": 0.0063,
+        "solves": 12,
+        "iterations": 175,
+        "rebuilds": 1
+      }
+    ],
+    "t_le_0.0063": {
+      "solves": 1652,
+      "iterations": 27494,
+      "rebuilds": 293
+    },
+    "common_prefix_t_le_0.00629005": {
+      "solves": 1640,
+      "iterations": 27319,
+      "rebuilds": 292
+    }
+  },
+  "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r3_old": {
+    "last_three_steps": [
+      {
+        "t": 0.00627364,
+        "solves": 16,
+        "iterations": 244,
+        "rebuilds": 2
+      },
+      {
+        "t": 0.00629005,
+        "solves": 16,
+        "iterations": 244,
+        "rebuilds": 1
+      },
+      {
+        "t": 0.0063,
+        "solves": 12,
+        "iterations": 175,
+        "rebuilds": 1
+      }
+    ],
+    "t_le_0.0063": {
+      "solves": 1653,
+      "iterations": 27503,
+      "rebuilds": 292
+    },
+    "common_prefix_t_le_0.00629005": {
+      "solves": 1641,
+      "iterations": 27328,
+      "rebuilds": 291
+    }
+  },
+  "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/full/C4/r3_index": {
+    "last_three_steps": [
+      {
+        "t": 0.00627364,
+        "solves": 16,
+        "iterations": 244,
+        "rebuilds": 1
+      },
+      {
+        "t": 0.00629005,
+        "solves": 16,
+        "iterations": 245,
+        "rebuilds": 0
+      },
+      {
+        "t": 0.0063,
+        "solves": 12,
+        "iterations": 179,
+        "rebuilds": 0
+      }
+    ],
+    "t_le_0.0063": {
+      "solves": 1653,
+      "iterations": 27945,
+      "rebuilds": 151
+    },
+    "common_prefix_t_le_0.00629005": {
+      "solves": 1641,
+      "iterations": 27766,
+      "rebuilds": 151
+    }
+  }
+}

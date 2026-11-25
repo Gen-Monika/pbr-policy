@@ -1,0 +1,542 @@
+{
+  "r1_K1": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 820
+  },
+  "r1_K10": {
+    "solves": 820,
+    "iterations": 2154,
+    "residual_lines": 2974,
+    "gmres_orthog_count": 2154,
+    "pcsetup_count": 82,
+    "trace_sum_plus_terminal": 2154,
+    "rebuilds_from_hook": 82
+  },
+  "r1_K2": {
+    "solves": 820,
+    "iterations": 2059,
+    "residual_lines": 2879,
+    "gmres_orthog_count": 2059,
+    "pcsetup_count": 410,
+    "trace_sum_plus_terminal": 2059,
+    "rebuilds_from_hook": 410
+  },
+  "r1_K3": {
+    "solves": 820,
+    "iterations": 2076,
+    "residual_lines": 2896,
+    "gmres_orthog_count": 2076,
+    "pcsetup_count": 274,
+    "trace_sum_plus_terminal": 2076,
+    "rebuilds_from_hook": 274
+  },
+  "r1_K5": {
+    "solves": 820,
+    "iterations": 2093,
+    "residual_lines": 2913,
+    "gmres_orthog_count": 2093,
+    "pcsetup_count": 164,
+    "trace_sum_plus_terminal": 2093,
+    "rebuilds_from_hook": 164
+  },
+  "r1_moose10": {
+    "solves": 820,
+    "iterations": 4375,
+    "residual_lines": 5195,
+    "gmres_orthog_count": 4375,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r1_moose25": {
+    "solves": 820,
+    "iterations": 2325,
+    "residual_lines": 3145,
+    "gmres_orthog_count": 2325,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r1_moose50": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r1_never": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": 6347,
+    "rebuilds_from_hook": 1
+  },
+  "r1_on100": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 201,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 201
+  },
+  "r1_on20": {
+    "solves": 820,
+    "iterations": 2103,
+    "residual_lines": 2923,
+    "gmres_orthog_count": 2103,
+    "pcsetup_count": 810,
+    "trace_sum_plus_terminal": 2103,
+    "rebuilds_from_hook": 810
+  },
+  "r1_orig": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r2_K1": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 820
+  },
+  "r2_K10": {
+    "solves": 820,
+    "iterations": 2154,
+    "residual_lines": 2974,
+    "gmres_orthog_count": 2154,
+    "pcsetup_count": 82,
+    "trace_sum_plus_terminal": 2154,
+    "rebuilds_from_hook": 82
+  },
+  "r2_K2": {
+    "solves": 820,
+    "iterations": 2059,
+    "residual_lines": 2879,
+    "gmres_orthog_count": 2059,
+    "pcsetup_count": 410,
+    "trace_sum_plus_terminal": 2059,
+    "rebuilds_from_hook": 410
+  },
+  "r2_K3": {
+    "solves": 820,
+    "iterations": 2076,
+    "residual_lines": 2896,
+    "gmres_orthog_count": 2076,
+    "pcsetup_count": 274,
+    "trace_sum_plus_terminal": 2076,
+    "rebuilds_from_hook": 274
+  },
+  "r2_K5": {
+    "solves": 820,
+    "iterations": 2093,
+    "residual_lines": 2913,
+    "gmres_orthog_count": 2093,
+    "pcsetup_count": 164,
+    "trace_sum_plus_terminal": 2093,
+    "rebuilds_from_hook": 164
+  },
+  "r2_moose10": {
+    "solves": 820,
+    "iterations": 4375,
+    "residual_lines": 5195,
+    "gmres_orthog_count": 4375,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r2_moose25": {
+    "solves": 820,
+    "iterations": 2325,
+    "residual_lines": 3145,
+    "gmres_orthog_count": 2325,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r2_moose50": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r2_never": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": 6347,
+    "rebuilds_from_hook": 1
+  },
+  "r2_on100": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 201,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 201
+  },
+  "r2_on20": {
+    "solves": 820,
+    "iterations": 2103,
+    "residual_lines": 2923,
+    "gmres_orthog_count": 2103,
+    "pcsetup_count": 415,
+    "trace_sum_plus_terminal": 2103,
+    "rebuilds_from_hook": 415
+  },
+  "r2_orig": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r3_K1": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 820
+  },
+  "r3_K10": {
+    "solves": 820,
+    "iterations": 2154,
+    "residual_lines": 2974,
+    "gmres_orthog_count": 2154,
+    "pcsetup_count": 82,
+    "trace_sum_plus_terminal": 2154,
+    "rebuilds_from_hook": 82
+  },
+  "r3_K2": {
+    "solves": 820,
+    "iterations": 2059,
+    "residual_lines": 2879,
+    "gmres_orthog_count": 2059,
+    "pcsetup_count": 410,
+    "trace_sum_plus_terminal": 2059,
+    "rebuilds_from_hook": 410
+  },
+  "r3_K3": {
+    "solves": 820,
+    "iterations": 2076,
+    "residual_lines": 2896,
+    "gmres_orthog_count": 2076,
+    "pcsetup_count": 274,
+    "trace_sum_plus_terminal": 2076,
+    "rebuilds_from_hook": 274
+  },
+  "r3_K5": {
+    "solves": 820,
+    "iterations": 2093,
+    "residual_lines": 2913,
+    "gmres_orthog_count": 2093,
+    "pcsetup_count": 164,
+    "trace_sum_plus_terminal": 2093,
+    "rebuilds_from_hook": 164
+  },
+  "r3_moose10": {
+    "solves": 820,
+    "iterations": 4375,
+    "residual_lines": 5195,
+    "gmres_orthog_count": 4375,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r3_moose25": {
+    "solves": 820,
+    "iterations": 2325,
+    "residual_lines": 3145,
+    "gmres_orthog_count": 2325,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r3_moose50": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r3_never": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": 6347,
+    "rebuilds_from_hook": 1
+  },
+  "r3_on100": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 201,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 201
+  },
+  "r3_on20": {
+    "solves": 820,
+    "iterations": 2103,
+    "residual_lines": 2923,
+    "gmres_orthog_count": 2103,
+    "pcsetup_count": 810,
+    "trace_sum_plus_terminal": 2103,
+    "rebuilds_from_hook": 810
+  },
+  "r3_orig": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r4_K1": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 820
+  },
+  "r4_K10": {
+    "solves": 820,
+    "iterations": 2154,
+    "residual_lines": 2974,
+    "gmres_orthog_count": 2154,
+    "pcsetup_count": 82,
+    "trace_sum_plus_terminal": 2154,
+    "rebuilds_from_hook": 82
+  },
+  "r4_K2": {
+    "solves": 820,
+    "iterations": 2059,
+    "residual_lines": 2879,
+    "gmres_orthog_count": 2059,
+    "pcsetup_count": 410,
+    "trace_sum_plus_terminal": 2059,
+    "rebuilds_from_hook": 410
+  },
+  "r4_K3": {
+    "solves": 820,
+    "iterations": 2076,
+    "residual_lines": 2896,
+    "gmres_orthog_count": 2076,
+    "pcsetup_count": 274,
+    "trace_sum_plus_terminal": 2076,
+    "rebuilds_from_hook": 274
+  },
+  "r4_K5": {
+    "solves": 820,
+    "iterations": 2093,
+    "residual_lines": 2913,
+    "gmres_orthog_count": 2093,
+    "pcsetup_count": 164,
+    "trace_sum_plus_terminal": 2093,
+    "rebuilds_from_hook": 164
+  },
+  "r4_moose10": {
+    "solves": 820,
+    "iterations": 4375,
+    "residual_lines": 5195,
+    "gmres_orthog_count": 4375,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r4_moose25": {
+    "solves": 820,
+    "iterations": 2325,
+    "residual_lines": 3145,
+    "gmres_orthog_count": 2325,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r4_moose50": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r4_never": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": 6347,
+    "rebuilds_from_hook": 1
+  },
+  "r4_on100": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 201,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 201
+  },
+  "r4_on20": {
+    "solves": 820,
+    "iterations": 2103,
+    "residual_lines": 2923,
+    "gmres_orthog_count": 2103,
+    "pcsetup_count": 415,
+    "trace_sum_plus_terminal": 2103,
+    "rebuilds_from_hook": 415
+  },
+  "r4_orig": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r5_K1": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 820
+  },
+  "r5_K10": {
+    "solves": 820,
+    "iterations": 2154,
+    "residual_lines": 2974,
+    "gmres_orthog_count": 2154,
+    "pcsetup_count": 82,
+    "trace_sum_plus_terminal": 2154,
+    "rebuilds_from_hook": 82
+  },
+  "r5_K2": {
+    "solves": 820,
+    "iterations": 2059,
+    "residual_lines": 2879,
+    "gmres_orthog_count": 2059,
+    "pcsetup_count": 410,
+    "trace_sum_plus_terminal": 2059,
+    "rebuilds_from_hook": 410
+  },
+  "r5_K3": {
+    "solves": 820,
+    "iterations": 2076,
+    "residual_lines": 2896,
+    "gmres_orthog_count": 2076,
+    "pcsetup_count": 274,
+    "trace_sum_plus_terminal": 2076,
+    "rebuilds_from_hook": 274
+  },
+  "r5_K5": {
+    "solves": 820,
+    "iterations": 2093,
+    "residual_lines": 2913,
+    "gmres_orthog_count": 2093,
+    "pcsetup_count": 164,
+    "trace_sum_plus_terminal": 2093,
+    "rebuilds_from_hook": 164
+  },
+  "r5_moose10": {
+    "solves": 820,
+    "iterations": 4375,
+    "residual_lines": 5195,
+    "gmres_orthog_count": 4375,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r5_moose25": {
+    "solves": 820,
+    "iterations": 2325,
+    "residual_lines": 3145,
+    "gmres_orthog_count": 2325,
+    "pcsetup_count": 2,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r5_moose50": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  },
+  "r5_never": {
+    "solves": 820,
+    "iterations": 6347,
+    "residual_lines": 7167,
+    "gmres_orthog_count": 6347,
+    "pcsetup_count": 1,
+    "trace_sum_plus_terminal": 6347,
+    "rebuilds_from_hook": 1
+  },
+  "r5_on100": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 201,
+    "trace_sum_plus_terminal": 2052,
+    "rebuilds_from_hook": 201
+  },
+  "r5_on20": {
+    "solves": 820,
+    "iterations": 2103,
+    "residual_lines": 2923,
+    "gmres_orthog_count": 2103,
+    "pcsetup_count": 415,
+    "trace_sum_plus_terminal": 2103,
+    "rebuilds_from_hook": 415
+  },
+  "r5_orig": {
+    "solves": 820,
+    "iterations": 2052,
+    "residual_lines": 2872,
+    "gmres_orthog_count": 2052,
+    "pcsetup_count": 820,
+    "trace_sum_plus_terminal": null,
+    "rebuilds_from_hook": null
+  }
+}

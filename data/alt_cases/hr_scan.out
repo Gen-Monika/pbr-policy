@@ -1,0 +1,23 @@
+bash: /root/miniconda3/lib/libtinfo.so.6: no version information available (required by bash)
+round=1 K=1 wall_ms=118430 execTime=116.99 solveTime=102.227 nStep=1000 nSolve=2000
+round=1 K=2 wall_ms=80959 execTime=79.52 solveTime=64.3992 nStep=1000 nSolve=2000
+round=1 K=3 wall_ms=66895 execTime=65.58 solveTime=50.4273 nStep=1000 nSolve=2000
+round=1 K=5 wall_ms=55974 execTime=54.56 solveTime=39.8758 nStep=1000 nSolve=2000
+round=1 K=8 wall_ms=49252 execTime=47.85 solveTime=33.3058 nStep=1000 nSolve=2000
+round=2 K=1 wall_ms=120987 execTime=119.61 solveTime=103.978 nStep=1000 nSolve=2000
+round=2 K=2 wall_ms=81728 execTime=80.32 solveTime=65.1343 nStep=1000 nSolve=2000
+round=2 K=3 wall_ms=69029 execTime=67.62 solveTime=52.2696 nStep=1000 nSolve=2000
+round=2 K=5 wall_ms=56508 execTime=55.15 solveTime=40.4328 nStep=1000 nSolve=2000
+round=2 K=8 wall_ms=51159 execTime=49.71 solveTime=34.5619 nStep=1000 nSolve=2000
+round=3 K=1 wall_ms=114847 execTime=113.41 solveTime=98.811 nStep=1000 nSolve=2000
+round=3 K=2 wall_ms=79194 execTime=77.8 solveTime=62.9225 nStep=1000 nSolve=2000
+round=3 K=3 wall_ms=65278 execTime=63.89 solveTime=49.3324 nStep=1000 nSolve=2000
+round=3 K=5 wall_ms=54435 execTime=53.07 solveTime=38.5777 nStep=1000 nSolve=2000
+round=3 K=8 wall_ms=49452 execTime=47.34 solveTime=33.448 nStep=1000 nSolve=2000
+HR_DONE
+round=1 K=13 wall_ms=45183 execTime=43.76 solveTime=29.4903 nStep=1000 nSolve=2000
+round=2 K=13 wall_ms=54096 execTime=51.01 solveTime=35.6612 nStep=1000 nSolve=2000
+round=3 K=13 wall_ms=50569 execTime=49.04 solveTime=32.8 nStep=1000 nSolve=2000
+round=1 K=20 wall_ms=50614 execTime=49.18 solveTime=32.2554 nStep=1000 nSolve=2000
+round=2 K=20 wall_ms=48242 execTime=46.86 solveTime=30.6834 nStep=1000 nSolve=2000
+round=3 K=20 wall_ms=48368 execTime=46.9 solveTime=30.1871 nStep=1000 nSolve=2000

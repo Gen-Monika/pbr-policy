@@ -1,0 +1,16 @@
+refined 3x per direction (20412 cells expected)
+  nCells: 20412
+solver          PBRPCG;
+solver          PBRPCG;
+libs            ( libpbrSolverTimer.so libpbrPETSc.so );
+round=1 K=1 wall_ms=1039609 execTime=1037.57 solveTime=966.736 nSolve=3687 nStep=1229
+round=1 K=2 wall_ms=693225 execTime=691.1 solveTime=618.354 nSolve=3693 nStep=1231
+round=1 K=3 wall_ms=604747 execTime=602.52 solveTime=528.265 nSolve=3693 nStep=1231
+round=1 K=5 wall_ms=626279 execTime=624.17 solveTime=547.562 nSolve=3690 nStep=1230
+round=1 K=8 wall_ms=861489 execTime=859.27 solveTime=784.903 nSolve=3693 nStep=1231
+round=2 K=1 wall_ms=1081600 execTime=1079.17 solveTime=1006.12 nSolve=3687 nStep=1229
+round=2 K=2 wall_ms=704027 execTime=701.95 solveTime=628.338 nSolve=3693 nStep=1231
+round=2 K=3 wall_ms=598215 execTime=596.17 solveTime=522.926 nSolve=3693 nStep=1231
+round=2 K=5 wall_ms=616293 execTime=614.23 solveTime=538.113 nSolve=3690 nStep=1230
+round=2 K=8 wall_ms=870362 execTime=867.34 solveTime=792.529 nSolve=3693 nStep=1231
+SCAN_DONE

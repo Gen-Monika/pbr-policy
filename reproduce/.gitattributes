@@ -1,0 +1,8 @@
+# Linux launch/build files must survive a Windows checkout without CRLF conversion.
+config/*.sh text eol=lf
+scripts/** text eol=lf
+contrib/**/*.diff text eol=lf
+contrib/**/pbr_policy.h text eol=lf
+contrib/build-sources.json text eol=lf
+contrib/openfoam-petsc/*.C text eol=lf
+contrib/openfoam-petsc/Make/* text eol=lf

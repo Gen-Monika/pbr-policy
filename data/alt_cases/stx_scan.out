@@ -1,0 +1,16 @@
+round=1 K=1 wall_ms=156059 execTime=131.97 nStep=10387 nSolve=41548
+round=1 K=5 wall_ms=125882 execTime=107.33 nStep=10387 nSolve=41548
+round=1 K=8 wall_ms=93355 execTime=89.76 nStep=10388 nSolve=41552
+round=1 K=13 wall_ms=97756 execTime=92.18 nStep=10387 nSolve=41548
+round=1 K=20 wall_ms=100368 execTime=96.26 nStep=10387 nSolve=41548
+round=2 K=1 wall_ms=116314 execTime=110.14 nStep=10387 nSolve=41548
+round=2 K=5 wall_ms=93376 execTime=89.02 nStep=10387 nSolve=41548
+round=2 K=8 wall_ms=99389 execTime=95.42 nStep=10388 nSolve=41552
+round=2 K=13 wall_ms=163205 execTime=100.62 nStep=10387 nSolve=41548
+round=2 K=20 wall_ms=101184 execTime=95.95 nStep=10387 nSolve=41548
+round=3 K=1 wall_ms=116853 execTime=111.2 nStep=10387 nSolve=41548
+round=3 K=5 wall_ms=142205 execTime=103.2 nStep=10387 nSolve=41548
+round=3 K=8 wall_ms=103192 execTime=98.85 nStep=10388 nSolve=41552
+round=3 K=13 wall_ms=99313 execTime=95.08 nStep=10387 nSolve=41548
+round=3 K=20 wall_ms=96322 execTime=93.06 nStep=10387 nSolve=41548
+ST_DONE

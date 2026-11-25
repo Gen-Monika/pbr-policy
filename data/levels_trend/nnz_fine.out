@@ -1,0 +1,10 @@
+LV=5 | PBR_NNZ levels=5 n=9072 nz_used=181988 nz_alloc=181988 dense_nnz=82301184 fillRatio=0.00221124 (nz_used/nnzA)
+LV=8 | PBR_NNZ levels=8 n=9072 nz_used=279342 nz_alloc=279342 dense_nnz=82301184 fillRatio=0.00339414 (nz_used/nnzA)
+LV=10 | PBR_NNZ levels=10 n=9072 nz_used=341826 nz_alloc=341826 dense_nnz=82301184 fillRatio=0.00415335 (nz_used/nnzA)
+LV=12 | PBR_NNZ levels=12 n=9072 nz_used=402356 nz_alloc=402356 dense_nnz=82301184 fillRatio=0.00488882 (nz_used/nnzA)
+LV=15 | PBR_NNZ levels=15 n=9072 nz_used=489106 nz_alloc=489106 dense_nnz=82301184 fillRatio=0.00594288 (nz_used/nnzA)
+LV=18 | PBR_NNZ levels=18 n=9072 nz_used=570906 nz_alloc=570906 dense_nnz=82301184 fillRatio=0.00693679 (nz_used/nnzA)
+LV=20 | PBR_NNZ levels=20 n=9072 nz_used=622636 nz_alloc=622636 dense_nnz=82301184 fillRatio=0.00756533 (nz_used/nnzA)
+LV=25 | PBR_NNZ levels=25 n=9072 nz_used=741916 nz_alloc=741916 dense_nnz=82301184 fillRatio=0.00901465 (nz_used/nnzA)
+LV=30 | PBR_NNZ levels=30 n=9072 nz_used=846446 nz_alloc=846446 dense_nnz=82301184 fillRatio=0.0102847 (nz_used/nnzA)
+NNZF_DONE

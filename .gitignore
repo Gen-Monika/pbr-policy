@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# Lean build artefacts; rebuild with `lake build`
+proof/.lake/
+
+# Run outputs written by reproduce/scripts
+reproduce/runs/
+reproduce/out/

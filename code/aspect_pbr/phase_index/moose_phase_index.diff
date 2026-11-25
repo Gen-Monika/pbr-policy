@@ -1,0 +1,27 @@
+--- a/framework/src/systems/NonlinearSystem.C
++++ b/framework/src/systems/NonlinearSystem.C
+@@ -152,10 +152,13 @@
+ int    pbr_built = 0;
+ double pbr_t0 = 0.0, pbr_bms = 0.0;
+ 
+-PetscErrorCode PBRPreSolve(KSP ksp, Vec, Vec, void *)
++PetscErrorCode PBRPreSolve(KSP ksp, Vec, Vec, void *ctx)
+ {
+   PetscFunctionBeginUser;
+-  int rb = aspect::PBR::decide(pbr_solve) ? 1 : 0;
++  PetscInt j = 0;
++  if (aspect::PBR::state().condIndex)
++    PetscCall(SNESGetIterationNumber(static_cast<SNES>(ctx), &j));
++  int rb = aspect::PBR::decide(pbr_solve, static_cast<long>(j)) ? 1 : 0;
+   MPI_Bcast(&rb, 1, MPI_INT, 0, PETSC_COMM_WORLD);
+   PC pc;
+   PetscCall(KSPGetPC(ksp, &pc));
+@@ -209,7 +212,7 @@
+     pbr_built = 0;   // a new KSP has no preconditioner yet
+     last = ksp;
+   }
+-  (void)KSPSetPreSolve(ksp, PBRPreSolve, nullptr);
++  (void)KSPSetPreSolve(ksp, PBRPreSolve, snes);
+   (void)KSPSetPostSolve(ksp, PBRPostSolve, nullptr);
+ }
+ }

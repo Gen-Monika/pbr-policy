@@ -1,0 +1,17 @@
+--- lamem/lsolve.cpp.pre_align_gate	2026-11-07 19:22:06.107596400 +0800
++++ lamem/lsolve.cpp	2026-11-07 19:22:05.135489100 +0800
+@@ -206,7 +206,13 @@
+ 	PetscCall(KSPGetIterationNumber(k, &n));
+ 	pbr_ksp_its += n;
+ 	double dt = 1e3*(MPI_Wtime() - pbr_t0);
+-	MPI_Bcast(&dt, 1, MPI_DOUBLE, 0, PETSC_COMM_WORLD);
++	// C1b ALIGNGATE: this broadcast used to be issued unconditionally, bypassing
++	// aspect::PBR::alignDouble().  With PBR_ALIGN=off that meant every rank still
++	// ran on rank 0's solve time, so the ablation arm never used per-rank local
++	// timing -- and solve_ms is the source of rho.  Route it through the gated
++	// helper: identical to the old behaviour when PBR_ALIGN=on, truly per-rank
++	// when PBR_ALIGN=off.
++	dt = aspect::PBR::alignDouble(dt, PETSC_COMM_WORLD);
+ 	pbr_ksp_ms += dt;
+ 	return 0;
+ }

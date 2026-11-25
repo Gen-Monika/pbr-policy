@@ -1,0 +1,108 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    object          fvSolution;
+}
+
+solvers
+{
+    alpha.liquid
+    {
+        nAlphaCorr      2;
+        nAlphaSubCycles 2;
+        cAlpha          1;
+        MULESCorr       no;
+        nLimiterIter    5;
+    }
+    rho
+    {
+        solver          diagonal;
+        tolerance       1e-07;
+        relTol          0.1;
+    }
+    rhoFinal
+    {
+        solver          diagonal;
+        tolerance       1e-07;
+        relTol          0;
+    }
+    p_rgh
+    {
+        tolerance       1e-09;
+        solver          PBRPCG;
+        preconditioner  PETScILU;
+        relTol          0.001;
+        smoother        DIC;
+    }
+    mDotSmearFinal
+    {
+        solver          PCG;
+        tolerance       1e-06;
+        preconditioner  DIC;
+        relTol          0;
+        smoother        DIC;
+    }
+    p_rghFinal
+    {
+        tolerance       1e-09;
+        solver          PBRPCG;
+        preconditioner  PETScILU;
+        relTol          0;
+        smoother        DIC;
+        minIter         10;
+    }
+    pcorrFinal
+    {
+        tolerance       1e-09;
+        solver          PCG;
+        preconditioner  DIC;
+        relTol          0;
+        smoother        DIC;
+    }
+    "(U|h|T.*|k|epsilon|R)"
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-07;
+        relTol          0;
+        minIter         15;
+        maxIter         50;
+    }
+    "(U|h|T.*|k|epsilon|R)Final"
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-07;
+        relTol          0;
+        minIter         15;
+        maxIter         50;
+    }
+}
+
+PIMPLE
+{
+    momentumPredictor yes;
+    nCorrectors     4;
+    nNonOrthogonalCorrectors 0;
+}
+
+relaxationFactors
+{
+    equations
+    {
+        ".*"            1;
+    }
+}
+
+
+// ************************************************************************* //

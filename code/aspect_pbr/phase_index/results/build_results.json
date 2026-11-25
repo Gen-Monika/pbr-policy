@@ -1,0 +1,18 @@
+[
+  {
+    "build": "aspect",
+    "rc": 0,
+    "seconds": 670.0906786769629,
+    "peak_tree_bytes": 7377448960,
+    "peak_process_bytes": 4912988160,
+    "guard": null
+  },
+  {
+    "build": "moose",
+    "rc": 0,
+    "seconds": 106.3289119657129,
+    "peak_tree_bytes": 3038613504,
+    "peak_process_bytes": 2918817792,
+    "guard": null
+  }
+]

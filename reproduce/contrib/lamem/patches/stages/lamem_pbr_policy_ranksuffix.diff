@@ -1,0 +1,23 @@
+--- lamem/pbr_policy.h.pre_ranksuffix	2026-11-07 18:48:33.263027900 +0800
++++ lamem/pbr_policy.h	2026-11-07 18:48:32.422085300 +0800
+@@ -180,7 +180,19 @@
+       S.unitStep = (envS("PBR_UNIT", "solve") == "step");
+       const std::string path = envS("PBR_LOG", "");
+       if (!path.empty())
+-        S.log.open(path.c_str());
++        {
++          // C1b RANKSUFFIX: one file per rank under np>1, otherwise every rank
++          // would interleave into a single trace and per-rank comparison -- the
++          // whole point of the parallel check -- would be impossible.  Single
++          // process keeps the bare path so np1 evidence stays comparable.
++          int nprocs = 1, myrank = 0;
++          MPI_Comm_size(PETSC_COMM_WORLD, &nprocs);
++          MPI_Comm_rank(PETSC_COMM_WORLD, &myrank);
++          if (nprocs > 1)
++            S.log.open((path + ".r" + std::to_string(myrank)).c_str());
++          else
++            S.log.open(path.c_str());
++        }
+     }
+ 
+     /** Forget everything that was learned on the previous mesh. */

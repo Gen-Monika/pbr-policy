@@ -1,0 +1,62 @@
+--- a/source/simulator/assembly.cc
++++ b/source/simulator/assembly.cc
+@@ -27,6 +27,7 @@
+ 
+ #include <aspect/simulator/assemblers/interface.h>
+ #include <aspect/melt.h>
++#include <aspect/pbr_policy.h>
+ #include <aspect/newton.h>
+ #include <aspect/mesh_deformation/interface.h>
+ #include <aspect/simulator/assemblers/stokes.h>
+@@ -45,6 +46,8 @@
+ #include <deal.II/fe/fe_values.h>
+ 
+ #include <limits>
++#include <cstdlib>
++#include <chrono>
+ 
+ 
+ namespace aspect
+@@ -389,6 +392,22 @@
+     if (rebuild_stokes_preconditioner == false)
+       return;
+ 
++    // PBR: the online rebuild policy may decide to keep the existing
++    // preconditioner even though the caller asked for a rebuild. The decision
++    // is taken once per Stokes solve (see solve_stokes()).
++    if (PBR::state().mode != "off"
++        && Amg_preconditioner != nullptr
++        && PBR::alignDecision(PBR::decide(PBR::state().unitStep ? static_cast<long>(timestep_number)
++                                                                : PBR::state().solveGen,
++                                          static_cast<long>(nonlinear_iteration)),
++                              mpi_communicator) == false)
++      {
++        pcout << "   Reusing Stokes preconditioner (PBR age "
++              << PBR::state().runAge << ")..." << std::flush;
++        rebuild_stokes_preconditioner = false;
++        return;
++      }
++
+     if (parameters.stokes_solver_type == Parameters<dim>::StokesSolverType::block_gmg)
+       return;
+     else if (parameters.stokes_solver_type == Parameters<dim>::StokesSolverType::block_amg)
+@@ -401,6 +420,7 @@
+       AssertThrow(false, ExcNotImplemented());
+ 
+     TimerOutput::Scope timer (computing_timer, "Build Stokes preconditioner");
++    const std::chrono::steady_clock::time_point pbr_t0 = std::chrono::steady_clock::now();
+     pcout << "   Rebuilding Stokes preconditioner..." << std::flush;
+ 
+     // first assemble the raw matrices necessary for the preconditioner
+@@ -492,6 +512,11 @@
+ 
+     rebuild_stokes_preconditioner = false;
+ 
++    if (PBR::state().mode != "off")
++      PBR::noteBuildTime(PBR::alignDouble(std::chrono::duration<double,std::milli>
++                                          (std::chrono::steady_clock::now() - pbr_t0).count(),
++                                          mpi_communicator));
++
+     pcout << std::endl;
+   }
+ 

@@ -1,0 +1,253 @@
+--- IterSolve.F90.orig	2026-10-16 15:41:05.648268229 +0800
++++ IterSolve.F90	2026-10-16 15:49:19.668880574 +0800
+@@ -46,6 +46,183 @@
+ !> Module containing control of the iterative solvers for linear systems
+ !> that come with the Elmer suite.
+ !------------------------------------------------------------------------------
++!------------------------------------------------------------------------------
++! PBR: online preconditioner-rebuild policy (port of the ASPECT/OpenFOAM version).
++! Enabled per solver by  "Linear System Precondition Online = Logical True".
++! Decision unit = one linear solve. Rule: rebuild iff lvl + max(0,delta(a)) > avg.
++! Only one solver per run may use it (single global state).
++!------------------------------------------------------------------------------
++MODULE PBROnline
++  IMPLICIT NONE
++  INTEGER, PARAMETER, PRIVATE :: dpk = KIND(1.0d0)
++  INTEGER, PARAMETER, PRIVATE :: MAXAGE = 2000, MAXS = 4000
++  LOGICAL, SAVE :: pbrInit = .FALSE.
++  INTEGER, SAVE :: pbrBase = 100
++  INTEGER, SAVE :: lastSolve = -1, heldBase = -1, runAge = 0
++  INTEGER, SAVE :: curIts = 0
++  LOGICAL, SAVE :: curRebuilt = .FALSE., haveSolve = .FALSE.
++  REAL(dpk), SAVE :: curBuildMs = 0.0_dpk, curSolveMs = 0.0_dpk
++  REAL(dpk), SAVE :: tot = 0.0_dpk, acc = 0.0_dpk
++  INTEGER, SAVE :: accn = 0, nDone = 0, nSolve = 0, nRebuild = 0
++  REAL(dpk), SAVE :: levels(MAXS), rS(MAXS)
++  INTEGER, SAVE :: nLev = 0, nR = 0
++  REAL(dpk), SAVE :: dN(MAXAGE, 64)
++  INTEGER, SAVE :: nDN(MAXAGE) = 0
++  REAL(dpk), SAVE :: lastEst = 0.0_dpk, lastAvg = 0.0_dpk
++  INTEGER, SAVE :: logU = -1  ! NEWUNIT gives negative units; -1 means closed
++CONTAINS
++  FUNCTION Med(v, n) RESULT(m)
++    INTEGER, INTENT(IN) :: n
++    REAL(dpk), INTENT(IN) :: v(:)
++    REAL(dpk) :: m, w(n), t
++    INTEGER :: i, j
++    IF (n <= 0) THEN
++      m = 0.0_dpk; RETURN
++    END IF
++    w = v(1:n)
++    DO i = 2, n
++      t = w(i); j = i - 1
++      DO WHILE (j >= 1)
++        IF (w(j) <= t) EXIT
++        w(j+1) = w(j); j = j - 1
++      END DO
++      w(j+1) = t
++    END DO
++    m = w(n/2 + 1)
++  END FUNCTION Med
++
++  SUBROUTINE PBR_Setup()
++    CHARACTER(LEN=64) :: s
++    INTEGER :: st
++    IF (pbrInit) RETURN
++    pbrInit = .TRUE.
++    CALL GET_ENVIRONMENT_VARIABLE('PBR_BASE', s, STATUS=st)
++    IF (st == 0) READ(s, *) pbrBase
++    CALL GET_ENVIRONMENT_VARIABLE('PBR_LOG', s, STATUS=st)
++    IF (st == 0) THEN
++      OPEN(NEWUNIT=logU, FILE=TRIM(s), STATUS='REPLACE', ACTION='WRITE')
++      WRITE(logU,'(A)') 'solve,rebuild,age,its,est,avg,rMed,build_ms,solve_ms'
++    END IF
++  END SUBROUTINE PBR_Setup
++
++  ! Fold the solve that just finished.
++  SUBROUTINE FoldLast()
++    REAL(dpk) :: N, c, rMed, bmed
++    INTEGER :: k
++    IF (.NOT. haveSolve) RETURN
++    N = REAL(curIts, dpk)
++    IF (logU /= -1) WRITE(logU,'(I0,",",I0,",",I0,",",I0,",",4(G0.6,","),G0.6)') &
++         lastSolve, MERGE(1,0,curRebuilt), runAge, curIts, lastEst, lastAvg, Med(rS,nR), curBuildMs, curSolveMs
++    IF (runAge == 0) THEN
++      rMed = Med(rS, nR)
++      c = rMed + N
++      tot = tot + c
++      IF (nLev < MAXS) THEN
++        nLev = nLev + 1; levels(nLev) = N
++      END IF
++      IF (lastSolve < pbrBase) THEN
++        acc = 0.0_dpk; accn = 0
++      ELSE
++        acc = c; accn = 1
++      END IF
++    ELSE
++      tot = tot + N
++      IF (nLev > 0 .AND. runAge <= MAXAGE) THEN
++        bmed = Med(levels, nLev)
++        k = nDN(runAge)
++        IF (k < 64) THEN
++          nDN(runAge) = k + 1; dN(runAge, k+1) = N - bmed
++        ELSE
++          dN(runAge, 1:63) = dN(runAge, 2:64); dN(runAge, 64) = N - bmed
++        END IF
++      END IF
++      acc = acc + N; accn = accn + 1
++    END IF
++    nDone = nDone + 1
++    haveSolve = .FALSE.
++  END SUBROUTINE FoldLast
++
++  ! Called before a solve whose preconditioner already exists. Returns .TRUE. to rebuild.
++  FUNCTION PBR_Decide() RESULT(rebuild)
++    LOGICAL :: rebuild
++    INTEGER :: a, a1, a2, k, ks(MAXAGE), nks
++    REAL(dpk) :: lvl, avg, delta, d1, d2, sl, est
++    CALL PBR_Setup()
++    CALL FoldLast()
++    nSolve = nSolve + 1
++    lastSolve = nSolve - 1
++    rebuild = .TRUE.
++    lastEst = 0.0_dpk; lastAvg = 0.0_dpk
++    IF (lastSolve >= pbrBase .AND. heldBase >= 0 .AND. nLev > 0) THEN
++      a = lastSolve - heldBase
++      lvl = levels(nLev)
++      IF (accn > 0) THEN
++        avg = acc / REAL(accn, dpk)
++      ELSE
++        avg = tot / REAL(MAX(1, nDone), dpk)
++      END IF
++      delta = 0.0_dpk
++      IF (a <= MAXAGE .AND. a >= 1) THEN
++        IF (nDN(a) > 0) THEN
++          delta = Med(dN(a,:), nDN(a))
++          GOTO 10
++        END IF
++      END IF
++      nks = 0
++      DO k = 1, MAXAGE
++        IF (nDN(k) > 0) THEN
++          nks = nks + 1; ks(nks) = k
++        END IF
++      END DO
++      IF (nks >= 2) THEN
++        a2 = ks(nks); a1 = ks(nks-1)
++        d2 = Med(dN(a2,:), nDN(a2)); d1 = Med(dN(a1,:), nDN(a1))
++        sl = (d2 - d1) / MAX(1.0d-9, REAL(a2 - a1, dpk))
++        delta = d2 + sl * REAL(a - a2, dpk)
++      ELSE IF (nks == 1) THEN
++        delta = Med(dN(ks(1),:), nDN(ks(1)))
++      END IF
++10    CONTINUE
++      est = lvl + MAX(0.0_dpk, delta)
++      lastEst = est; lastAvg = avg
++      rebuild = (est > avg)
++    END IF
++    IF (rebuild) THEN
++      heldBase = lastSolve; runAge = 0; nRebuild = nRebuild + 1
++    ELSE
++      runAge = lastSolve - heldBase
++    END IF
++    curRebuilt = rebuild; curBuildMs = 0.0_dpk
++  END FUNCTION PBR_Decide
++
++  ! First factorization (no preconditioner yet): count it as a rebuild at solve 0.
++  SUBROUTINE PBR_FirstBuild()
++    CALL PBR_Setup()
++    CALL FoldLast()
++    nSolve = nSolve + 1; lastSolve = nSolve - 1
++    heldBase = lastSolve; runAge = 0; nRebuild = nRebuild + 1
++    curRebuilt = .TRUE.; curBuildMs = 0.0_dpk
++    lastEst = 0.0_dpk; lastAvg = 0.0_dpk
++  END SUBROUTINE PBR_FirstBuild
++
++  SUBROUTINE PBR_NoteBuild(ms)
++    REAL(dpk), INTENT(IN) :: ms
++    curBuildMs = ms
++  END SUBROUTINE PBR_NoteBuild
++
++  SUBROUTINE PBR_NoteSolve(its, ms)
++    INTEGER, INTENT(IN) :: its
++    REAL(dpk), INTENT(IN) :: ms
++    curIts = MAX(0, its); curSolveMs = ms; haveSolve = .TRUE.
++    IF (curRebuilt .AND. curBuildMs > 0.0_dpk .AND. curIts > 0 .AND. ms > 0.0_dpk) THEN
++      IF (nR < MAXS) THEN
++        nR = nR + 1; rS(nR) = curBuildMs / (ms / REAL(curIts, dpk))
++      END IF
++    END IF
++  END SUBROUTINE PBR_NoteSolve
++END MODULE PBROnline
++
++
+ MODULE IterSolve
+ 
+ !$ USE omp_lib ! conditionally, for the thread ids in the dot products below
+@@ -622,7 +799,10 @@
+     USE ListMatrix
+     USE SParIterGlobals
+     USE GeneralUtils, ONLY : ComplexValues
++    USE PBROnline
+     IMPLICIT NONE
++    LOGICAL :: PBRon = .FALSE., PBRreb = .FALSE.
++    INTEGER(KIND=8) :: pbrC0, pbrC1, pbrRate
+ 
+ !------------------------------------------------------------------------------
+     TYPE(Solver_t) :: Solver
+@@ -1048,6 +1228,7 @@
+           'PROBE: scalar values poisoned from the view onwards',Level=5)
+     END IF
+ 
++    PBRon = .FALSE.; PBRreb = .FALSE.
+     IF ( .NOT. PRESENT(PrecF) ) THEN
+       str = ListGetString( Params, 'Linear System Preconditioning',gotit )
+       IF ( .NOT.gotit ) str = 'none'
+@@ -1114,8 +1295,19 @@
+         Refactorize = ListGetLogical( Params, 'Linear System Refactorize', Gotit )
+         IF ( .NOT. Gotit ) Refactorize = .TRUE.
+ 
+-        IF (.NOT.(ASSOCIATED(A % ILUValues).OR.ASSOCIATED(A % CILUValues)).OR. &
+-                  (Refactorize.AND.MOD(A % SolveCount, n)==0) ) THEN
++        PBRon = ListGetLogical( Params, 'Linear System Precondition Online', GotIt )
++        IF (PBRon) THEN
++          IF (.NOT.(ASSOCIATED(A % ILUValues).OR.ASSOCIATED(A % CILUValues))) THEN
++            CALL PBR_FirstBuild(); PBRreb = .TRUE.
++          ELSE
++            PBRreb = PBR_Decide()
++          END IF
++        ELSE
++          PBRreb = (.NOT.(ASSOCIATED(A % ILUValues).OR.ASSOCIATED(A % CILUValues))).OR. &
++                  (Refactorize.AND.MOD(A % SolveCount, n)==0)
++        END IF
++        CALL SYSTEM_CLOCK(pbrC0, pbrRate)
++        IF ( PBRreb ) THEN
+ 
+ 
+           IF ( A % FORMAT == MATRIX_CRS ) THEN
+@@ -1314,8 +1506,13 @@
+           END IF
+         END IF
+         CALL CheckTimer("Prec-"//TRIM(str),Level=8,Delete=.TRUE.)
++        IF (PBRon .AND. PBRreb) THEN
++          CALL SYSTEM_CLOCK(pbrC1)
++          CALL PBR_NoteBuild( 1000.0d0*REAL(pbrC1-pbrC0,KIND(1.0d0))/REAL(MAX(1_8,pbrRate),KIND(1.0d0)) )
++        END IF
+       END IF
+     END IF
++    CALL SYSTEM_CLOCK(pbrC0, pbrRate)
+ 
+     A % SolveCount = A % SolveCount + 1
+ !------------------------------------------------------------------------------
+@@ -1636,6 +1833,11 @@
+ 
+     GlobalMatrix => SaveGlobalM
+ 
++    IF (PBRon) THEN
++      CALL SYSTEM_CLOCK(pbrC1)
++      CALL PBR_NoteSolve( HUTI_ITERS, 1000.0d0*REAL(pbrC1-pbrC0,KIND(1.0d0))/REAL(MAX(1_8,pbrRate),KIND(1.0d0)) )
++    END IF
++
+     stack_pos=stack_pos-1
+ 
+     IF ( ComplexSystem ) HUTI_NDIM = HUTI_NDIM * 2

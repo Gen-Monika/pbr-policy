@@ -1,0 +1,181 @@
+--- a/pbr_policy.h
++++ b/pbr_policy.h
+@@ -14,6 +14,7 @@
+     PBR_K      = k   for "fixed": rebuild every k steps, 0 = never
+     PBR_BASE   = b   steps before the end of the warm-up (default 100)
+     PBR_LOG    = path  optional per-step CSV trace
++    PBR_COND   = index: remove frozen warm-up phase offsets (solve units only)
+ */
+ 
+ #ifndef aspect_pbr_policy_h
+@@ -59,6 +60,15 @@
+       bool online = false, fixed = false;
+       long K = 1, base = 100;
+       bool unitStep = false;   // PBR_UNIT=step: decide once per time step (paper semantics)
++      bool condIndex = false, offsetsFrozen = false;
++      long phase = 0;          // phase of the decision unit being accumulated
++      struct WarmSample { double N, setup; long j; };
++      std::vector<WarmSample> warmSamples;
++      std::map<long, std::vector<double> > phaseLevels;
++      std::map<long, double> phaseOffsets;
++      double prevModelIts = 0.0, prevOffset = 0.0;
++      long prevPhase = 0;
++      bool prevPhaseKnown = false;
+ 
+       // per-step accumulators
+       long          lastStep   = -1;   // step whose solve is being accumulated
+@@ -125,6 +135,7 @@
+       S.K      = envL("PBR_K", 1);
+       S.base   = envL("PBR_BASE", 100);
+       S.unitStep = (envS("PBR_UNIT", "solve") == "step");
++      S.condIndex = S.online && !S.unitStep && (envS("PBR_COND", "off") == "index");
+       const std::string path = envS("PBR_LOG", "");
+       if (!path.empty())
+         S.log.open(path.c_str());
+@@ -147,6 +158,55 @@
+       S.stepBuildTime = S.stepSolveTime = 0.0;
+       S.builtThisStep = false;
+       S.sameStepDecision = false;
++      S.offsetsFrozen = false;
++      S.warmSamples.clear();
++      S.phaseLevels.clear();
++      S.phaseOffsets.clear();
++    }
++
++    inline double phaseOffset(const long j)
++    {
++      const State &S = state();
++      const auto p = S.phaseOffsets.find(j);
++      return S.condIndex && S.offsetsFrozen && p != S.phaseOffsets.end() ? p->second : 0.0;
++    }
++
++    // Existing warm-up only. Re-express its learned statistics once, in the
++    // same fixed coordinate used for all later samples. With all q=0, leave
++    // every legacy floating-point operation and stored value untouched.
++    inline void freezePhaseOffsets()
++    {
++      State &S = state();
++      if (!S.condIndex || S.offsetsFrozen) return;
++      S.offsetsFrozen = true;
++      bool changed = false;
++      const auto anchor = S.phaseLevels.find(0);
++      if (anchor != S.phaseLevels.end() && !anchor->second.empty())
++        {
++          const double b0 = medianOf(anchor->second);
++          for (const auto &p : S.phaseLevels)
++            if (!p.second.empty())
++              {
++                const double q = p.first == 0 ? 0.0 : medianOf(p.second) - b0;
++                S.phaseOffsets[p.first] = q;
++                changed = changed || q != 0.0;
++              }
++        }
++      if (changed)
++        {
++          // Online warm-up always rebuilds, and resets acc/accn after each
++          // eligible sample. Zero-iteration solves remain excluded as before.
++          S.levels.clear();
++          S.tot = 0.0;
++          for (const auto &w : S.warmSamples)
++            {
++              const double M = w.N - phaseOffset(w.j);
++              S.levels.push_back(M);
++              S.tot += w.setup + M;
++            }
++        }
++      S.warmSamples.clear();
++      S.phaseLevels.clear();
+     }
+ 
+     inline void writeLogRow(const long step)
+@@ -157,14 +217,20 @@
+       if (!S.headerWritten)
+         {
+           S.log << "step,rebuild,heldBase,age,its,est,avg,rMed,est_dsrc,"
+-                << "build_ms,solve_ms,nRebuilds,tot,acc,accn,nDone\n";
++                << "build_ms,solve_ms,nRebuilds,tot,acc,accn,nDone";
++          if (S.condIndex) S.log << ",phase,q,model_its,phase_known";
++          S.log << '\n';
+           S.headerWritten = true;
+         }
+       S.log << step << ',' << S.prevRebuild << ',' << S.prevHeldBase << ',' << S.prevRunAge
+             << ',' << S.prevIts << ',' << S.prevEst << ',' << S.prevAvg << ',' << S.rMed
+             << ',' << S.prevSrc << ',' << S.prevBuildTime << ',' << S.prevSolveTime
+             << ',' << S.nRebuilds << ',' << S.tot << ',' << S.acc << ',' << S.accn
+-            << ',' << S.nDone << '\n';
++            << ',' << S.nDone;
++      if (S.condIndex)
++        S.log << ',' << S.prevPhase << ',' << S.prevOffset << ',' << S.prevModelIts
++              << ',' << S.prevPhaseKnown;
++      S.log << '\n';
+       S.log.flush();
+     }
+ 
+@@ -172,7 +238,7 @@
+      * Decide whether the Stokes preconditioner must be rebuilt before the solve
+      * of @p step. Repeated calls inside the same step return the same answer.
+      */
+-    inline bool decide(const long step)
++    inline bool decide(const long step, const long j = 0)
+     {
+       init();
+       State &S = state();
+@@ -186,6 +252,8 @@
+       if (S.lastStep >= 0 && S.stepApplies > 0)
+         {
+           const double N = static_cast<double>(S.stepApplies);
++          const double q = phaseOffset(S.phase);
++          const double M = S.condIndex ? N - q : N;
+ 
+           S.prevIts         = N;
+           S.prevRebuild     = S.rebuild ? 1 : 0;
+@@ -196,14 +264,24 @@
+           S.prevSrc         = S.dSrc;
+           S.prevBuildTime   = S.stepBuildTime;
+           S.prevSolveTime   = S.stepSolveTime;
++          S.prevPhase = S.phase;
++          S.prevOffset = q;
++          S.prevModelIts = M;
++          S.prevPhaseKnown = S.offsetsFrozen && S.phaseOffsets.count(S.phase) != 0;
+           writeLogRow(S.lastStep);
+ 
+           if (S.runAge == 0)
+             {
+               S.rMed = medianOf(S.rSamples);
+-              const double c = S.rMed * static_cast<double>(std::max<long>(1, S.stepBuilds)) + N;
++              const double setup = S.rMed * static_cast<double>(std::max<long>(1, S.stepBuilds));
++              const double c = setup + M;
+               S.tot += c;
+-              S.levels.push_back(N);
++              S.levels.push_back(M);
++              if (S.condIndex && !S.offsetsFrozen && S.lastStep < S.base)
++                {
++                  S.phaseLevels[S.phase].push_back(N);
++                  S.warmSamples.push_back(State::WarmSample{N, setup, S.phase});
++                }
+               if (S.lastStep < S.base)
+                 {
+                   S.acc  = 0.0;
+@@ -217,10 +295,10 @@
+             }
+           else
+             {
+-              S.tot += N;
++              S.tot += M;
+               if (!S.levels.empty())
+-                S.dN[S.runAge].push_back(N - medianOf(S.levels));
+-              S.acc  += N;
++                S.dN[S.runAge].push_back(M - medianOf(S.levels));
++              S.acc  += M;
+               S.accn += 1;
+             }
+           ++S.nDone;
+@@ -231,6 +309,8 @@
+       S.builtThisStep = false;
+       S.stepBuilds    = 0;
+       S.lastStep      = step;
++      S.phase         = j;
++      if (step >= S.base) freezePhaseOffsets();
+ 
+       // ---- 2) decide for this step ----------------------------------------
+       bool rebuild = true;

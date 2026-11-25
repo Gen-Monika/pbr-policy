@@ -1,0 +1,222 @@
+{
+  "build_pbr2_file_count": 3677,
+  "build_pbr2_manifest_identical": true,
+  "build_pbr2_changed": [],
+  "original_binary_hashes": {
+    "/root/autodl-tmp/envs/aspect-2.4/build-pbr2/aspect": true
+  },
+  "moose_backup_hashes": {
+    "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0": true,
+    "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so": true,
+    "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0": true,
+    "/root/autodl-tmp/envs/moose/src/framework/.libs/libmoose-opt.so.0.0.0": true,
+    "/root/autodl-tmp/envs/moose/src/framework/.libs/libmoose-opt.so.0": true,
+    "/root/autodl-tmp/envs/moose/src/framework/.libs/libmoose-opt.so": true,
+    "/root/autodl-tmp/envs/moose/src/framework/src/systems/NonlinearSystem.C": true,
+    "/root/autodl-tmp/envs/moose/src/framework/include/utils/pbr_policy.h": true,
+    "/root/autodl-tmp/envs/moose/src/tutorials/darcy_thermo_mech/step06_coupled_darcy_heat_conduction/darcy_thermo_mech-opt": true
+  },
+  "original_aspect_sources_unchanged": {
+    "include/aspect/pbr_policy.h": true,
+    "source/simulator/assembly.cc": true,
+    "source/simulator/solver.cc": true
+  },
+  "full_input_hashes_identical_to_archived": {
+    "full/C1/r1_old": {
+      "Tosi_Case1.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C1/r1_index": {
+      "Tosi_Case1.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C1/r2_index": {
+      "Tosi_Case1.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C1/r2_old": {
+      "Tosi_Case1.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C1/r3_old": {
+      "Tosi_Case1.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C1/r3_index": {
+      "Tosi_Case1.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C3/r1_old": {
+      "Tosi_Case3.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C3/r1_index": {
+      "Tosi_Case3.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C3/r2_index": {
+      "Tosi_Case3.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C3/r2_old": {
+      "Tosi_Case3.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C3/r3_old": {
+      "Tosi_Case3.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C3/r3_index": {
+      "Tosi_Case3.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C4/r1_old": {
+      "Tosi_Case4.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C4/r1_index": {
+      "Tosi_Case4.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C4/r2_index": {
+      "Tosi_Case4.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C4/r2_old": {
+      "Tosi_Case4.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C4/r3_old": {
+      "Tosi_Case4.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C4/r3_index": {
+      "Tosi_Case4.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C5/r1_old": {
+      "Tosi_Case5.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C5/r1_index": {
+      "Tosi_Case5.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C5/r2_index": {
+      "Tosi_Case5.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C5/r2_old": {
+      "Tosi_Case5.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C5/r3_old": {
+      "Tosi_Case5.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/C5/r3_index": {
+      "Tosi_Case5.prm": true,
+      "Tosi_base.prm": true
+    },
+    "full/Blankenbach/r1_old": {
+      "case.prm": true
+    },
+    "full/Blankenbach/r1_index": {
+      "case.prm": true
+    },
+    "full/Blankenbach/r2_index": {
+      "case.prm": true
+    },
+    "full/Blankenbach/r2_old": {
+      "case.prm": true
+    },
+    "full/Blankenbach/r3_old": {
+      "case.prm": true
+    },
+    "full/Blankenbach/r3_index": {
+      "case.prm": true
+    },
+    "full/MOOSE/r1_old": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    },
+    "full/MOOSE/r1_index": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    },
+    "full/MOOSE/r2_index": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    },
+    "full/MOOSE/r2_old": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    },
+    "full/MOOSE/r3_old": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    },
+    "full/MOOSE/r3_index": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    },
+    "full/MOOSE/r4_index": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    },
+    "full/MOOSE/r4_old": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    },
+    "full/MOOSE/r5_old": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    },
+    "full/MOOSE/r5_index": {
+      "step6a_coupled.i": true,
+      "step6b_transient_inflow.i": true,
+      "step6c_decoupled.i": true
+    }
+  },
+  "moose_library_maps": {
+    "full/MOOSE/r1_old": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "full/MOOSE/r1_index": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "full/MOOSE/r2_index": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "full/MOOSE/r2_old": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "full/MOOSE/r3_old": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "full/MOOSE/r3_index": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "full/MOOSE/r4_index": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ],
+    "full/MOOSE/r4_old": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "full/MOOSE/r5_old": [
+      "/root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/moose_backup/framework/libmoose-opt.so.0.0.0"
+    ],
+    "full/MOOSE/r5_index": [
+      "/root/autodl-tmp/envs/moose/src/framework/libmoose-opt.so.0.0.0"
+    ]
+  }
+}

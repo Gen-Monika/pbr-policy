@@ -1,0 +1,85 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    location        "system";
+    object          controlDict;
+}
+
+application     interCondensatingEvaporatingFoam;
+
+startFrom       startTime;
+
+startTime       1.36;
+
+stopAt          endTime;
+
+endTime         20;
+
+deltaT          1e-05;
+
+writeControl    adjustableRunTime;
+
+writeInterval   5;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  12;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   10;
+
+runTimeModifiable yes;
+
+adjustTimeStep  yes;
+
+maxCo           0.01;
+
+maxAlphaCo      0.01;
+
+maxDeltaT       0.01;
+
+functions
+{
+    interfaceHeight1
+    {
+        type            interfaceHeight;
+        libs            ( fieldFunctionObjects );
+        locations       ( ( 0 0.0001 1e-05 ) );
+        alpha           alpha.liquid;
+        direction       ( 1 0 0 );
+        liquid          true;
+        interpolationScheme cellPoint;
+        writePrecision  16;
+        writeToFile     true;
+        useUserTime     true;
+        region          region0;
+        enabled         true;
+        log             true;
+        timeStart       0;
+        timeEnd         1000;
+        executeControl  timeStep;
+        executeInterval 1;
+        writeControl    timeStep;
+        writeInterval   3;
+    }
+}
+
+libs            ( libpbrSolverTimer.so libpbrPETSc.so );
+
+
+// ************************************************************************* //

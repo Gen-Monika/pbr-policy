@@ -1,0 +1,76 @@
+{
+  "verification_date": "2026-10-28",
+  "lean_version": "4.35.0",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35 (Cowork sandbox)",
+  "purpose": "Conservative-extrapolation variant of Proposition 1(iii), adding PreconditionerProof/Conservative.lean",
+  "result": "passed",
+  "lake_build_exit_code": 0,
+  "axiom_audit_exit_code": 0,
+  "project_theorems_including_generated": 151,
+  "theorems_before_this_addition": 131,
+  "new_theorems_in_Conservative": 13,
+  "new_theorem_names": [
+    "conservative_unknown_eq",
+    "conservative_prediction_le",
+    "conservative_never_rebuild_early",
+    "conservative_predict_at_succ",
+    "conservative_rebuild_by_optimal_plus_one",
+    "conservative_cycle_bounds",
+    "conservative_cycle_ends_unique",
+    "conservative_predict_stable",
+    "conservative_trigger_preserved",
+    "conservative_trigger_when_known",
+    "conservative_stable_after_one_cycle",
+    "conservative_all_later_cycles_optimal",
+    "conservative_cycle_exists"
+  ],
+  "sorry_free": true,
+  "allowed_standard_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "headline_result": {
+    "theorem": "conservative_all_later_cycles_optimal",
+    "hypotheses": "Nondecreasing n, FirstTrigger rho n K",
+    "conclusion": "(length 0 = K or length 0 = K + 1) and for all t, length (t+1) = K",
+    "uses_discrete_convexity": false,
+    "note": "DiscreteConvexFromOne appears nowhere in Conservative.lean except the docstring. Compare Online.stationary_policy_correct, which requires it."
+  },
+  "proof_source_sha256": {
+    "PreconditionerProof/Audit.lean": "4e9e2b7239651a592c356cb51836b84a6e447650073b6f9a57d9779f683a7e4c",
+    "PreconditionerProof/Cost.lean": "1ba8e0e270052082580a8303d393a07e446673de8eb6ca7f815abed3900b4c94",
+    "PreconditionerProof/Counterexamples.lean": "39129f55038ee72a55c9188624f39fd1aa8973185c4bc1976c7ed5eed63b8662",
+    "PreconditionerProof/Online.lean": "8ad097f51ce48caba9ac467dae77a97e954eb687413dc541ddc435c46942e99d",
+    "PreconditionerProof/Conservative.lean": "678516e898a8ecdc55acdb0c44c8b639c7839bd63f6bcf9ddb9b41f3fffb6feb",
+    "PreconditionerProof.lean": "9b66b21657d5423bc2c753d425363f4478588c811aa2cfec915a67e76ff70b6e",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "lakefile.toml": "868d02028b93193ad8633b973c3e04957dc051fa2d575ed26c73e45d4460b26e",
+    "lake-manifest.json": "0c8a042bfd6297559b71d53593c12530bb2758c8e263c9c8ff726b159e906c64",
+    "verify.ps1": "52a4465accebba7c59e329c77f694d09c518da2931974729d01d05e5399c3b91",
+    "README.md": "11bc99b8cdcad336ea0c7572c62672ed5f3c5cd23fa8f66063bb0e7f1981a4e1",
+    ".gitignore": "84cd6e8c4a13d19f68e8ef0d07941cf975ff9698e1a0c38ac45116b0ff1b095d"
+  },
+  "unchanged_from_previous_verification": [
+    "PreconditionerProof/Cost.lean",
+    "PreconditionerProof/Online.lean",
+    "PreconditionerProof/Counterexamples.lean",
+    "lean-toolchain",
+    "lakefile.toml",
+    "lake-manifest.json",
+    "verify.ps1",
+    "README.md",
+    ".gitignore"
+  ],
+  "changed_in_this_addition": [
+    "PreconditionerProof/Conservative.lean (new)",
+    "PreconditionerProof/Audit.lean (now imports Conservative and prints its headline theorems)",
+    "PreconditionerProof.lean (now imports Conservative)"
+  ],
+  "scope": "Stationary noiseless abstract policy with exact fixed rebuild cost and persistent exact age-prefix observations. Conservative predictor replaces an unobserved age by the largest known age; this is an idealization, not a claim that the deployed predictor uses it. Does not model non-stationarity, noisy estimation, phase coupling, or production-code equivalence.",
+  "caveats": [
+    "The previous verification.json (Windows x64) recorded 131 theorems and remains the record for the pre-Conservative state; this file supersedes it only for the Linux run that includes Conservative.lean.",
+    "paper_source_sha256 is not repeated here: this addition does not change any paper source. The paper has not yet been edited to use the conservative predictor.",
+    "Conservative.lean proves the ideal noiseless case only. The measured 44.5% overestimation rate pertains to the linear-secant predictor used by the current code, and is what motivates the conservative variant; it is not evidence about the conservative variant itself."
+  ]
+}

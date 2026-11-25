@@ -1,0 +1,1149 @@
+{
+  "C1/r1": {
+    "warmup_samples_by_phase": {
+      "0": 23,
+      "1": 24,
+      "2": 22,
+      "3": 2,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "20": 1,
+      "21": 1,
+      "22": 1,
+      "23": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "28": 1,
+      "29": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -11.0,
+      "2": -23.0,
+      "3": 2.0,
+      "4": 2.0,
+      "5": 3.0,
+      "6": 3.0,
+      "7": 3.0,
+      "8": 3.0,
+      "9": 4.0,
+      "10": 5.0,
+      "11": 5.0,
+      "12": 6.0,
+      "13": 6.0,
+      "14": 7.0,
+      "15": 7.0,
+      "16": 7.0,
+      "17": 7.0,
+      "18": 6.0,
+      "19": 7.0,
+      "20": 7.0,
+      "21": 7.0,
+      "22": 6.0,
+      "23": 5.0,
+      "24": 5.0,
+      "25": 4.0,
+      "26": 3.0,
+      "27": 3.0,
+      "28": 2.0,
+      "29": 1.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "115",
+        "rebuild": "1",
+        "heldBase": "115",
+        "age": "0",
+        "its": "35",
+        "est": "37",
+        "avg": "26.025",
+        "rMed": "27.175",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "115",
+        "rebuild": "0",
+        "heldBase": "107",
+        "age": "8",
+        "its": "36",
+        "est": "36",
+        "avg": "37.274",
+        "rMed": "26.9177",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C1/r2": {
+    "warmup_samples_by_phase": {
+      "0": 23,
+      "1": 24,
+      "2": 22,
+      "3": 2,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "20": 1,
+      "21": 1,
+      "22": 1,
+      "23": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "28": 1,
+      "29": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -11.0,
+      "2": -23.0,
+      "3": 2.0,
+      "4": 2.0,
+      "5": 3.0,
+      "6": 3.0,
+      "7": 3.0,
+      "8": 3.0,
+      "9": 4.0,
+      "10": 5.0,
+      "11": 5.0,
+      "12": 6.0,
+      "13": 6.0,
+      "14": 7.0,
+      "15": 7.0,
+      "16": 7.0,
+      "17": 7.0,
+      "18": 6.0,
+      "19": 7.0,
+      "20": 7.0,
+      "21": 7.0,
+      "22": 6.0,
+      "23": 5.0,
+      "24": 5.0,
+      "25": 4.0,
+      "26": 3.0,
+      "27": 3.0,
+      "28": 2.0,
+      "29": 1.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "115",
+        "rebuild": "1",
+        "heldBase": "115",
+        "age": "0",
+        "its": "35",
+        "est": "37",
+        "avg": "26.033",
+        "rMed": "27.2309",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "115",
+        "rebuild": "0",
+        "heldBase": "107",
+        "age": "8",
+        "its": "36",
+        "est": "36",
+        "avg": "37.3565",
+        "rMed": "27.4952",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C1/r3": {
+    "warmup_samples_by_phase": {
+      "0": 23,
+      "1": 24,
+      "2": 22,
+      "3": 2,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "20": 1,
+      "21": 1,
+      "22": 1,
+      "23": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "28": 1,
+      "29": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -11.0,
+      "2": -23.0,
+      "3": 2.0,
+      "4": 2.0,
+      "5": 3.0,
+      "6": 3.0,
+      "7": 3.0,
+      "8": 3.0,
+      "9": 4.0,
+      "10": 5.0,
+      "11": 5.0,
+      "12": 6.0,
+      "13": 6.0,
+      "14": 7.0,
+      "15": 7.0,
+      "16": 7.0,
+      "17": 7.0,
+      "18": 6.0,
+      "19": 7.0,
+      "20": 7.0,
+      "21": 7.0,
+      "22": 6.0,
+      "23": 5.0,
+      "24": 5.0,
+      "25": 4.0,
+      "26": 3.0,
+      "27": 3.0,
+      "28": 2.0,
+      "29": 1.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "115",
+        "rebuild": "1",
+        "heldBase": "115",
+        "age": "0",
+        "its": "35",
+        "est": "37",
+        "avg": "26.1353",
+        "rMed": "27.9472",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "115",
+        "rebuild": "0",
+        "heldBase": "107",
+        "age": "8",
+        "its": "36",
+        "est": "36",
+        "avg": "37.3789",
+        "rMed": "27.6523",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C3/r1": {
+    "warmup_samples_by_phase": {
+      "0": 23,
+      "1": 24,
+      "2": 22,
+      "3": 14,
+      "4": 5,
+      "5": 2,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -6.0,
+      "2": -12.0,
+      "3": -15.0,
+      "4": -15.0,
+      "5": -6.0,
+      "6": -8.0,
+      "7": -9.0,
+      "8": -11.0,
+      "9": -12.0,
+      "10": -12.0,
+      "11": -13.0,
+      "12": -14.0,
+      "13": -15.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "104",
+        "rebuild": "1",
+        "heldBase": "104",
+        "age": "0",
+        "its": "35",
+        "est": "35",
+        "avg": "34.9582",
+        "rMed": "24.8746",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "104",
+        "rebuild": "0",
+        "heldBase": "101",
+        "age": "3",
+        "its": "35",
+        "est": "35",
+        "avg": "41.0571",
+        "rMed": "25.1712",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C3/r2": {
+    "warmup_samples_by_phase": {
+      "0": 23,
+      "1": 24,
+      "2": 22,
+      "3": 14,
+      "4": 5,
+      "5": 2,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -6.0,
+      "2": -12.0,
+      "3": -15.0,
+      "4": -15.0,
+      "5": -6.0,
+      "6": -8.0,
+      "7": -9.0,
+      "8": -11.0,
+      "9": -12.0,
+      "10": -12.0,
+      "11": -13.0,
+      "12": -14.0,
+      "13": -15.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "105",
+        "rebuild": "1",
+        "heldBase": "105",
+        "age": "0",
+        "its": "26",
+        "est": "58",
+        "avg": "35.184",
+        "rMed": "25.7361",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "105",
+        "rebuild": "0",
+        "heldBase": "101",
+        "age": "4",
+        "its": "26",
+        "est": "39",
+        "avg": "39.6274",
+        "rMed": "25.5094",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C3/r3": {
+    "warmup_samples_by_phase": {
+      "0": 23,
+      "1": 24,
+      "2": 22,
+      "3": 14,
+      "4": 5,
+      "5": 2,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -6.0,
+      "2": -12.0,
+      "3": -15.0,
+      "4": -15.0,
+      "5": -6.0,
+      "6": -8.0,
+      "7": -9.0,
+      "8": -11.0,
+      "9": -12.0,
+      "10": -12.0,
+      "11": -13.0,
+      "12": -14.0,
+      "13": -15.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "105",
+        "rebuild": "1",
+        "heldBase": "105",
+        "age": "0",
+        "its": "26",
+        "est": "58",
+        "avg": "35.2076",
+        "rMed": "25.8303",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "105",
+        "rebuild": "0",
+        "heldBase": "101",
+        "age": "4",
+        "its": "26",
+        "est": "39",
+        "avg": "39.6997",
+        "rMed": "25.7988",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C4/r1": {
+    "warmup_samples_by_phase": {
+      "0": 15,
+      "1": 16,
+      "2": 15,
+      "3": 15,
+      "4": 15,
+      "5": 15,
+      "6": 2,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -5.0,
+      "2": -10.0,
+      "3": -14.0,
+      "4": -18.0,
+      "5": -22.0,
+      "6": -8.0,
+      "7": -10.0,
+      "8": -11.0,
+      "9": -12.0,
+      "10": -13.0,
+      "11": -14.0,
+      "12": -15.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {
+      "13": 21,
+      "14": 11,
+      "15": 2
+    },
+    "first_different_rebuild": {
+      "old": {
+        "step": "105",
+        "rebuild": "1",
+        "heldBase": "105",
+        "age": "0",
+        "its": "29",
+        "est": "55",
+        "avg": "25.3386",
+        "rMed": "25.3545",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "105",
+        "rebuild": "0",
+        "heldBase": "101",
+        "age": "4",
+        "its": "29",
+        "est": "36",
+        "avg": "38.9185",
+        "rMed": "25.6738",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C4/r2": {
+    "warmup_samples_by_phase": {
+      "0": 15,
+      "1": 16,
+      "2": 15,
+      "3": 15,
+      "4": 15,
+      "5": 15,
+      "6": 2,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -5.0,
+      "2": -10.0,
+      "3": -14.0,
+      "4": -18.0,
+      "5": -22.0,
+      "6": -8.0,
+      "7": -10.0,
+      "8": -11.0,
+      "9": -12.0,
+      "10": -13.0,
+      "11": -14.0,
+      "12": -15.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {
+      "13": 21,
+      "14": 11,
+      "15": 2
+    },
+    "first_different_rebuild": {
+      "old": {
+        "step": "105",
+        "rebuild": "1",
+        "heldBase": "105",
+        "age": "0",
+        "its": "29",
+        "est": "55",
+        "avg": "25.3465",
+        "rMed": "25.3859",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "105",
+        "rebuild": "0",
+        "heldBase": "101",
+        "age": "4",
+        "its": "29",
+        "est": "36",
+        "avg": "38.8436",
+        "rMed": "25.3743",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C4/r3": {
+    "warmup_samples_by_phase": {
+      "0": 15,
+      "1": 16,
+      "2": 15,
+      "3": 15,
+      "4": 15,
+      "5": 15,
+      "6": 2,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -5.0,
+      "2": -10.0,
+      "3": -14.0,
+      "4": -18.0,
+      "5": -22.0,
+      "6": -8.0,
+      "7": -10.0,
+      "8": -11.0,
+      "9": -12.0,
+      "10": -13.0,
+      "11": -14.0,
+      "12": -15.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {
+      "13": 21,
+      "14": 11,
+      "15": 2
+    },
+    "first_different_rebuild": {
+      "old": {
+        "step": "105",
+        "rebuild": "1",
+        "heldBase": "105",
+        "age": "0",
+        "its": "29",
+        "est": "55",
+        "avg": "25.5731",
+        "rMed": "26.2925",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "105",
+        "rebuild": "0",
+        "heldBase": "101",
+        "age": "4",
+        "its": "29",
+        "est": "36",
+        "avg": "38.9795",
+        "rMed": "25.9181",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C5/r1": {
+    "warmup_samples_by_phase": {
+      "0": 21,
+      "1": 21,
+      "2": 21,
+      "3": 21,
+      "4": 6,
+      "5": 2,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -6.0,
+      "2": -12.0,
+      "3": -16.0,
+      "4": -15.0,
+      "5": -7.0,
+      "6": -8.0,
+      "7": -10.0,
+      "8": -11.0,
+      "9": -12.0,
+      "10": -13.0,
+      "11": -14.0,
+      "12": -15.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "104",
+        "rebuild": "1",
+        "heldBase": "104",
+        "age": "0",
+        "its": "27",
+        "est": "36",
+        "avg": "31.2956",
+        "rMed": "24.8868",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "104",
+        "rebuild": "0",
+        "heldBase": "101",
+        "age": "3",
+        "its": "27",
+        "est": "34",
+        "avg": "40.862",
+        "rMed": "25.586",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C5/r2": {
+    "warmup_samples_by_phase": {
+      "0": 21,
+      "1": 21,
+      "2": 21,
+      "3": 21,
+      "4": 6,
+      "5": 2,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -6.0,
+      "2": -12.0,
+      "3": -16.0,
+      "4": -15.0,
+      "5": -7.0,
+      "6": -8.0,
+      "7": -10.0,
+      "8": -11.0,
+      "9": -12.0,
+      "10": -13.0,
+      "11": -14.0,
+      "12": -15.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "104",
+        "rebuild": "1",
+        "heldBase": "104",
+        "age": "0",
+        "its": "27",
+        "est": "36",
+        "avg": "31.593",
+        "rMed": "25.779",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "104",
+        "rebuild": "0",
+        "heldBase": "101",
+        "age": "3",
+        "its": "27",
+        "est": "34",
+        "avg": "40.8988",
+        "rMed": "25.6963",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "C5/r3": {
+    "warmup_samples_by_phase": {
+      "0": 21,
+      "1": 21,
+      "2": 21,
+      "3": 21,
+      "4": 6,
+      "5": 2,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": -6.0,
+      "2": -12.0,
+      "3": -16.0,
+      "4": -15.0,
+      "5": -7.0,
+      "6": -8.0,
+      "7": -10.0,
+      "8": -11.0,
+      "9": -12.0,
+      "10": -13.0,
+      "11": -14.0,
+      "12": -15.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "104",
+        "rebuild": "1",
+        "heldBase": "104",
+        "age": "0",
+        "its": "27",
+        "est": "36",
+        "avg": "31.7067",
+        "rMed": "26.12",
+        "est_dsrc": "extrap"
+      },
+      "index": {
+        "step": "104",
+        "rebuild": "0",
+        "heldBase": "101",
+        "age": "3",
+        "its": "27",
+        "est": "34",
+        "avg": "41.8686",
+        "rMed": "28.6057",
+        "est_dsrc": "extrap"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "Blankenbach/r1": {
+    "warmup_samples_by_phase": {
+      "0": 99
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "889",
+        "rebuild": "1",
+        "heldBase": "889",
+        "age": "0",
+        "its": "13",
+        "est": "15",
+        "avg": "14.9992",
+        "rMed": "28.9626",
+        "est_dsrc": "hit"
+      },
+      "index": {
+        "step": "889",
+        "rebuild": "0",
+        "heldBase": "842",
+        "age": "47",
+        "its": "13",
+        "est": "15",
+        "avg": "15.0038",
+        "rMed": "29.1806",
+        "est_dsrc": "hit"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true,
+    "all_phase_zero": true,
+    "old_zero_replay": {
+      "rc": 0,
+      "output": "PASS /root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/replay/full_Blankenbach_r1_old.tsv mode=zero events=1599 rebuilds=107",
+      "stderr": ""
+    },
+    "index_zero_replay": {
+      "rc": 0,
+      "output": "PASS /root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/replay/full_Blankenbach_r1_index.tsv mode=zero events=1610 rebuilds=109",
+      "stderr": ""
+    }
+  },
+  "Blankenbach/r2": {
+    "warmup_samples_by_phase": {
+      "0": 99
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": null,
+    "all_phase_zero": true,
+    "old_zero_replay": {
+      "rc": 0,
+      "output": "PASS /root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/replay/full_Blankenbach_r2_old.tsv mode=zero events=1599 rebuilds=107",
+      "stderr": ""
+    },
+    "index_zero_replay": {
+      "rc": 0,
+      "output": "PASS /root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/replay/full_Blankenbach_r2_index.tsv mode=zero events=1599 rebuilds=107",
+      "stderr": ""
+    }
+  },
+  "Blankenbach/r3": {
+    "warmup_samples_by_phase": {
+      "0": 99
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "924",
+        "rebuild": "1",
+        "heldBase": "924",
+        "age": "0",
+        "its": "11",
+        "est": "13",
+        "avg": "12.9741",
+        "rMed": "29.1184",
+        "est_dsrc": "hit"
+      },
+      "index": {
+        "step": "924",
+        "rebuild": "0",
+        "heldBase": "890",
+        "age": "34",
+        "its": "11",
+        "est": "13",
+        "avg": "13.007",
+        "rMed": "30.2383",
+        "est_dsrc": "hit"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true,
+    "all_phase_zero": true,
+    "old_zero_replay": {
+      "rc": 0,
+      "output": "PASS /root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/replay/full_Blankenbach_r3_old.tsv mode=zero events=1610 rebuilds=109",
+      "stderr": ""
+    },
+    "index_zero_replay": {
+      "rc": 0,
+      "output": "PASS /root/autodl-tmp/PBR/stepB/phase_index_20261017_codex/replay/full_Blankenbach_r3_index.tsv mode=zero events=1607 rebuilds=115",
+      "stderr": ""
+    }
+  },
+  "MOOSE/r1": {
+    "warmup_samples_by_phase": {
+      "0": 50,
+      "1": 50
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": 1.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "101",
+        "rebuild": "1",
+        "heldBase": "101",
+        "age": "0",
+        "its": "3",
+        "est": "3",
+        "avg": "2",
+        "rMed": "4.44913",
+        "est_dsrc": "flat"
+      },
+      "index": {
+        "step": "101",
+        "rebuild": "0",
+        "heldBase": "99",
+        "age": "2",
+        "its": "3",
+        "est": "2",
+        "avg": "2",
+        "rMed": "4.67203",
+        "est_dsrc": "flat"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "MOOSE/r2": {
+    "warmup_samples_by_phase": {
+      "0": 50,
+      "1": 50
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": 1.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "101",
+        "rebuild": "1",
+        "heldBase": "101",
+        "age": "0",
+        "its": "3",
+        "est": "3",
+        "avg": "2",
+        "rMed": "4.47422",
+        "est_dsrc": "flat"
+      },
+      "index": {
+        "step": "101",
+        "rebuild": "0",
+        "heldBase": "99",
+        "age": "2",
+        "its": "3",
+        "est": "2",
+        "avg": "2",
+        "rMed": "4.65535",
+        "est_dsrc": "flat"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "MOOSE/r3": {
+    "warmup_samples_by_phase": {
+      "0": 50,
+      "1": 50
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": 1.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "101",
+        "rebuild": "1",
+        "heldBase": "101",
+        "age": "0",
+        "its": "3",
+        "est": "3",
+        "avg": "2",
+        "rMed": "4.81599",
+        "est_dsrc": "flat"
+      },
+      "index": {
+        "step": "101",
+        "rebuild": "0",
+        "heldBase": "99",
+        "age": "2",
+        "its": "3",
+        "est": "2",
+        "avg": "2",
+        "rMed": "4.61511",
+        "est_dsrc": "flat"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "MOOSE/r4": {
+    "warmup_samples_by_phase": {
+      "0": 50,
+      "1": 50
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": 1.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "101",
+        "rebuild": "1",
+        "heldBase": "101",
+        "age": "0",
+        "its": "3",
+        "est": "3",
+        "avg": "2",
+        "rMed": "4.9031",
+        "est_dsrc": "flat"
+      },
+      "index": {
+        "step": "101",
+        "rebuild": "0",
+        "heldBase": "99",
+        "age": "2",
+        "its": "3",
+        "est": "2",
+        "avg": "2",
+        "rMed": "4.60653",
+        "est_dsrc": "flat"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  },
+  "MOOSE/r5": {
+    "warmup_samples_by_phase": {
+      "0": 50,
+      "1": 50
+    },
+    "offsets_reconstructed_from_warmup": {
+      "0": 0.0,
+      "1": 1.0
+    },
+    "all_model_values_equal_raw_minus_q": true,
+    "frozen_offsets_match_rule": true,
+    "unknown_phase_counts": {},
+    "first_different_rebuild": {
+      "old": {
+        "step": "101",
+        "rebuild": "1",
+        "heldBase": "101",
+        "age": "0",
+        "its": "3",
+        "est": "3",
+        "avg": "2",
+        "rMed": "4.706",
+        "est_dsrc": "flat"
+      },
+      "index": {
+        "step": "101",
+        "rebuild": "0",
+        "heldBase": "99",
+        "age": "2",
+        "its": "3",
+        "est": "2",
+        "avg": "2",
+        "rMed": "4.67276",
+        "est_dsrc": "flat"
+      }
+    },
+    "all_raw_iterations_before_first_decision_difference_identical": true
+  }
+}

@@ -1,0 +1,5 @@
+case,mode,solves,rebuilds,total_its,wall_s,source
+Elmer fssa_perlin2d (stabilized.sif; rho=3.15),online,271,270,5613,28,"2026-10-30 端到端验证（PBR_POLICY=online PBR_BASE=100）"
+Elmer fssa_perlin2d (stabilized.sif; rho=3.15),fixed K=1,271,270,5613,28,"2026-10-30 端到端验证（判据接入后的每步重建等价对照；与 online 逐位相同）"
+Elmer fssa_perlin2d (stabilized.sif; rho=3.15),K1（官方默认，未接判据）,272,272,5626,28.8,"10-16 历史批次（elmer_feasibility_2026-10-16.md）"
+Elmer fssa_perlin2d (stabilized.sif; rho=3.15),never,264,1,108328,233.9,"10-16 历史批次（elmer_feasibility_2026-10-16.md）"

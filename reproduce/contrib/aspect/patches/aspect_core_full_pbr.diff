@@ -1,0 +1,19 @@
+--- a/source/simulator/core.cc
++++ b/source/simulator/core.cc
+@@ -20,6 +20,7 @@
+ 
+ 
+ #include <aspect/simulator.h>
++#include <aspect/pbr_policy.h>
+ #include <aspect/global.h>
+ #include <aspect/utilities.h>
+ #include <aspect/melt.h>
+@@ -1153,6 +1154,8 @@
+       }
+ 
+     system_matrix.reinit (sp);
++    PBR::markMatrixReset();
++    pcout << "   [PBR-DBG] system matrix re-created" << std::endl;
+   }
+ 
+ 

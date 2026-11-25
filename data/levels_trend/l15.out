@@ -1,0 +1,31 @@
+START Sun Oct 11 00:39:50 CST 2026
+solver          PBRPCG;
+solver          PBRPCG;
+libs            ( libpbrSolverTimer.so libpbrPETSc.so );
+round=1 K=1 wall_ms=21497 execTime=20.2 solveTime=17.679
+round=1 K=2 wall_ms=19669 execTime=18.3 solveTime=15.2457
+round=1 K=3 wall_ms=15130 execTime=13.79 solveTime=11.632
+round=1 K=5 wall_ms=15794 execTime=14.42 solveTime=12.1614
+round=1 K=8 wall_ms=19091 execTime=17.75 solveTime=15.1288
+round=2 K=1 wall_ms=25579 execTime=24.06 solveTime=21.0753
+round=2 K=2 wall_ms=18065 execTime=16.77 solveTime=14.0327
+round=2 K=3 wall_ms=17851 execTime=16.53 solveTime=13.5954
+round=2 K=5 wall_ms=17034 execTime=15.68 solveTime=12.975
+round=2 K=8 wall_ms=21123 execTime=19.3 solveTime=16.8199
+round=3 K=1 wall_ms=22329 execTime=21.02 solveTime=18.4134
+round=3 K=2 wall_ms=17994 execTime=16.48 solveTime=14.0888
+round=3 K=3 wall_ms=17758 execTime=16.5 solveTime=13.5285
+round=3 K=5 wall_ms=17659 execTime=16.3 solveTime=13.4652
+round=3 K=8 wall_ms=20381 execTime=19 solveTime=16.1511
+round=4 K=1 wall_ms=22879 execTime=21.58 solveTime=18.8494
+round=4 K=2 wall_ms=19088 execTime=17.68 solveTime=14.8357
+round=4 K=3 wall_ms=17524 execTime=16.22 solveTime=13.3245
+round=4 K=5 wall_ms=15010 execTime=13.61 solveTime=11.4878
+round=4 K=8 wall_ms=19467 execTime=17.29 solveTime=15.6484
+round=5 K=1 wall_ms=20058 execTime=18.74 solveTime=16.653
+round=5 K=2 wall_ms=17188 execTime=15.84 solveTime=13.5693
+round=5 K=3 wall_ms=15557 execTime=14.23 solveTime=11.8147
+round=5 K=5 wall_ms=18215 execTime=16.82 solveTime=13.8975
+round=5 K=8 wall_ms=17428 execTime=16.1 solveTime=13.7259
+L15_DONE
+EXIT=0 Sun Oct 11 00:47:52 CST 2026

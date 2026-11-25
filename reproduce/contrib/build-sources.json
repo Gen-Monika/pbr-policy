@@ -1,0 +1,90 @@
+{
+  "moose": {
+    "header": "moose/pbr_policy.h",
+    "header_target": "framework/include/utils/pbr_policy.h",
+    "previous_header_sha256": [
+      "16ed56a07d1231bdea2ccad0a88f3c5eefa06a913729d7d65a933175c73da8c6"
+    ],
+    "files": [
+      {
+        "target": "framework/src/systems/NonlinearSystem.C",
+        "patch": "moose/patches/moose_NonlinearSystem_alignfix.diff",
+        "before_sha256": "0502cc9a533c5a55279b061f6e544f0b099763564337f863f24d1b8a40016110",
+        "after_sha256": "8e15a771e139434ba24cc47ad40ddedbc11194db86e8ca05b1846ad66821a267",
+        "baseline": "supplied upstream .orig"
+      }
+    ]
+  },
+  "lamem": {
+    "header": "lamem/pbr_policy.h",
+    "header_target": "src/pbr_policy.h",
+    "previous_header_sha256": [
+      "ab08806323f8d1991bc2334372664b456d3d982c975f503e41b7014ff26789cd"
+    ],
+    "files": [
+      {
+        "target": "src/lsolve.cpp",
+        "patch": "lamem/patches/lamem_lsolve_full_pbr.diff",
+        "before_sha256": "b0913a32b4302cf10015cc2ffb4ad3da6bf08bf766f99803ee86f201a116d188",
+        "after_sha256": "b7c33026cdc91b29d4b8a5000fb016cdbf848f9318247f1a7a1a74aac3397773",
+        "baseline": "supplied upstream .orig"
+      },
+      {
+        "target": "src/nlsolve.cpp",
+        "patch": "lamem/patches/lamem_nlsolve_pbr_hooks.diff",
+        "before_sha256": "64de03f2ee57f050379cbf8e5d3304b23ca1198a213c0d8e2e84b438c45cbeaf",
+        "after_sha256": "295985fe0974146dc489e69678490e24979768301e4b5e76c46412f706b85c3c",
+        "baseline": "supplied upstream .orig"
+      }
+    ]
+  },
+  "aspect": {
+    "header": "aspect/pbr_policy.h",
+    "header_target": "include/aspect/pbr_policy.h",
+    "previous_header_sha256": [
+      "4ecff231d4b1166d3d5b3d41c6234ac4f1081f17de0e51f928c825dfdcb15675",
+      "595707a14a3ef085348816ce983bbe2dfc0ade6888d4ed64028cc791c8ea61ca"
+    ],
+    "files": [
+      {
+        "target": "source/simulator/assembly.cc",
+        "patch": "aspect/patches/aspect_assembly_full_pbr.diff",
+        "before_sha256": "e7bfdc96c96a2e0f186232968219725407e791299a6aae57ca57f77631ba78f3",
+        "after_sha256": "8beb35c0be0e2aa62b293a5f99eb9364682ace45c700709825afa81e44f4196b",
+        "baseline": "supplied upstream .orig"
+      },
+      {
+        "target": "source/simulator/core.cc",
+        "patch": "aspect/patches/aspect_core_full_pbr.diff",
+        "before_sha256": "9c787c3f3f3080a6d820c6d1283cda68cf61b487267f61e22791f328f7c5c80a",
+        "after_sha256": "b0c9e40bc5e7beed5d1735e06d3ed651bf65aab15e50fe5b27740f18a36800ed",
+        "baseline": "official geodynamics/aspect v2.4.0; commit 4426c6b499fc84920367f08853bfac2fa393e352; source/simulator/core.cc"
+      },
+      {
+        "target": "source/simulator/solver.cc",
+        "patch": "aspect/patches/aspect_solver_full_pbr.diff",
+        "before_sha256": "51308044998682bd36f2b90830c05e597e0c3313a70b47e6e6b4dae21dc2f503",
+        "after_sha256": "d075f310639119e5e6999e9fcab886cd9e7fafcd139c6647ea2b09754cd2b19e",
+        "baseline": "official geodynamics/aspect v2.4.0; commit 4426c6b499fc84920367f08853bfac2fa393e352; source/simulator/solver.cc"
+      }
+    ]
+  },
+  "elmer": {
+    "files": [
+      {
+        "target": "fem/src/IterSolve.F90",
+        "patch": "elmer/patches/elmer_IterSolve_full_pbr.diff",
+        "before_sha256": "be87c51486bf5258da129d686f5fb79d9237d27cdce6f1238dafe55b343a5893",
+        "after_sha256": "7f1e56d6316b436a11c2db175390e0aeb117ab973dea173924509af85d70038f",
+        "baseline": "supplied upstream .orig"
+      },
+      {
+        "target": "fem/src/IterativeMethods.F90",
+        "patch": "elmer/patches/elmer_IterativeMethods_full_pbr.diff",
+        "before_sha256": "b73c00741aa5021ba63a87feeb2c3a65d11aa3944178fedcfdf3af2f6645794a",
+        "after_sha256": "c976806e5a23a22d90986a266955668f64d0ae18a84c0dbc0adf96ef24230ef1",
+        "baseline": "supplied upstream .orig"
+      }
+    ]
+  }
+}

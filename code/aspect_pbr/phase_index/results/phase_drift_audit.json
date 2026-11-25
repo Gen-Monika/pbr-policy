@@ -1,0 +1,522 @@
+{
+  "C1": {
+    "source": "/root/autodl-tmp/PBR/aspect_runs/tosi/C1_OFF",
+    "window": 0.0063,
+    "phase_baselines": {
+      "first_100_solves": {
+        "0": {
+          "positive_samples": 24,
+          "median": 35,
+          "relative_to_j0": 0
+        },
+        "1": {
+          "positive_samples": 24,
+          "median": 24,
+          "relative_to_j0": -11
+        },
+        "2": {
+          "positive_samples": 22,
+          "median": 12,
+          "relative_to_j0": -23
+        },
+        "3": {
+          "positive_samples": 2,
+          "median": 37,
+          "relative_to_j0": 2
+        },
+        "4": {
+          "positive_samples": 1,
+          "median": 37,
+          "relative_to_j0": 2
+        },
+        "5": {
+          "positive_samples": 1,
+          "median": 38,
+          "relative_to_j0": 3
+        },
+        "6": {
+          "positive_samples": 1,
+          "median": 38,
+          "relative_to_j0": 3
+        },
+        "7": {
+          "positive_samples": 1,
+          "median": 38,
+          "relative_to_j0": 3
+        },
+        "8": {
+          "positive_samples": 1,
+          "median": 38,
+          "relative_to_j0": 3
+        },
+        "9": {
+          "positive_samples": 1,
+          "median": 39,
+          "relative_to_j0": 4
+        },
+        "10": {
+          "positive_samples": 1,
+          "median": 40,
+          "relative_to_j0": 5
+        },
+        "11": {
+          "positive_samples": 1,
+          "median": 40,
+          "relative_to_j0": 5
+        },
+        "12": {
+          "positive_samples": 1,
+          "median": 41,
+          "relative_to_j0": 6
+        },
+        "13": {
+          "positive_samples": 1,
+          "median": 41,
+          "relative_to_j0": 6
+        },
+        "14": {
+          "positive_samples": 1,
+          "median": 42,
+          "relative_to_j0": 7
+        },
+        "15": {
+          "positive_samples": 1,
+          "median": 42,
+          "relative_to_j0": 7
+        },
+        "16": {
+          "positive_samples": 1,
+          "median": 42,
+          "relative_to_j0": 7
+        },
+        "17": {
+          "positive_samples": 1,
+          "median": 42,
+          "relative_to_j0": 7
+        },
+        "18": {
+          "positive_samples": 1,
+          "median": 41,
+          "relative_to_j0": 6
+        },
+        "19": {
+          "positive_samples": 1,
+          "median": 42,
+          "relative_to_j0": 7
+        },
+        "20": {
+          "positive_samples": 1,
+          "median": 42,
+          "relative_to_j0": 7
+        },
+        "21": {
+          "positive_samples": 1,
+          "median": 42,
+          "relative_to_j0": 7
+        },
+        "22": {
+          "positive_samples": 1,
+          "median": 41,
+          "relative_to_j0": 6
+        },
+        "23": {
+          "positive_samples": 1,
+          "median": 40,
+          "relative_to_j0": 5
+        },
+        "24": {
+          "positive_samples": 1,
+          "median": 40,
+          "relative_to_j0": 5
+        },
+        "25": {
+          "positive_samples": 1,
+          "median": 39,
+          "relative_to_j0": 4
+        },
+        "26": {
+          "positive_samples": 1,
+          "median": 38,
+          "relative_to_j0": 3
+        },
+        "27": {
+          "positive_samples": 1,
+          "median": 38,
+          "relative_to_j0": 3
+        },
+        "28": {
+          "positive_samples": 1,
+          "median": 37,
+          "relative_to_j0": 2
+        },
+        "29": {
+          "positive_samples": 1,
+          "median": 36,
+          "relative_to_j0": 1
+        }
+      },
+      "after_100_solves": {
+        "0": {
+          "positive_samples": 152,
+          "median": 29,
+          "relative_to_j0": 0
+        },
+        "1": {
+          "positive_samples": 144,
+          "median": 14,
+          "relative_to_j0": -15
+        },
+        "2": {
+          "positive_samples": 50,
+          "median": 8,
+          "relative_to_j0": -21
+        }
+      }
+    }
+  },
+  "C3": {
+    "source": "/root/autodl-tmp/PBR/aspect_runs/tosi/C3_OFF",
+    "window": 0.0063,
+    "phase_baselines": {
+      "first_100_solves": {
+        "0": {
+          "positive_samples": 24,
+          "median": 35,
+          "relative_to_j0": 0
+        },
+        "1": {
+          "positive_samples": 24,
+          "median": 29,
+          "relative_to_j0": -6
+        },
+        "2": {
+          "positive_samples": 22,
+          "median": 23,
+          "relative_to_j0": -12
+        },
+        "3": {
+          "positive_samples": 14,
+          "median": 20,
+          "relative_to_j0": -15
+        },
+        "4": {
+          "positive_samples": 5,
+          "median": 20,
+          "relative_to_j0": -15
+        },
+        "5": {
+          "positive_samples": 2,
+          "median": 29,
+          "relative_to_j0": -6
+        },
+        "6": {
+          "positive_samples": 1,
+          "median": 27,
+          "relative_to_j0": -8
+        },
+        "7": {
+          "positive_samples": 1,
+          "median": 26,
+          "relative_to_j0": -9
+        },
+        "8": {
+          "positive_samples": 1,
+          "median": 24,
+          "relative_to_j0": -11
+        },
+        "9": {
+          "positive_samples": 1,
+          "median": 23,
+          "relative_to_j0": -12
+        },
+        "10": {
+          "positive_samples": 1,
+          "median": 23,
+          "relative_to_j0": -12
+        },
+        "11": {
+          "positive_samples": 1,
+          "median": 22,
+          "relative_to_j0": -13
+        },
+        "12": {
+          "positive_samples": 1,
+          "median": 21,
+          "relative_to_j0": -14
+        },
+        "13": {
+          "positive_samples": 1,
+          "median": 20,
+          "relative_to_j0": -15
+        }
+      },
+      "after_100_solves": {
+        "0": {
+          "positive_samples": 372,
+          "median": 30,
+          "relative_to_j0": 0
+        },
+        "1": {
+          "positive_samples": 289,
+          "median": 16,
+          "relative_to_j0": -14
+        },
+        "2": {
+          "positive_samples": 16,
+          "median": 17,
+          "relative_to_j0": -13
+        }
+      }
+    }
+  },
+  "C4": {
+    "source": "/root/autodl-tmp/PBR/aspect_runs/tosi/C4_OFF",
+    "window": 0.0063,
+    "phase_baselines": {
+      "first_100_solves": {
+        "0": {
+          "positive_samples": 16,
+          "median": 35,
+          "relative_to_j0": 0
+        },
+        "1": {
+          "positive_samples": 16,
+          "median": 30,
+          "relative_to_j0": -5
+        },
+        "2": {
+          "positive_samples": 15,
+          "median": 25,
+          "relative_to_j0": -10
+        },
+        "3": {
+          "positive_samples": 15,
+          "median": 21,
+          "relative_to_j0": -14
+        },
+        "4": {
+          "positive_samples": 15,
+          "median": 17,
+          "relative_to_j0": -18
+        },
+        "5": {
+          "positive_samples": 15,
+          "median": 13,
+          "relative_to_j0": -22
+        },
+        "6": {
+          "positive_samples": 2,
+          "median": 27,
+          "relative_to_j0": -8
+        },
+        "7": {
+          "positive_samples": 1,
+          "median": 25,
+          "relative_to_j0": -10
+        },
+        "8": {
+          "positive_samples": 1,
+          "median": 24,
+          "relative_to_j0": -11
+        },
+        "9": {
+          "positive_samples": 1,
+          "median": 23,
+          "relative_to_j0": -12
+        },
+        "10": {
+          "positive_samples": 1,
+          "median": 22,
+          "relative_to_j0": -13
+        },
+        "11": {
+          "positive_samples": 1,
+          "median": 21,
+          "relative_to_j0": -14
+        },
+        "12": {
+          "positive_samples": 1,
+          "median": 20,
+          "relative_to_j0": -15
+        }
+      },
+      "after_100_solves": {
+        "0": {
+          "positive_samples": 169,
+          "median": 31,
+          "relative_to_j0": 0
+        },
+        "1": {
+          "positive_samples": 169,
+          "median": 22,
+          "relative_to_j0": -9
+        },
+        "2": {
+          "positive_samples": 170,
+          "median": 19,
+          "relative_to_j0": -12
+        },
+        "3": {
+          "positive_samples": 170,
+          "median": 16,
+          "relative_to_j0": -15
+        },
+        "4": {
+          "positive_samples": 170,
+          "median": 13,
+          "relative_to_j0": -18
+        },
+        "5": {
+          "positive_samples": 170,
+          "median": 10,
+          "relative_to_j0": -21
+        },
+        "6": {
+          "positive_samples": 120,
+          "median": 12,
+          "relative_to_j0": -19
+        },
+        "7": {
+          "positive_samples": 94,
+          "median": 12,
+          "relative_to_j0": -19
+        },
+        "8": {
+          "positive_samples": 79,
+          "median": 11,
+          "relative_to_j0": -20
+        },
+        "9": {
+          "positive_samples": 66,
+          "median": 11,
+          "relative_to_j0": -20
+        },
+        "10": {
+          "positive_samples": 54,
+          "median": 11,
+          "relative_to_j0": -20
+        },
+        "11": {
+          "positive_samples": 43,
+          "median": 10,
+          "relative_to_j0": -21
+        },
+        "12": {
+          "positive_samples": 32,
+          "median": 10,
+          "relative_to_j0": -21
+        },
+        "13": {
+          "positive_samples": 21,
+          "median": 10,
+          "relative_to_j0": -21
+        },
+        "14": {
+          "positive_samples": 11,
+          "median": 10,
+          "relative_to_j0": -21
+        },
+        "15": {
+          "positive_samples": 2,
+          "median": 10,
+          "relative_to_j0": -21
+        }
+      }
+    }
+  },
+  "C5": {
+    "source": "/root/autodl-tmp/PBR/aspect_runs/tosi/C5_OFF",
+    "window": 0.0063,
+    "phase_baselines": {
+      "first_100_solves": {
+        "0": {
+          "positive_samples": 22,
+          "median": 35,
+          "relative_to_j0": 0
+        },
+        "1": {
+          "positive_samples": 21,
+          "median": 29,
+          "relative_to_j0": -6
+        },
+        "2": {
+          "positive_samples": 21,
+          "median": 23,
+          "relative_to_j0": -12
+        },
+        "3": {
+          "positive_samples": 21,
+          "median": 19,
+          "relative_to_j0": -16
+        },
+        "4": {
+          "positive_samples": 6,
+          "median": 20,
+          "relative_to_j0": -15
+        },
+        "5": {
+          "positive_samples": 2,
+          "median": 28,
+          "relative_to_j0": -7
+        },
+        "6": {
+          "positive_samples": 1,
+          "median": 27,
+          "relative_to_j0": -8
+        },
+        "7": {
+          "positive_samples": 1,
+          "median": 25,
+          "relative_to_j0": -10
+        },
+        "8": {
+          "positive_samples": 1,
+          "median": 24,
+          "relative_to_j0": -11
+        },
+        "9": {
+          "positive_samples": 1,
+          "median": 23,
+          "relative_to_j0": -12
+        },
+        "10": {
+          "positive_samples": 1,
+          "median": 22,
+          "relative_to_j0": -13
+        },
+        "11": {
+          "positive_samples": 1,
+          "median": 21,
+          "relative_to_j0": -14
+        },
+        "12": {
+          "positive_samples": 1,
+          "median": 20,
+          "relative_to_j0": -15
+        }
+      },
+      "after_100_solves": {
+        "0": {
+          "positive_samples": 145,
+          "median": 31,
+          "relative_to_j0": 0
+        },
+        "1": {
+          "positive_samples": 146,
+          "median": 20,
+          "relative_to_j0": -11
+        },
+        "2": {
+          "positive_samples": 99,
+          "median": 13,
+          "relative_to_j0": -18
+        },
+        "3": {
+          "positive_samples": 2,
+          "median": 14,
+          "relative_to_j0": -17
+        }
+      }
+    }
+  }
+}

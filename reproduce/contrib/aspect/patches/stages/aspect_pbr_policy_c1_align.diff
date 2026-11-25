@@ -1,0 +1,114 @@
+--- aspect/pbr_policy.h.pre_c1	2026-11-07 18:49:50.988544100 +0800
++++ aspect/pbr_policy.h	2026-11-07 18:49:49.400165700 +0800
+@@ -24,10 +24,14 @@
+ #include <cmath>
+ #include <cstdlib>
+ #include <fstream>
++#include <iostream>
+ #include <map>
+ #include <string>
+ #include <vector>
+ 
++// C1 (2026-11-02): rank-aware trace only. No effect on any decision.
++#include <mpi.h>
++
+ namespace aspect
+ {
+   namespace PBR
+@@ -44,6 +48,59 @@
+       return std::string(e ? e : def);
+     }
+ 
++    // C1 (2026-11-02): cross-rank alignment.
++    //   The decision is taken by a private state machine on every rank, and
++    //   rho is measured from this process' own wall clock, so the per-rank
++    //   decisions can in principle disagree. ASPECT builds its AMG
++    //   preconditioner collectively, so a disagreement would be fatal.
++    //   With PBR_ALIGN=on (default) rank 0's decision and rank 0's timings are
++    //   broadcast, making every rank carry identical policy state.
++    //   PBR_ALIGN=off restores the per-rank behaviour for ablation.
++    //   In serial every call below is a no-op, so results are unchanged.
++    inline bool alignEnabled()
++    {
++      static const bool a = (envS("PBR_ALIGN", "on") != "off");
++      return a;
++    }
++
++    inline int alignInt(const int v, MPI_Comm comm)
++    {
++      if (!alignEnabled()) return v;
++      int r = v;
++      MPI_Bcast(&r, 1, MPI_INT, 0, comm);
++      return r;
++    }
++
++    inline double alignDouble(const double v, MPI_Comm comm)
++    {
++      if (!alignEnabled()) return v;
++      double r = v;
++      MPI_Bcast(&r, 1, MPI_DOUBLE, 0, comm);
++      return r;
++    }
++
++    inline unsigned long alignULong(const unsigned long v, MPI_Comm comm)
++    {
++      if (!alignEnabled()) return v;
++      unsigned long r = v;
++      MPI_Bcast(&r, 1, MPI_UNSIGNED_LONG, 0, comm);
++      return r;
++    }
++
++    /** Align a rebuild decision; reports any pre-alignment disagreement. */
++    inline bool alignDecision(const bool local, MPI_Comm comm)
++    {
++      if (!alignEnabled()) return local;
++      int rank = 0;
++      MPI_Comm_rank(comm, &rank);
++      const int aligned = alignInt(local ? 1 : 0, comm) != 0;
++      if (aligned != local)
++        std::cout << "[PBR-ALIGN] rank=" << rank
++                  << " local=" << (local ? 1 : 0)
++                  << " adopted=" << (aligned ? 1 : 0) << std::endl;
++      return aligned;
++    }
++
+     inline double medianOf(std::vector<double> v)
+     {
+       if (v.empty())
+@@ -122,6 +179,7 @@
+ 
+       // bookkeeping across mesh changes (DoF count) and solve index
+       bool initialized = false;
++      int  rank = 0, nranks = 1;   // C1: informational only
+       long long lastMeshM = -1;
+       long solveGen = 0;
+       bool matrixReset = false;          // set when ASPECT re-creates the matrix object
+@@ -152,7 +210,27 @@
+       S.condIndex = S.online && !S.unitStep && (envS("PBR_COND", "off") == "index");
+       const std::string path = envS("PBR_LOG", "");
+       if (!path.empty())
+-        S.log.open(path.c_str());
++        {
++          // C1 (2026-11-02): each rank writes its own trace so that the
++          // per-rank rho and the per-rank decision are observable. File name
++          // only; no decision logic is touched. With one rank (or if MPI is
++          // not initialised) the path is used unchanged, byte-identical to
++          // the production behaviour.
++          std::string out = path;
++          int mpi_ready = 0;
++          MPI_Initialized(&mpi_ready);
++          if (mpi_ready)
++            {
++              int rank = 0, size = 1;
++              MPI_Comm_rank(MPI_COMM_WORLD, &rank);
++              MPI_Comm_size(MPI_COMM_WORLD, &size);
++              S.rank = rank;
++              S.nranks = size;
++              if (size > 1)
++                out = path + ".r" + std::to_string(rank);
++            }
++          S.log.open(out.c_str());
++        }
+     }
+ 
+     /** Forget everything that was learned on the previous mesh. */

@@ -1,0 +1,16 @@
+LV=0 已完成，跳过
+LV=1 已完成，跳过
+LV=2 已完成，跳过
+LV=3 wall=53s nSolve=23464
+PETSc ilu lvl=3" rebuild" : t_freeze=0us t_convert=1043.58419776us t_assemble=1048.04523289us t_pcsetup=2248.80501628us r=61.6781016118
+PBR_NNZ levels=3 n=800 nz_used=3994 nz_alloc=3994 dense_nnz=640000 fillRatio=0.006240625 (nz_used/nnzA)
+LV=5 wall=53s nSolve=23464
+PETSc ilu lvl=5" rebuild" : t_freeze=0us t_convert=794.732943177us t_assemble=799.847766757us t_pcsetup=1609.79479551us r=73.7101918977
+PBR_NNZ levels=5 n=800 nz_used=3994 nz_alloc=3994 dense_nnz=640000 fillRatio=0.006240625 (nz_used/nnzA)
+LV=8 wall=55s nSolve=23464
+PETSc ilu lvl=8" rebuild" : t_freeze=0us t_convert=1752.22568214us t_assemble=1757.86018372us t_pcsetup=4007.30408728us r=73.4267918089
+PBR_NNZ levels=8 n=800 nz_used=3994 nz_alloc=3994 dense_nnz=640000 fillRatio=0.006240625 (nz_used/nnzA)
+LV=10 wall=49s nSolve=23464
+PETSc ilu lvl=10" rebuild" : t_freeze=0us t_convert=977.30755806us t_assemble=982.454046607us t_pcsetup=1717.21167862us r=68.7564604542
+PBR_NNZ levels=10 n=800 nz_used=3994 nz_alloc=3994 dense_nnz=640000 fillRatio=0.006240625 (nz_used/nnzA)
+ST_LV_DONE

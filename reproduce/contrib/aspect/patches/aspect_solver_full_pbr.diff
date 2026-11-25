@@ -1,0 +1,50 @@
+--- a/source/simulator/solver.cc
++++ b/source/simulator/solver.cc
+@@ -22,9 +22,12 @@
+ #include <aspect/simulator.h>
+ #include <aspect/global.h>
+ #include <aspect/melt.h>
++#include <aspect/pbr_policy.h>
+ #include <aspect/stokes_matrix_free.h>
+ 
+ #include <deal.II/base/signaling_nan.h>
++
++#include <chrono>
+ #include <deal.II/lac/solver_gmres.h>
+ 
+ #include <deal.II/lac/trilinos_solver.h>
+@@ -521,6 +524,8 @@
+   Simulator<dim>::solve_stokes ()
+   {
+     TimerOutput::Scope timer (computing_timer, "Solve Stokes system");
++    PBR::beginSolve(static_cast<long long>(system_matrix.block(0,0).m()));
++    const std::chrono::steady_clock::time_point pbr_solve_t0 = std::chrono::steady_clock::now();
+     pcout << "   Solving Stokes system... " << std::flush;
+ 
+     if (parameters.stokes_solver_type == Parameters<dim>::StokesSolverType::block_gmg)
+@@ -859,6 +864,12 @@
+                                            solver_control_cheap,
+                                            solver_control_expensive);
+ 
++                                           // PBR: hand this solve's cost to the online rebuild policy
++                                           PBR::noteSolve (PBR::alignULong((unsigned long)((solver_control_cheap.last_step() != numbers::invalid_unsigned_int ? solver_control_cheap.last_step() : 0)
++                + (solver_control_expensive.last_step() != numbers::invalid_unsigned_int ? solver_control_expensive.last_step() : 0)), mpi_communicator),
++                                                           PBR::alignDouble(std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-pbr_solve_t0).count(), mpi_communicator));
++                                           PBR::noteRatio();
++
+                 std::vector<SolverControl> solver_controls;
+                 if (parameters.n_cheap_stokes_solver_steps > 0)
+                   solver_controls.push_back(solver_control_cheap);
+@@ -881,6 +892,12 @@
+                                    solver_control_cheap,
+                                    solver_control_expensive);
+ 
++                                   // PBR: hand this solve's cost to the online rebuild policy
++                                   PBR::noteSolve (PBR::alignULong((unsigned long)((solver_control_cheap.last_step() != numbers::invalid_unsigned_int ? solver_control_cheap.last_step() : 0)
++                + (solver_control_expensive.last_step() != numbers::invalid_unsigned_int ? solver_control_expensive.last_step() : 0)), mpi_communicator),
++                                                   PBR::alignDouble(std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-pbr_solve_t0).count(), mpi_communicator));
++                                   PBR::noteRatio();
++
+         // distribute hanging node and
+         // other constraints
+         current_constraints.distribute (distributed_stokes_solution);

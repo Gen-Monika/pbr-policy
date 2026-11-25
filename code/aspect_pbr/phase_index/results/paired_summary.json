@@ -1,0 +1,2260 @@
+{
+  "analysis_plan": {
+    "rule": "Frozen existing-warmup upper-median offsets; missing phase uses zero; no rule changes after results",
+    "primary_cost": "sum(raw Krylov iterations) + rho_common * actual rebuild count over the common physical window",
+    "rho_common": "Upper median of the pooled raw setup/(solve_time/iterations) observations from the old and new online run in the same round",
+    "comparison": "Reprice every archived fixed-period run at the same round's rho_common, select the minimum total cost in the archived K grid, and divide each online cost by it",
+    "supplementary": "Also report per-solve cost ratios, since some old Tosi paper tables used per-solve averages and solver counts can differ",
+    "wallclock": "New/old solver-region and external-wall ratios within each concurrent pair; median across 3 ASPECT rounds / 5 MOOSE rounds; no historical fixed wall times compared",
+    "fixed_sources": "Existing official-input archived results; MOOSE counts corrected to actual Krylov iterations verified against CSV and KSPGMRESOrthog",
+    "resources": "At most 12 solver processes; estimated memory sum 19.4 GiB; each actual process guarded at 7 GiB, cgroup at 40 GiB, each probe at 25 minutes",
+    "Elmer": "Not modified: the generic variable NonlinIter is updated through convergence machinery; correspondence to current FlowSolve local iter at IterSolve entry has not been validated, requiring a separate Fortran port and call-order audit"
+  },
+  "cases": {
+    "C1": {
+      "summary": {
+        "rho_common": {
+          "median": 27.3960029607698,
+          "min": 27.17970060208281,
+          "max": 27.926833644859812,
+          "values": [
+            27.17970060208281,
+            27.3960029607698,
+            27.926833644859812
+          ]
+        },
+        "old_over_best": {
+          "median": 1.1568452491546206,
+          "min": 1.1549643291503502,
+          "max": 1.1614453196928476,
+          "values": [
+            1.1549643291503502,
+            1.1568452491546206,
+            1.1614453196928476
+          ]
+        },
+        "index_over_best": {
+          "median": 1.0437515096057373,
+          "min": 1.0427763070620877,
+          "max": 1.0461365129443492,
+          "values": [
+            1.0427763070620877,
+            1.0437515096057373,
+            1.0461365129443492
+          ]
+        },
+        "index_over_old_cost": {
+          "median": 0.9022395263052444,
+          "min": 0.9007195562344746,
+          "max": 0.9028645134254548,
+          "values": [
+            0.9028645134254548,
+            0.9022395263052444,
+            0.9007195562344746
+          ]
+        },
+        "old_per_solve_over_best": {
+          "median": 1.1568452491546206,
+          "min": 1.1549643291503502,
+          "max": 1.1614453196928478,
+          "values": [
+            1.1549643291503502,
+            1.1568452491546206,
+            1.1614453196928478
+          ]
+        },
+        "index_per_solve_over_best": {
+          "median": 1.0437515096057373,
+          "min": 1.042776307062088,
+          "max": 1.0461365129443492,
+          "values": [
+            1.042776307062088,
+            1.0437515096057373,
+            1.0461365129443492
+          ]
+        },
+        "solver_wall_index_over_old": {
+          "median": 0.9262753319357093,
+          "min": 0.9140546006066733,
+          "max": 0.9298955173576003,
+          "values": [
+            0.9298955173576003,
+            0.9140546006066733,
+            0.9262753319357093
+          ]
+        },
+        "external_wall_index_over_old": {
+          "median": 0.9869753734667084,
+          "min": 0.9683028760439623,
+          "max": 0.9938181582112096,
+          "values": [
+            0.9938181582112096,
+            0.9683028760439623,
+            0.9869753734667084
+          ]
+        },
+        "old_rebuilds": {
+          "median": 179,
+          "min": 179,
+          "max": 179,
+          "values": [
+            179,
+            179,
+            179
+          ]
+        },
+        "index_rebuilds": {
+          "median": 119,
+          "min": 119,
+          "max": 119,
+          "values": [
+            119,
+            119,
+            119
+          ]
+        },
+        "old_iterations": {
+          "median": 9844,
+          "min": 9844,
+          "max": 9844,
+          "values": [
+            9844,
+            9844,
+            9844
+          ]
+        },
+        "index_iterations": {
+          "median": 10046,
+          "min": 10046,
+          "max": 10046,
+          "values": [
+            10046,
+            10046,
+            10046
+          ]
+        },
+        "old_solves": {
+          "median": 461,
+          "min": 461,
+          "max": 461,
+          "values": [
+            461,
+            461,
+            461
+          ]
+        },
+        "index_solves": {
+          "median": 461,
+          "min": 461,
+          "max": 461,
+          "values": [
+            461,
+            461,
+            461
+          ]
+        },
+        "best_fixed": [
+          "C1_V8",
+          "C1_V8",
+          "C1_V8"
+        ],
+        "completed_pairs": 3
+      },
+      "pairs": [
+        {
+          "round": 1,
+          "rho_common": 27.17970060208281,
+          "best_fixed": "C1_V8",
+          "best_fixed_cost": 12735.602335522886,
+          "best_fixed_per_solve": "C1_V8",
+          "old_cost": 14709.166407772824,
+          "index_cost": 13280.384371647855,
+          "old_over_best": 1.1549643291503502,
+          "index_over_best": 1.0427763070620877,
+          "index_over_old_cost": 0.9028645134254548,
+          "old_per_solve_over_best": 1.1549643291503502,
+          "index_per_solve_over_best": 1.042776307062088,
+          "solver_wall_index_over_old": 0.9298955173576003,
+          "external_wall_index_over_old": 0.9938181582112096,
+          "old_rebuilds": 179,
+          "index_rebuilds": 119,
+          "old_iterations": 9844,
+          "index_iterations": 10046,
+          "old_solves": 461,
+          "index_solves": 461,
+          "full_old_counts": {
+            "solves": 461,
+            "iterations": 9844,
+            "rebuilds": 179
+          },
+          "full_index_counts": {
+            "solves": 461,
+            "iterations": 10046,
+            "rebuilds": 119
+          },
+          "cost_window": 0.0063,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 78.12348318099976,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -11.0
+            ],
+            "2": [
+              -23.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 2,
+          "rho_common": 27.3960029607698,
+          "best_fixed": "C1_V8",
+          "best_fixed_cost": 12748.36417468542,
+          "best_fixed_per_solve": "C1_V8",
+          "old_cost": 14747.884529977793,
+          "index_cost": 13306.124352331606,
+          "old_over_best": 1.1568452491546206,
+          "index_over_best": 1.0437515096057373,
+          "index_over_old_cost": 0.9022395263052444,
+          "old_per_solve_over_best": 1.1568452491546206,
+          "index_per_solve_over_best": 1.0437515096057373,
+          "solver_wall_index_over_old": 0.9140546006066733,
+          "external_wall_index_over_old": 0.9683028760439623,
+          "old_rebuilds": 179,
+          "index_rebuilds": 119,
+          "old_iterations": 9844,
+          "index_iterations": 10046,
+          "old_solves": 461,
+          "index_solves": 461,
+          "full_old_counts": {
+            "solves": 461,
+            "iterations": 9844,
+            "rebuilds": 179
+          },
+          "full_index_counts": {
+            "solves": 461,
+            "iterations": 10046,
+            "rebuilds": 119
+          },
+          "cost_window": 0.0063,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 76.10642957687378,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -11.0
+            ],
+            "2": [
+              -23.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 3,
+          "rho_common": 27.926833644859812,
+          "best_fixed": "C1_V8",
+          "best_fixed_cost": 12779.683185046728,
+          "best_fixed_per_solve": "C1_V8",
+          "old_cost": 14842.903222429906,
+          "index_cost": 13369.293203738318,
+          "old_over_best": 1.1614453196928476,
+          "index_over_best": 1.0461365129443492,
+          "index_over_old_cost": 0.9007195562344746,
+          "old_per_solve_over_best": 1.1614453196928478,
+          "index_per_solve_over_best": 1.0461365129443492,
+          "solver_wall_index_over_old": 0.9262753319357093,
+          "external_wall_index_over_old": 0.9869753734667084,
+          "old_rebuilds": 179,
+          "index_rebuilds": 119,
+          "old_iterations": 9844,
+          "index_iterations": 10046,
+          "old_solves": 461,
+          "index_solves": 461,
+          "full_old_counts": {
+            "solves": 461,
+            "iterations": 9844,
+            "rebuilds": 179
+          },
+          "full_index_counts": {
+            "solves": 461,
+            "iterations": 10046,
+            "rebuilds": 119
+          },
+          "cost_window": 0.0063,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 75.10639882087708,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -11.0
+            ],
+            "2": [
+              -23.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    "C3": {
+      "summary": {
+        "rho_common": {
+          "median": 25.970734769134204,
+          "min": 25.43836363053445,
+          "max": 26.167196264032935,
+          "values": [
+            25.43836363053445,
+            26.167196264032935,
+            25.970734769134204
+          ]
+        },
+        "old_over_best": {
+          "median": 1.0259583349959316,
+          "min": 1.0237201411731853,
+          "max": 1.0264794094051004,
+          "values": [
+            1.0237201411731853,
+            1.0264794094051004,
+            1.0259583349959316
+          ]
+        },
+        "index_over_best": {
+          "median": 1.0323278813805628,
+          "min": 1.0307417722895578,
+          "max": 1.0411712985667323,
+          "values": [
+            1.0307417722895578,
+            1.0411712985667323,
+            1.0323278813805628
+          ]
+        },
+        "index_over_old_cost": {
+          "median": 1.0068589361818414,
+          "min": 1.006208386995225,
+          "max": 1.0143128922285412,
+          "values": [
+            1.0068589361818414,
+            1.0143128922285412,
+            1.006208386995225
+          ]
+        },
+        "old_per_solve_over_best": {
+          "median": 1.0259583349959316,
+          "min": 1.0237201411731853,
+          "max": 1.0264794094051004,
+          "values": [
+            1.0237201411731853,
+            1.0264794094051004,
+            1.0259583349959316
+          ]
+        },
+        "index_per_solve_over_best": {
+          "median": 1.0323278813805628,
+          "min": 1.0307417722895578,
+          "max": 1.0411712985667323,
+          "values": [
+            1.0307417722895578,
+            1.0411712985667323,
+            1.0323278813805628
+          ]
+        },
+        "solver_wall_index_over_old": {
+          "median": 1.0049207217058502,
+          "min": 0.9972692517749864,
+          "max": 1.014469453376206,
+          "values": [
+            1.014469453376206,
+            0.9972692517749864,
+            1.0049207217058502
+          ]
+        },
+        "external_wall_index_over_old": {
+          "median": 1.0123327504416681,
+          "min": 0.9973667493592269,
+          "max": 1.0217293419966686,
+          "values": [
+            1.0123327504416681,
+            1.0217293419966686,
+            0.9973667493592269
+          ]
+        },
+        "old_rebuilds": {
+          "median": 173,
+          "min": 171,
+          "max": 173,
+          "values": [
+            171,
+            173,
+            173
+          ]
+        },
+        "index_rebuilds": {
+          "median": 181,
+          "min": 181,
+          "max": 190,
+          "values": [
+            181,
+            190,
+            181
+          ]
+        },
+        "old_iterations": {
+          "median": 19147,
+          "min": 19147,
+          "max": 19179,
+          "values": [
+            19179,
+            19147,
+            19147
+          ]
+        },
+        "index_iterations": {
+          "median": 19086,
+          "min": 19041,
+          "max": 19086,
+          "values": [
+            19086,
+            19041,
+            19086
+          ]
+        },
+        "old_solves": {
+          "median": 865,
+          "min": 865,
+          "max": 865,
+          "values": [
+            865,
+            865,
+            865
+          ]
+        },
+        "index_solves": {
+          "median": 865,
+          "min": 865,
+          "max": 865,
+          "values": [
+            865,
+            865,
+            865
+          ]
+        },
+        "best_fixed": [
+          "C3_V8",
+          "C3_V8",
+          "C3_V8"
+        ],
+        "completed_pairs": 3
+      },
+      "pairs": [
+        {
+          "round": 1,
+          "rho_common": 25.43836363053445,
+          "best_fixed": "C3_V8",
+          "best_fixed_cost": 22983.781635728254,
+          "best_fixed_per_solve": "C3_V8",
+          "old_cost": 23528.960180821392,
+          "index_cost": 23690.343817126733,
+          "old_over_best": 1.0237201411731853,
+          "index_over_best": 1.0307417722895578,
+          "index_over_old_cost": 1.0068589361818414,
+          "old_per_solve_over_best": 1.0237201411731853,
+          "index_per_solve_over_best": 1.0307417722895578,
+          "solver_wall_index_over_old": 1.014469453376206,
+          "external_wall_index_over_old": 1.0123327504416681,
+          "old_rebuilds": 171,
+          "index_rebuilds": 181,
+          "old_iterations": 19179,
+          "index_iterations": 19086,
+          "old_solves": 865,
+          "index_solves": 865,
+          "full_old_counts": {
+            "solves": 865,
+            "iterations": 19179,
+            "rebuilds": 171
+          },
+          "full_index_counts": {
+            "solves": 865,
+            "iterations": 19086,
+            "rebuilds": 181
+          },
+          "cost_window": 0.0063,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 520.2300822734833,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -6.0
+            ],
+            "2": [
+              -12.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 2,
+          "rho_common": 26.167196264032935,
+          "best_fixed": "C3_V8",
+          "best_fixed_cost": 23063.22439277959,
+          "best_fixed_per_solve": "C3_V8",
+          "old_cost": 23673.9249536777,
+          "index_cost": 24012.76729016626,
+          "old_over_best": 1.0264794094051004,
+          "index_over_best": 1.0411712985667323,
+          "index_over_old_cost": 1.0143128922285412,
+          "old_per_solve_over_best": 1.0264794094051004,
+          "index_per_solve_over_best": 1.0411712985667323,
+          "solver_wall_index_over_old": 0.9972692517749864,
+          "external_wall_index_over_old": 1.0217293419966686,
+          "old_rebuilds": 173,
+          "index_rebuilds": 190,
+          "old_iterations": 19147,
+          "index_iterations": 19041,
+          "old_solves": 865,
+          "index_solves": 865,
+          "full_old_counts": {
+            "solves": 865,
+            "iterations": 19147,
+            "rebuilds": 173
+          },
+          "full_index_counts": {
+            "solves": 865,
+            "iterations": 19041,
+            "rebuilds": 190
+          },
+          "cost_window": 0.0063,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 509.20035552978516,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -6.0
+            ],
+            "2": [
+              -12.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 3,
+          "rho_common": 25.970734769134204,
+          "best_fixed": "C3_V8",
+          "best_fixed_cost": 23041.810089835628,
+          "best_fixed_per_solve": "C3_V8",
+          "old_cost": 23639.937115060216,
+          "index_cost": 23786.70299321329,
+          "old_over_best": 1.0259583349959316,
+          "index_over_best": 1.0323278813805628,
+          "index_over_old_cost": 1.006208386995225,
+          "old_per_solve_over_best": 1.0259583349959316,
+          "index_per_solve_over_best": 1.0323278813805628,
+          "solver_wall_index_over_old": 1.0049207217058502,
+          "external_wall_index_over_old": 0.9973667493592269,
+          "old_rebuilds": 173,
+          "index_rebuilds": 181,
+          "old_iterations": 19147,
+          "index_iterations": 19086,
+          "old_solves": 865,
+          "index_solves": 865,
+          "full_old_counts": {
+            "solves": 865,
+            "iterations": 19147,
+            "rebuilds": 173
+          },
+          "full_index_counts": {
+            "solves": 865,
+            "iterations": 19086,
+            "rebuilds": 181
+          },
+          "cost_window": 0.0063,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 510.8064453601837,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -6.0
+            ],
+            "2": [
+              -12.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    "C4": {
+      "summary": {
+        "rho_common": {
+          "median": 26.096330294669837,
+          "min": 26.02236667500048,
+          "max": 26.425236079895598,
+          "values": [
+            26.096330294669837,
+            26.02236667500048,
+            26.425236079895598
+          ]
+        },
+        "old_over_best": {
+          "median": 1.0900188260272488,
+          "min": 1.0896241256522619,
+          "max": 1.0912285490418512,
+          "values": [
+            1.0900188260272488,
+            1.0896241256522619,
+            1.0912285490418512
+          ]
+        },
+        "index_over_best": {
+          "median": 0.9931377525195265,
+          "min": 0.9895921326677907,
+          "max": 0.9932525772354209,
+          "values": [
+            0.9932525772354209,
+            0.9931377525195265,
+            0.9895921326677907
+          ]
+        },
+        "index_over_old_cost": {
+          "median": 0.9112251582438186,
+          "min": 0.9068605596295093,
+          "max": 0.9114498560914505,
+          "values": [
+            0.9112251582438186,
+            0.9114498560914505,
+            0.9068605596295093
+          ]
+        },
+        "old_per_solve_over_best": {
+          "median": 1.090683471652875,
+          "min": 1.0902885306069277,
+          "max": 1.0912285490418512,
+          "values": [
+            1.090683471652875,
+            1.0902885306069277,
+            1.0912285490418512
+          ]
+        },
+        "index_per_solve_over_best": {
+          "median": 0.9937433243198431,
+          "min": 0.9895921326677907,
+          "max": 0.9938582190508084,
+          "values": [
+            0.9938582190508084,
+            0.9937433243198431,
+            0.9895921326677907
+          ]
+        },
+        "solver_wall_index_over_old": {
+          "median": 0.9216820987654322,
+          "min": 0.9057632398753893,
+          "max": 0.9247637051039698,
+          "values": [
+            0.9247637051039698,
+            0.9216820987654322,
+            0.9057632398753893
+          ]
+        },
+        "external_wall_index_over_old": {
+          "median": 0.9798774581443584,
+          "min": 0.9667431201621557,
+          "max": 0.9829782374083199,
+          "values": [
+            0.9798774581443584,
+            0.9829782374083199,
+            0.9667431201621557
+          ]
+        },
+        "old_rebuilds": {
+          "median": 292,
+          "min": 291,
+          "max": 292,
+          "values": [
+            292,
+            292,
+            291
+          ]
+        },
+        "index_rebuilds": {
+          "median": 160,
+          "min": 151,
+          "max": 160,
+          "values": [
+            160,
+            160,
+            151
+          ]
+        },
+        "old_iterations": {
+          "median": 27319,
+          "min": 27319,
+          "max": 27328,
+          "values": [
+            27319,
+            27319,
+            27328
+          ]
+        },
+        "index_iterations": {
+          "median": 27662,
+          "min": 27662,
+          "max": 27766,
+          "values": [
+            27662,
+            27662,
+            27766
+          ]
+        },
+        "old_solves": {
+          "median": 1640,
+          "min": 1640,
+          "max": 1641,
+          "values": [
+            1640,
+            1640,
+            1641
+          ]
+        },
+        "index_solves": {
+          "median": 1640,
+          "min": 1640,
+          "max": 1641,
+          "values": [
+            1640,
+            1640,
+            1641
+          ]
+        },
+        "best_fixed": [
+          "C4_V15",
+          "C4_V15",
+          "C4_V15"
+        ],
+        "completed_pairs": 3
+      },
+      "pairs": [
+        {
+          "round": 1,
+          "rho_common": 26.096330294669837,
+          "best_fixed": "C4_V15",
+          "best_fixed_cost": 32053.692662708352,
+          "best_fixed_per_solve": "C4_V15",
+          "old_cost": 34939.12844604359,
+          "index_cost": 31837.412847147174,
+          "old_over_best": 1.0900188260272488,
+          "index_over_best": 0.9932525772354209,
+          "index_over_old_cost": 0.9112251582438186,
+          "old_per_solve_over_best": 1.090683471652875,
+          "index_per_solve_over_best": 0.9938582190508084,
+          "solver_wall_index_over_old": 0.9247637051039698,
+          "external_wall_index_over_old": 0.9798774581443584,
+          "old_rebuilds": 292,
+          "index_rebuilds": 160,
+          "old_iterations": 27319,
+          "index_iterations": 27662,
+          "old_solves": 1640,
+          "index_solves": 1640,
+          "full_old_counts": {
+            "solves": 1652,
+            "iterations": 27494,
+            "rebuilds": 293
+          },
+          "full_index_counts": {
+            "solves": 1652,
+            "iterations": 27852,
+            "rebuilds": 160
+          },
+          "cost_window": 0.00629005,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 802.5548346042633,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -5.0
+            ],
+            "2": [
+              -10.0
+            ],
+            "3": [
+              -14.0
+            ],
+            "4": [
+              -18.0
+            ],
+            "5": [
+              -22.0
+            ],
+            "6": [
+              -8.0
+            ],
+            "7": [
+              -10.0
+            ],
+            "8": [
+              -11.0
+            ],
+            "9": [
+              -12.0
+            ],
+            "10": [
+              -13.0
+            ],
+            "11": [
+              -14.0
+            ],
+            "12": [
+              -15.0
+            ],
+            "13": [
+              0.0
+            ],
+            "14": [
+              0.0
+            ],
+            "15": [
+              0.0
+            ]
+          },
+          "index_unknown_phase_rows": 34,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 2,
+          "rho_common": 26.02236667500048,
+          "best_fixed": "C4_V15",
+          "best_fixed_cost": 32045.482700925055,
+          "best_fixed_per_solve": "C4_V15",
+          "old_cost": 34917.53106910014,
+          "index_cost": 31825.578668000075,
+          "old_over_best": 1.0896241256522619,
+          "index_over_best": 0.9931377525195265,
+          "index_over_old_cost": 0.9114498560914505,
+          "old_per_solve_over_best": 1.0902885306069277,
+          "index_per_solve_over_best": 0.9937433243198431,
+          "solver_wall_index_over_old": 0.9216820987654322,
+          "external_wall_index_over_old": 0.9829782374083199,
+          "old_rebuilds": 292,
+          "index_rebuilds": 160,
+          "old_iterations": 27319,
+          "index_iterations": 27662,
+          "old_solves": 1640,
+          "index_solves": 1640,
+          "full_old_counts": {
+            "solves": 1652,
+            "iterations": 27494,
+            "rebuilds": 293
+          },
+          "full_index_counts": {
+            "solves": 1652,
+            "iterations": 27852,
+            "rebuilds": 160
+          },
+          "cost_window": 0.00629005,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 786.9813966751099,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -5.0
+            ],
+            "2": [
+              -10.0
+            ],
+            "3": [
+              -14.0
+            ],
+            "4": [
+              -18.0
+            ],
+            "5": [
+              -22.0
+            ],
+            "6": [
+              -8.0
+            ],
+            "7": [
+              -10.0
+            ],
+            "8": [
+              -11.0
+            ],
+            "9": [
+              -12.0
+            ],
+            "10": [
+              -13.0
+            ],
+            "11": [
+              -14.0
+            ],
+            "12": [
+              -15.0
+            ],
+            "13": [
+              0.0
+            ],
+            "14": [
+              0.0
+            ],
+            "15": [
+              0.0
+            ]
+          },
+          "index_unknown_phase_rows": 34,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 3,
+          "rho_common": 26.425236079895598,
+          "best_fixed": "C4_V15",
+          "best_fixed_cost": 32090.201204868412,
+          "best_fixed_per_solve": "C4_V15",
+          "old_cost": 35017.74369924962,
+          "index_cost": 31756.210648064236,
+          "old_over_best": 1.0912285490418512,
+          "index_over_best": 0.9895921326677907,
+          "index_over_old_cost": 0.9068605596295093,
+          "old_per_solve_over_best": 1.0912285490418512,
+          "index_per_solve_over_best": 0.9895921326677907,
+          "solver_wall_index_over_old": 0.9057632398753893,
+          "external_wall_index_over_old": 0.9667431201621557,
+          "old_rebuilds": 291,
+          "index_rebuilds": 151,
+          "old_iterations": 27328,
+          "index_iterations": 27766,
+          "old_solves": 1641,
+          "index_solves": 1641,
+          "full_old_counts": {
+            "solves": 1653,
+            "iterations": 27503,
+            "rebuilds": 292
+          },
+          "full_index_counts": {
+            "solves": 1653,
+            "iterations": 27945,
+            "rebuilds": 151
+          },
+          "cost_window": 0.00629005,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 770.1023435592651,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -5.0
+            ],
+            "2": [
+              -10.0
+            ],
+            "3": [
+              -14.0
+            ],
+            "4": [
+              -18.0
+            ],
+            "5": [
+              -22.0
+            ],
+            "6": [
+              -8.0
+            ],
+            "7": [
+              -10.0
+            ],
+            "8": [
+              -11.0
+            ],
+            "9": [
+              -12.0
+            ],
+            "10": [
+              -13.0
+            ],
+            "11": [
+              -14.0
+            ],
+            "12": [
+              -15.0
+            ],
+            "13": [
+              0.0
+            ],
+            "14": [
+              0.0
+            ],
+            "15": [
+              0.0
+            ]
+          },
+          "index_unknown_phase_rows": 34,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    "C5": {
+      "summary": {
+        "rho_common": {
+          "median": 25.830794956388125,
+          "min": 25.327785234899327,
+          "max": 27.27060388739195,
+          "values": [
+            25.327785234899327,
+            25.830794956388125,
+            27.27060388739195
+          ]
+        },
+        "old_over_best": {
+          "median": 1.198354732821818,
+          "min": 1.1487522171198519,
+          "max": 1.2186936468549945,
+          "values": [
+            1.2186936468549945,
+            1.198354732821818,
+            1.1487522171198519
+          ]
+        },
+        "index_over_best": {
+          "median": 1.0652906194702507,
+          "min": 1.0632434543444118,
+          "max": 1.069784558621531,
+          "values": [
+            1.0632434543444118,
+            1.0652906194702507,
+            1.069784558621531
+          ]
+        },
+        "index_over_old_cost": {
+          "median": 0.8889609981860417,
+          "min": 0.8724452261552825,
+          "max": 0.9312578837094144,
+          "values": [
+            0.8724452261552825,
+            0.8889609981860417,
+            0.9312578837094144
+          ]
+        },
+        "old_per_solve_over_best": {
+          "median": 1.198354732821818,
+          "min": 1.1487522171198519,
+          "max": 1.2186936468549947,
+          "values": [
+            1.2186936468549947,
+            1.198354732821818,
+            1.1487522171198519
+          ]
+        },
+        "index_per_solve_over_best": {
+          "median": 1.0652906194702505,
+          "min": 1.0632434543444118,
+          "max": 1.069784558621531,
+          "values": [
+            1.0632434543444118,
+            1.0652906194702505,
+            1.069784558621531
+          ]
+        },
+        "solver_wall_index_over_old": {
+          "median": 0.9100219458668618,
+          "min": 0.8655834564254061,
+          "max": 0.9391304347826087,
+          "values": [
+            0.9100219458668618,
+            0.8655834564254061,
+            0.9391304347826087
+          ]
+        },
+        "external_wall_index_over_old": {
+          "median": 0.9764742045013702,
+          "min": 0.9287154289582991,
+          "max": 1.0145577935231709,
+          "values": [
+            0.9764742045013702,
+            0.9287154289582991,
+            1.0145577935231709
+          ]
+        },
+        "old_rebuilds": {
+          "median": 200,
+          "min": 168,
+          "max": 215,
+          "values": [
+            215,
+            200,
+            168
+          ]
+        },
+        "index_rebuilds": {
+          "median": 124,
+          "min": 122,
+          "max": 124,
+          "values": [
+            124,
+            124,
+            122
+          ]
+        },
+        "old_iterations": {
+          "median": 11616,
+          "min": 11589,
+          "max": 11622,
+          "values": [
+            11589,
+            11622,
+            11616
+          ]
+        },
+        "index_iterations": {
+          "median": 11721,
+          "min": 11721,
+          "max": 11757,
+          "values": [
+            11721,
+            11721,
+            11757
+          ]
+        },
+        "old_solves": {
+          "median": 492,
+          "min": 492,
+          "max": 492,
+          "values": [
+            492,
+            492,
+            492
+          ]
+        },
+        "index_solves": {
+          "median": 492,
+          "min": 492,
+          "max": 492,
+          "values": [
+            492,
+            492,
+            492
+          ]
+        },
+        "best_fixed": [
+          "C5_V8",
+          "C5_V8",
+          "C5_V8"
+        ],
+        "completed_pairs": 3
+      },
+      "pairs": [
+        {
+          "round": 1,
+          "rho_common": 25.327785234899327,
+          "best_fixed": "C5_V8",
+          "best_fixed_cost": 13977.650469798658,
+          "best_fixed_per_solve": "C5_V8",
+          "old_cost": 17034.473825503355,
+          "index_cost": 14861.645369127516,
+          "old_over_best": 1.2186936468549945,
+          "index_over_best": 1.0632434543444118,
+          "index_over_old_cost": 0.8724452261552825,
+          "old_per_solve_over_best": 1.2186936468549947,
+          "index_per_solve_over_best": 1.0632434543444118,
+          "solver_wall_index_over_old": 0.9100219458668618,
+          "external_wall_index_over_old": 0.9764742045013702,
+          "old_rebuilds": 215,
+          "index_rebuilds": 124,
+          "old_iterations": 11589,
+          "index_iterations": 11721,
+          "old_solves": 492,
+          "index_solves": 492,
+          "full_old_counts": {
+            "solves": 492,
+            "iterations": 11589,
+            "rebuilds": 215
+          },
+          "full_index_counts": {
+            "solves": 492,
+            "iterations": 11721,
+            "rebuilds": 124
+          },
+          "cost_window": 0.0063,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 315.40655183792114,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -6.0
+            ],
+            "2": [
+              -12.0
+            ],
+            "3": [
+              -16.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 2,
+          "rho_common": 25.830794956388125,
+          "best_fixed": "C5_V8",
+          "best_fixed_cost": 14009.340082252453,
+          "best_fixed_per_solve": "C5_V8",
+          "old_cost": 16788.158991277625,
+          "index_cost": 14924.018574592128,
+          "old_over_best": 1.198354732821818,
+          "index_over_best": 1.0652906194702507,
+          "index_over_old_cost": 0.8889609981860417,
+          "old_per_solve_over_best": 1.198354732821818,
+          "index_per_solve_over_best": 1.0652906194702505,
+          "solver_wall_index_over_old": 0.8655834564254061,
+          "external_wall_index_over_old": 0.9287154289582991,
+          "old_rebuilds": 200,
+          "index_rebuilds": 124,
+          "old_iterations": 11622,
+          "index_iterations": 11721,
+          "old_solves": 492,
+          "index_solves": 492,
+          "full_old_counts": {
+            "solves": 492,
+            "iterations": 11622,
+            "rebuilds": 200
+          },
+          "full_index_counts": {
+            "solves": 492,
+            "iterations": 11721,
+            "rebuilds": 124
+          },
+          "cost_window": 0.0063,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 300.45763063430786,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -6.0
+            ],
+            "2": [
+              -12.0
+            ],
+            "3": [
+              -16.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 3,
+          "rho_common": 27.27060388739195,
+          "best_fixed": "C5_V8",
+          "best_fixed_cost": 14100.048044905692,
+          "best_fixed_per_solve": "C5_V8",
+          "old_cost": 16197.461453081847,
+          "index_cost": 15084.013674261818,
+          "old_over_best": 1.1487522171198519,
+          "index_over_best": 1.069784558621531,
+          "index_over_old_cost": 0.9312578837094144,
+          "old_per_solve_over_best": 1.1487522171198519,
+          "index_per_solve_over_best": 1.069784558621531,
+          "solver_wall_index_over_old": 0.9391304347826087,
+          "external_wall_index_over_old": 1.0145577935231709,
+          "old_rebuilds": 168,
+          "index_rebuilds": 122,
+          "old_iterations": 11616,
+          "index_iterations": 11757,
+          "old_solves": 492,
+          "index_solves": 492,
+          "full_old_counts": {
+            "solves": 492,
+            "iterations": 11616,
+            "rebuilds": 168
+          },
+          "full_index_counts": {
+            "solves": 492,
+            "iterations": 11757,
+            "rebuilds": 122
+          },
+          "cost_window": 0.0063,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 314.4291479587555,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              -6.0
+            ],
+            "2": [
+              -12.0
+            ],
+            "3": [
+              -16.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    "Blankenbach": {
+      "summary": {
+        "rho_common": {
+          "median": 28.97050375435146,
+          "min": 28.64822913130587,
+          "max": 29.83823884772298,
+          "values": [
+            28.97050375435146,
+            28.64822913130587,
+            29.83823884772298
+          ]
+        },
+        "old_over_best": {
+          "median": 1.0934520495185323,
+          "min": 1.0924301681024264,
+          "max": 1.1004702056500502,
+          "values": [
+            1.0934520495185323,
+            1.0924301681024264,
+            1.1004702056500502
+          ]
+        },
+        "index_over_best": {
+          "median": 1.0976584948343153,
+          "min": 1.0924301681024264,
+          "max": 1.1063590184349352,
+          "values": [
+            1.0976584948343153,
+            1.0924301681024264,
+            1.1063590184349352
+          ]
+        },
+        "index_over_old_cost": {
+          "median": 1.0038469408124802,
+          "min": 1.0,
+          "max": 1.0053511787549092,
+          "values": [
+            1.0038469408124802,
+            1.0,
+            1.0053511787549092
+          ]
+        },
+        "old_per_solve_over_best": {
+          "median": 1.0934520495185325,
+          "min": 1.0924301681024262,
+          "max": 1.1004702056500502,
+          "values": [
+            1.0934520495185325,
+            1.0924301681024262,
+            1.1004702056500502
+          ]
+        },
+        "index_per_solve_over_best": {
+          "median": 1.0976584948343153,
+          "min": 1.0924301681024262,
+          "max": 1.1063590184349352,
+          "values": [
+            1.0976584948343153,
+            1.0924301681024262,
+            1.1063590184349352
+          ]
+        },
+        "solver_wall_index_over_old": {
+          "median": 0.9963603275705186,
+          "min": 0.9891802677425271,
+          "max": 1.0613611007809596,
+          "values": [
+            0.9963603275705186,
+            0.9891802677425271,
+            1.0613611007809596
+          ]
+        },
+        "external_wall_index_over_old": {
+          "median": 0.9935994456277837,
+          "min": 0.9869172024495992,
+          "max": 1.0670821717012755,
+          "values": [
+            0.9935994456277837,
+            0.9869172024495992,
+            1.0670821717012755
+          ]
+        },
+        "old_rebuilds": {
+          "median": 108,
+          "min": 108,
+          "max": 110,
+          "values": [
+            108,
+            108,
+            110
+          ]
+        },
+        "index_rebuilds": {
+          "median": 110,
+          "min": 108,
+          "max": 116,
+          "values": [
+            110,
+            108,
+            116
+          ]
+        },
+        "old_iterations": {
+          "median": 25450,
+          "min": 25450,
+          "max": 25502,
+          "values": [
+            25450,
+            25450,
+            25502
+          ]
+        },
+        "index_iterations": {
+          "median": 25477,
+          "min": 25450,
+          "max": 25502,
+          "values": [
+            25502,
+            25450,
+            25477
+          ]
+        },
+        "old_solves": {
+          "median": 1626,
+          "min": 1626,
+          "max": 1626,
+          "values": [
+            1626,
+            1626,
+            1626
+          ]
+        },
+        "index_solves": {
+          "median": 1626,
+          "min": 1626,
+          "max": 1626,
+          "values": [
+            1626,
+            1626,
+            1626
+          ]
+        },
+        "best_fixed": [
+          "K75",
+          "K75",
+          "K75"
+        ],
+        "completed_pairs": 3
+      },
+      "pairs": [
+        {
+          "round": 1,
+          "rho_common": 28.97050375435146,
+          "best_fixed": "K75",
+          "best_fixed_cost": 26136.321586350085,
+          "best_fixed_per_solve": "K75",
+          "old_cost": 28578.81440546996,
+          "index_cost": 28688.75541297866,
+          "old_over_best": 1.0934520495185323,
+          "index_over_best": 1.0976584948343153,
+          "index_over_old_cost": 1.0038469408124802,
+          "old_per_solve_over_best": 1.0934520495185325,
+          "index_per_solve_over_best": 1.0976584948343153,
+          "solver_wall_index_over_old": 0.9963603275705186,
+          "external_wall_index_over_old": 0.9935994456277837,
+          "old_rebuilds": 108,
+          "index_rebuilds": 110,
+          "old_iterations": 25450,
+          "index_iterations": 25502,
+          "old_solves": 1626,
+          "index_solves": 1626,
+          "full_old_counts": {
+            "solves": 1626,
+            "iterations": 25450,
+            "rebuilds": 108
+          },
+          "full_index_counts": {
+            "solves": 1626,
+            "iterations": 25502,
+            "rebuilds": 110
+          },
+          "cost_window": 0.1,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 302.478524684906,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 2,
+          "rho_common": 28.64822913130587,
+          "best_fixed": "K75",
+          "best_fixed_cost": 26128.909270020034,
+          "best_fixed_per_solve": "K75",
+          "old_cost": 28544.008746181033,
+          "index_cost": 28544.008746181033,
+          "old_over_best": 1.0924301681024264,
+          "index_over_best": 1.0924301681024264,
+          "index_over_old_cost": 1.0,
+          "old_per_solve_over_best": 1.0924301681024262,
+          "index_per_solve_over_best": 1.0924301681024262,
+          "solver_wall_index_over_old": 0.9891802677425271,
+          "external_wall_index_over_old": 0.9869172024495992,
+          "old_rebuilds": 108,
+          "index_rebuilds": 108,
+          "old_iterations": 25450,
+          "index_iterations": 25450,
+          "old_solves": 1626,
+          "index_solves": 1626,
+          "full_old_counts": {
+            "solves": 1626,
+            "iterations": 25450,
+            "rebuilds": 108
+          },
+          "full_index_counts": {
+            "solves": 1626,
+            "iterations": 25450,
+            "rebuilds": 108
+          },
+          "cost_window": 0.1,
+          "decisions_identical": true,
+          "concurrent_overlap_seconds": 296.99284052848816,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 3,
+          "rho_common": 29.83823884772298,
+          "best_fixed": "K75",
+          "best_fixed_cost": 26156.27949349763,
+          "best_fixed_per_solve": "K75",
+          "old_cost": 28784.20627324953,
+          "index_cost": 28938.235706335865,
+          "old_over_best": 1.1004702056500502,
+          "index_over_best": 1.1063590184349352,
+          "index_over_old_cost": 1.0053511787549092,
+          "old_per_solve_over_best": 1.1004702056500502,
+          "index_per_solve_over_best": 1.1063590184349352,
+          "solver_wall_index_over_old": 1.0613611007809596,
+          "external_wall_index_over_old": 1.0670821717012755,
+          "old_rebuilds": 110,
+          "index_rebuilds": 116,
+          "old_iterations": 25502,
+          "index_iterations": 25477,
+          "old_solves": 1626,
+          "index_solves": 1626,
+          "full_old_counts": {
+            "solves": 1626,
+            "iterations": 25502,
+            "rebuilds": 110
+          },
+          "full_index_counts": {
+            "solves": 1626,
+            "iterations": 25477,
+            "rebuilds": 116
+          },
+          "cost_window": 0.1,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 298.9029643535614,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    "MOOSE": {
+      "summary": {
+        "rho_common": {
+          "median": 4.6109759493485365,
+          "min": 4.556252936202198,
+          "max": 4.753312395911379,
+          "values": [
+            4.556252936202198,
+            4.581655025180159,
+            4.629490214938404,
+            4.753312395911379,
+            4.6109759493485365
+          ]
+        },
+        "old_over_best": {
+          "median": 1.176417255661253,
+          "min": 1.1741540910551866,
+          "max": 1.1822664315115734,
+          "values": [
+            1.1741540910551866,
+            1.1752056367422463,
+            1.177181130131795,
+            1.1822664315115734,
+            1.176417255661253
+          ]
+        },
+        "index_over_best": {
+          "median": 0.9924953861605985,
+          "min": 0.9920923617665091,
+          "max": 0.9935370075020951,
+          "values": [
+            0.9920923617665091,
+            0.9922796210415298,
+            0.9926314169401651,
+            0.9935370075020951,
+            0.9924953861605985
+          ]
+        },
+        "index_over_old_cost": {
+          "median": 0.843659323581348,
+          "min": 0.8403664191258644,
+          "max": 0.8449422178267396,
+          "values": [
+            0.8449422178267396,
+            0.8443455255985663,
+            0.8432274282455003,
+            0.8403664191258644,
+            0.843659323581348
+          ]
+        },
+        "old_per_solve_over_best": {
+          "median": 1.176417255661253,
+          "min": 1.1741540910551869,
+          "max": 1.1822664315115736,
+          "values": [
+            1.1741540910551869,
+            1.1752056367422463,
+            1.177181130131795,
+            1.1822664315115736,
+            1.176417255661253
+          ]
+        },
+        "index_per_solve_over_best": {
+          "median": 0.9924953861605984,
+          "min": 0.9920923617665092,
+          "max": 0.9935370075020951,
+          "values": [
+            0.9920923617665092,
+            0.9922796210415298,
+            0.9926314169401652,
+            0.9935370075020951,
+            0.9924953861605984
+          ]
+        },
+        "solver_wall_index_over_old": {
+          "median": 0.9841493299963503,
+          "min": 0.7932237288539149,
+          "max": 1.059876924661414,
+          "values": [
+            1.059876924661414,
+            1.004071782178218,
+            0.9841493299963503,
+            0.7932237288539149,
+            0.9385978482525842
+          ]
+        },
+        "external_wall_index_over_old": {
+          "median": 0.9888970472907711,
+          "min": 0.7970667204743185,
+          "max": 1.060529578980105,
+          "values": [
+            1.060529578980105,
+            1.0050882546268085,
+            0.9888970472907711,
+            0.7970667204743185,
+            0.9401598943172444
+          ]
+        },
+        "old_rebuilds": {
+          "median": 201,
+          "min": 201,
+          "max": 201,
+          "values": [
+            201,
+            201,
+            201,
+            201,
+            201
+          ]
+        },
+        "index_rebuilds": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "values": [
+            100,
+            100,
+            100,
+            100,
+            100
+          ]
+        },
+        "old_iterations": {
+          "median": 2052,
+          "min": 2052,
+          "max": 2052,
+          "values": [
+            2052,
+            2052,
+            2052,
+            2052,
+            2052
+          ]
+        },
+        "index_iterations": {
+          "median": 2052,
+          "min": 2052,
+          "max": 2052,
+          "values": [
+            2052,
+            2052,
+            2052,
+            2052,
+            2052
+          ]
+        },
+        "old_solves": {
+          "median": 820,
+          "min": 820,
+          "max": 820,
+          "values": [
+            820,
+            820,
+            820,
+            820,
+            820
+          ]
+        },
+        "index_solves": {
+          "median": 820,
+          "min": 820,
+          "max": 820,
+          "values": [
+            820,
+            820,
+            820,
+            820,
+            820
+          ]
+        },
+        "best_fixed": [
+          "r1_K10",
+          "r1_K10",
+          "r1_K10",
+          "r1_K10",
+          "r1_K10"
+        ],
+        "completed_pairs": 5
+      },
+      "pairs": [
+        {
+          "round": 1,
+          "rho_common": 4.556252936202198,
+          "best_fixed": "r1_K10",
+          "best_fixed_cost": 2527.6127407685804,
+          "best_fixed_per_solve": "r1_K10",
+          "old_cost": 2967.806840176642,
+          "index_cost": 2507.62529362022,
+          "old_over_best": 1.1741540910551866,
+          "index_over_best": 0.9920923617665091,
+          "index_over_old_cost": 0.8449422178267396,
+          "old_per_solve_over_best": 1.1741540910551869,
+          "index_per_solve_over_best": 0.9920923617665092,
+          "solver_wall_index_over_old": 1.059876924661414,
+          "external_wall_index_over_old": 1.060529578980105,
+          "old_rebuilds": 201,
+          "index_rebuilds": 100,
+          "old_iterations": 2052,
+          "index_iterations": 2052,
+          "old_solves": 820,
+          "index_solves": 820,
+          "full_old_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 201
+          },
+          "full_index_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 100
+          },
+          "cost_window": null,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 91.13838124275208,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              1.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 2,
+          "rho_common": 4.581655025180159,
+          "best_fixed": "r1_K10",
+          "best_fixed_cost": 2529.695712064773,
+          "best_fixed_per_solve": "r1_K10",
+          "old_cost": 2972.9126600612117,
+          "index_cost": 2510.1655025180157,
+          "old_over_best": 1.1752056367422463,
+          "index_over_best": 0.9922796210415298,
+          "index_over_old_cost": 0.8443455255985663,
+          "old_per_solve_over_best": 1.1752056367422463,
+          "index_per_solve_over_best": 0.9922796210415298,
+          "solver_wall_index_over_old": 1.004071782178218,
+          "external_wall_index_over_old": 1.0050882546268085,
+          "old_rebuilds": 201,
+          "index_rebuilds": 100,
+          "old_iterations": 2052,
+          "index_iterations": 2052,
+          "old_solves": 820,
+          "index_solves": 820,
+          "full_old_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 201
+          },
+          "full_index_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 100
+          },
+          "cost_window": null,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 94.6599326133728,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              1.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 3,
+          "rho_common": 4.629490214938404,
+          "best_fixed": "r1_K10",
+          "best_fixed_cost": 2533.618197624949,
+          "best_fixed_per_solve": "r1_K10",
+          "old_cost": 2982.527533202619,
+          "index_cost": 2514.9490214938405,
+          "old_over_best": 1.177181130131795,
+          "index_over_best": 0.9926314169401651,
+          "index_over_old_cost": 0.8432274282455003,
+          "old_per_solve_over_best": 1.177181130131795,
+          "index_per_solve_over_best": 0.9926314169401652,
+          "solver_wall_index_over_old": 0.9841493299963503,
+          "external_wall_index_over_old": 0.9888970472907711,
+          "old_rebuilds": 201,
+          "index_rebuilds": 100,
+          "old_iterations": 2052,
+          "index_iterations": 2052,
+          "old_solves": 820,
+          "index_solves": 820,
+          "full_old_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 201
+          },
+          "full_index_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 100
+          },
+          "cost_window": null,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 89.16279458999634,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              1.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 4,
+          "rho_common": 4.753312395911379,
+          "best_fixed": "r1_K10",
+          "best_fixed_cost": 2543.771616464733,
+          "best_fixed_per_solve": "r1_K10",
+          "old_cost": 3007.415791578187,
+          "index_cost": 2527.331239591138,
+          "old_over_best": 1.1822664315115734,
+          "index_over_best": 0.9935370075020951,
+          "index_over_old_cost": 0.8403664191258644,
+          "old_per_solve_over_best": 1.1822664315115736,
+          "index_per_solve_over_best": 0.9935370075020951,
+          "solver_wall_index_over_old": 0.7932237288539149,
+          "external_wall_index_over_old": 0.7970667204743185,
+          "old_rebuilds": 201,
+          "index_rebuilds": 100,
+          "old_iterations": 2052,
+          "index_iterations": 2052,
+          "old_solves": 820,
+          "index_solves": 820,
+          "full_old_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 201
+          },
+          "full_index_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 100
+          },
+          "cost_window": null,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 78.6372971534729,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              1.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        },
+        {
+          "round": 5,
+          "rho_common": 4.6109759493485365,
+          "best_fixed": "r1_K10",
+          "best_fixed_cost": 2532.10002784658,
+          "best_fixed_per_solve": "r1_K10",
+          "old_cost": 2978.806165819056,
+          "index_cost": 2513.0975949348535,
+          "old_over_best": 1.176417255661253,
+          "index_over_best": 0.9924953861605985,
+          "index_over_old_cost": 0.843659323581348,
+          "old_per_solve_over_best": 1.176417255661253,
+          "index_per_solve_over_best": 0.9924953861605984,
+          "solver_wall_index_over_old": 0.9385978482525842,
+          "external_wall_index_over_old": 0.9401598943172444,
+          "old_rebuilds": 201,
+          "index_rebuilds": 100,
+          "old_iterations": 2052,
+          "index_iterations": 2052,
+          "old_solves": 820,
+          "index_solves": 820,
+          "full_old_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 201
+          },
+          "full_index_counts": {
+            "solves": 820,
+            "iterations": 2052,
+            "rebuilds": 100
+          },
+          "cost_window": null,
+          "decisions_identical": false,
+          "concurrent_overlap_seconds": 78.646000623703,
+          "index_q_by_phase": {
+            "0": [
+              0.0
+            ],
+            "1": [
+              1.0
+            ]
+          },
+          "index_unknown_phase_rows": 0,
+          "index_negative_model_rows": 0,
+          "failure_lines": {
+            "old": [],
+            "index": []
+          },
+          "rc": [
+            0,
+            0
+          ],
+          "guards": [
+            null,
+            null
+          ]
+        }
+      ]
+    }
+  },
+  "endpoint_accounting_correction": {
+    "recorded_on": "2026-10-17",
+    "type": "C4 common-endpoint accounting correction; policy and runtime inputs unchanged",
+    "evidence": "c4_window_audit.json; historical C4 fixed inputs use End time=.03 and their last recorded step at t<=.0063 is .00629005; online inputs use End time=.0063 and add 12 terminal-step solves",
+    "primary_cost_C4": "Use the common completed-step prefix t<=.00629005 for old, index and archived fixed; retain full counts separately",
+    "rho_common": "Unchanged: upper median pooled raw timing observations of the complete paired online runs",
+    "wallclock": "Unchanged: paired full online runs, both end at .0063",
+    "all_other_cases": "Unchanged",
+    "historical_clarification": "C4_ONLv has 1640 solves on the common prefix plus 12 at the shortened terminal step; 1652 vs K1's 1640 is fully explained by that endpoint difference, not policy-dependent nonlinear counts in those two records"
+  }
+}

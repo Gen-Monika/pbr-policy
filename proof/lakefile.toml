@@ -1,0 +1,6 @@
+name = "preconditioner-proof"
+version = "0.1.0"
+defaultTargets = ["PreconditionerProof"]
+
+[[lean_lib]]
+name = "PreconditionerProof"

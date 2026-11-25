@@ -1,0 +1,114 @@
+diff --git a/source/simulator/assembly.cc b/source/simulator/assembly.cc
+--- a/source/simulator/assembly.cc
++++ b/source/simulator/assembly.cc
+@@ -27,6 +27,7 @@
+
+ #include <aspect/simulator/assemblers/interface.h>
+ #include <aspect/melt.h>
++#include <aspect/pbr_policy.h>
+ #include <aspect/newton.h>
+ #include <aspect/mesh_deformation/interface.h>
+ #include <aspect/simulator/assemblers/stokes.h>
+@@ -45,6 +46,8 @@
+ #include <deal.II/fe/fe_values.h>
+
+ #include <limits>
++#include <cstdlib>
++#include <chrono>
+
+
+ namespace aspect
+@@ -389,6 +392,22 @@
+     if (rebuild_stokes_preconditioner == false)
+       return;
+
++    // PBR: the online rebuild policy may decide to keep the existing
++    // preconditioner even though the caller asked for a rebuild. The decision
++    // is taken once per Stokes solve (see solve_stokes()).
++    if (PBR::state().mode != "off"
++        && Amg_preconditioner != nullptr
++        && PBR::alignDecision(PBR::decide(PBR::state().unitStep ? static_cast<long>(timestep_number)
++                                                                : PBR::state().solveGen,
++                                          static_cast<long>(nonlinear_iteration)),
++                              mpi_communicator) == false)
++      {
++        pcout << "   Reusing Stokes preconditioner (PBR age "
++              << PBR::state().runAge << ")..." << std::flush;
++        rebuild_stokes_preconditioner = false;
++        return;
++      }
++
+     if (parameters.stokes_solver_type == Parameters<dim>::StokesSolverType::block_gmg)
+       return;
+     else if (parameters.stokes_solver_type == Parameters<dim>::StokesSolverType::block_amg)
+@@ -401,6 +420,7 @@
+       AssertThrow(false, ExcNotImplemented());
+
+     TimerOutput::Scope timer (computing_timer, "Build Stokes preconditioner");
++    const std::chrono::steady_clock::time_point pbr_t0 = std::chrono::steady_clock::now();
+     pcout << "   Rebuilding Stokes preconditioner..." << std::flush;
+
+     // first assemble the raw matrices necessary for the preconditioner
+@@ -492,6 +512,11 @@
+
+     rebuild_stokes_preconditioner = false;
+
++    if (PBR::state().mode != "off")
++      PBR::noteBuildTime(PBR::alignDouble(std::chrono::duration<double,std::milli>
++                                          (std::chrono::steady_clock::now() - pbr_t0).count(),
++                                          mpi_communicator));
++
+     pcout << std::endl;
+   }
+
+diff --git a/source/simulator/solver.cc b/source/simulator/solver.cc
+--- a/source/simulator/solver.cc
++++ b/source/simulator/solver.cc
+@@ -22,9 +22,12 @@
+ #include <aspect/simulator.h>
+ #include <aspect/global.h>
+ #include <aspect/melt.h>
++#include <aspect/pbr_policy.h>
+ #include <aspect/stokes_matrix_free.h>
+
+ #include <deal.II/base/signaling_nan.h>
++
++#include <chrono>
+ #include <deal.II/lac/solver_gmres.h>
+
+ #include <deal.II/lac/trilinos_solver.h>
+@@ -521,6 +524,8 @@
+   Simulator<dim>::solve_stokes ()
+   {
+     TimerOutput::Scope timer (computing_timer, "Solve Stokes system");
++    PBR::beginSolve(static_cast<long long>(system_matrix.block(0,0).m()));
++    const std::chrono::steady_clock::time_point pbr_solve_t0 = std::chrono::steady_clock::now();
+     pcout << "   Solving Stokes system... " << std::flush;
+
+     if (parameters.stokes_solver_type == Parameters<dim>::StokesSolverType::block_gmg)
+@@ -859,6 +864,12 @@
+                                            solver_control_cheap,
+                                            solver_control_expensive);
+
++                                           // PBR: hand this solve's cost to the online rebuild policy
++                                           PBR::noteSolve (PBR::alignULong((unsigned long)((solver_control_cheap.last_step() != numbers::invalid_unsigned_int ? solver_control_cheap.last_step() : 0)
++                + (solver_control_expensive.last_step() != numbers::invalid_unsigned_int ? solver_control_expensive.last_step() : 0)), mpi_communicator),
++                                                           PBR::alignDouble(std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-pbr_solve_t0).count(), mpi_communicator));
++                                           PBR::noteRatio();
++
+                 std::vector<SolverControl> solver_controls;
+                 if (parameters.n_cheap_stokes_solver_steps > 0)
+                   solver_controls.push_back(solver_control_cheap);
+@@ -881,6 +892,12 @@
+                                    solver_control_cheap,
+                                    solver_control_expensive);
+
++                                   // PBR: hand this solve's cost to the online rebuild policy
++                                   PBR::noteSolve (PBR::alignULong((unsigned long)((solver_control_cheap.last_step() != numbers::invalid_unsigned_int ? solver_control_cheap.last_step() : 0)
++                + (solver_control_expensive.last_step() != numbers::invalid_unsigned_int ? solver_control_expensive.last_step() : 0)), mpi_communicator),
++                                                   PBR::alignDouble(std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-pbr_solve_t0).count(), mpi_communicator));
++                                   PBR::noteRatio();
++
+         // distribute hanging node and
+         // other constraints
+         current_constraints.distribute (distributed_stokes_solution);

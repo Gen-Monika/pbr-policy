@@ -1,0 +1,3 @@
+DICFrozenPreconditioner.C
+
+LIB = $(FOAM_USER_LIBBIN)/libpbrDICFrozen

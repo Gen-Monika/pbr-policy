@@ -1,0 +1,26 @@
+--- IterativeMethods.F90.orig	2026-10-16 15:52:28.633681147 +0800
++++ IterativeMethods.F90	2026-10-16 15:52:28.669683345 +0800
+@@ -76,6 +76,7 @@
+   USE SParIterComm
+ 
+   IMPLICIT NONE
++  INTEGER, SAVE :: PBRLastGcrIters = 0
+ 
+   INTEGER :: nc
+   LOGICAL :: Constrained
+@@ -1264,6 +1265,7 @@
+     IF(Converged) HUTI_INFO = HUTI_CONVERGENCE
+     IF(Diverged) HUTI_INFO = HUTI_DIVERGENCE
+     IF ( (.NOT. Converged) .AND. (.NOT. Diverged) ) HUTI_INFO = HUTI_MAXITER
++    HUTI_ITERS = PBRLastGcrIters   ! PBR
+ 
+   CONTAINS
+ 
+@@ -1465,6 +1467,7 @@
+ 
+       DEALLOCATE( R, T1, T2 )
+       IF ( m > 1 ) DEALLOCATE( S, V)
++      PBRLastGcrIters = MIN(k, Rounds)   ! PBR: expose the iteration count
+ 
+     END SUBROUTINE GCR
+ 

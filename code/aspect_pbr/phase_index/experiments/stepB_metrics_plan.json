@@ -1,0 +1,11 @@
+{
+  "rule": "Frozen existing-warmup upper-median offsets; missing phase uses zero; no rule changes after results",
+  "primary_cost": "sum(raw Krylov iterations) + rho_common * actual rebuild count over the common physical window",
+  "rho_common": "Upper median of the pooled raw setup/(solve_time/iterations) observations from the old and new online run in the same round",
+  "comparison": "Reprice every archived fixed-period run at the same round's rho_common, select the minimum total cost in the archived K grid, and divide each online cost by it",
+  "supplementary": "Also report per-solve cost ratios, since some old Tosi paper tables used per-solve averages and solver counts can differ",
+  "wallclock": "New/old solver-region and external-wall ratios within each concurrent pair; median across 3 ASPECT rounds / 5 MOOSE rounds; no historical fixed wall times compared",
+  "fixed_sources": "Existing official-input archived results; MOOSE counts corrected to actual Krylov iterations verified against CSV and KSPGMRESOrthog",
+  "resources": "At most 12 solver processes; estimated memory sum 19.4 GiB; each actual process guarded at 7 GiB, cgroup at 40 GiB, each probe at 25 minutes",
+  "Elmer": "Not modified: the generic variable NonlinIter is updated through convergence machinery; correspondence to current FlowSolve local iter at IterSolve entry has not been validated, requiring a separate Fortran port and call-order audit"
+}

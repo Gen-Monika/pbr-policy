@@ -1,0 +1,102 @@
+--- a/framework/src/systems/NonlinearSystem.C
++++ b/framework/src/systems/NonlinearSystem.C
+@@ -136,6 +136,87 @@
+   solver.set_snesmf_reuse_base(_fe_problem.useSNESMFReuseBase());
+ }
+ 
++
++// ---------------------------------------------------------------------------
++// PBR (preconditioner rebuild policy) — active only if env PBR_POLICY is set
++// and != off; otherwise nothing below is installed and MOOSE is unchanged.
++// Decision unit: one linear solve (one Newton Jacobian). The operator is always
++// the freshly assembled Jacobian; only PCSetUp (BoomerAMG setup) is skipped.
++// ---------------------------------------------------------------------------
++#include "pbr_policy.h"
++#include <petscksp.h>
++#include <mpi.h>
++namespace
++{
++long   pbr_solve = 0;
++int    pbr_built = 0;
++double pbr_t0 = 0.0, pbr_bms = 0.0;
++
++PetscErrorCode PBRPreSolve(KSP ksp, Vec, Vec, void *ctx)
++{
++  PetscFunctionBeginUser;
++  PetscInt j = 0;
++  if (aspect::PBR::state().condIndex)
++    PetscCall(SNESGetIterationNumber(static_cast<SNES>(ctx), &j));
++  int rb = aspect::PBR::decide(pbr_solve, static_cast<long>(j)) ? 1 : 0;
++  MPI_Bcast(&rb, 1, MPI_INT, 0, PETSC_COMM_WORLD);
++  PC pc;
++  PetscCall(KSPGetPC(ksp, &pc));
++  pbr_bms = 0.0;
++  if (rb || !pbr_built)
++  {
++    double t0 = MPI_Wtime();
++    PetscCall(PCSetReusePreconditioner(pc, PETSC_FALSE));
++    PetscCall(KSPSetReusePreconditioner(ksp, PETSC_FALSE));
++    PetscCall(KSPSetUp(ksp));
++    PetscCall(PCSetUp(pc));
++    pbr_bms = 1e3 * (MPI_Wtime() - t0);
++    MPI_Bcast(&pbr_bms, 1, MPI_DOUBLE, 0, PETSC_COMM_WORLD);
++    aspect::PBR::noteBuildTime(pbr_bms);
++    pbr_built = 1;
++  }
++  else
++    PetscCall(KSPSetReusePreconditioner(ksp, PETSC_TRUE));
++  (void)PetscPrintf(PETSC_COMM_WORLD, "PBR solve %ld rebuild %d build_ms %.3f rMed %.3f\n",
++              pbr_solve, rb, pbr_bms, aspect::PBR::state().rMed);
++  pbr_t0 = MPI_Wtime();
++  PetscFunctionReturn(PETSC_SUCCESS);
++}
++
++PetscErrorCode PBRPostSolve(KSP ksp, Vec, Vec, void *)
++{
++  PetscFunctionBeginUser;
++  PetscInt n = 0;
++  PetscCall(KSPGetIterationNumber(ksp, &n));
++  double ms = 1e3 * (MPI_Wtime() - pbr_t0);
++  MPI_Bcast(&ms, 1, MPI_DOUBLE, 0, PETSC_COMM_WORLD);
++  aspect::PBR::noteSolve((unsigned long)n, ms);
++  aspect::PBR::noteRatio();
++  ++pbr_solve;
++  PetscFunctionReturn(PETSC_SUCCESS);
++}
++
++void PBRInstall(SNES snes)
++{
++  // libMesh may re-create the SNES/KSP between solves, so (re)install the
++  // hooks before every nonlinear solve; record whether the KSP object changed.
++  static KSP last = nullptr;
++  aspect::PBR::init();
++  if (aspect::PBR::state().mode == "off" || !snes)
++    return;
++  KSP ksp;
++  (void)SNESGetKSP(snes, &ksp);
++  if (ksp != last)
++  {
++    (void)PetscPrintf(PETSC_COMM_WORLD, "PBR new KSP object at solve %ld\n", pbr_solve);
++    pbr_built = 0;   // a new KSP has no preconditioner yet
++    last = ksp;
++  }
++  (void)KSPSetPreSolve(ksp, PBRPreSolve, snes);
++  (void)KSPSetPostSolve(ksp, PBRPostSolve, nullptr);
++}
++}
++
+ void
+ NonlinearSystem::solve()
+ {
+@@ -178,7 +259,11 @@
+   if (time_integrator_solve)
+     _time_integrators.front()->solve();
+   else
++  {
++    if (std::getenv("PBR_POLICY"))
++      PBRInstall(getSNES());
+     system().solve();
++  }
+ 
+   for (auto & ti : _time_integrators)
+   {

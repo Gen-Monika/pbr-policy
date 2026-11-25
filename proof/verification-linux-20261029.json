@@ -1,0 +1,197 @@
+{
+  "verification_date": "2026-10-29",
+  "lean_version": "4.35.0",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35 (Cowork sandbox)",
+  "purpose": "Adds PreconditionerProof/PhaseCorrected.lean (phase-corrected monotonicity) and PreconditionerProof/T1Dimension.lean (optimal policy class is one-dimensional)",
+  "result": "passed",
+  "lake_build_exit_code": 0,
+  "axiom_audit_exit_code": 0,
+  "project_theorems_including_generated": 284,
+  "theorems_before_this_addition": 151,
+  "new_theorems_in_Conservative": 13,
+  "new_theorem_names": [
+    "phase_diff_cancels",
+    "phase_diff_cancels_offset_error",
+    "phase_diff_exact_shape",
+    "corrected_monotone",
+    "corrected_monotone_within_noise",
+    "drift_appears_in_diff",
+    "drift_breaks_monotone",
+    "cycleCost_eq",
+    "prefixSum_eq",
+    "cyclesCost_ge",
+    "prefixSum_ge_min",
+    "schedule_lower_bound",
+    "schedule_lower_bound_exact",
+    "sum_replicate_F",
+    "map_replicate_const",
+    "fixed_period_attains",
+    "optimal_class_is_fixed_period",
+    "cost_le_cross",
+    "cross_cost_le",
+    "advantage_monotone",
+    "Kstar_monotone",
+    "within_diff_cancels_drift",
+    "increment_eq",
+    "cross_time_contains_drift",
+    "cross_time_difference_cancels",
+    "decomposition",
+    "drift_bound",
+    "explore_cost_eq",
+    "regret_constant",
+    "regret_bound",
+    "competitive_ratio_form",
+    "regret_nonneg",
+    "near_optimal_is_four_eps",
+    "near_optimal_two_level",
+    "irreducible_floor",
+    "sampling_improves_only_reducible",
+    "drift_negligible_reduces_to_aliasing",
+    "identification_requires_gap",
+    "indistinguishable_implies_equal",
+    "exploration_necessary",
+    "identify_both_implies_sees_past",
+    "explore_pays_the_required_prefix"
+  ],
+  "sorry_free": true,
+  "allowed_standard_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "headline_result": {
+    "theorem": "conservative_all_later_cycles_optimal",
+    "hypotheses": "Nondecreasing n, FirstTrigger rho n K",
+    "conclusion": "(length 0 = K or length 0 = K + 1) and for all t, length (t+1) = K",
+    "uses_discrete_convexity": false,
+    "note": "DiscreteConvexFromOne appears nowhere in Conservative.lean except the docstring. Compare Online.stationary_policy_correct, which requires it."
+  },
+  "proof_source_sha256": {
+    "PreconditionerProof/Audit.lean": "2d0b9ecef2c864ffb798c10898ed4dd34f1864c307a447cc887076f1475e9bc6",
+    "PreconditionerProof/Cost.lean": "1ba8e0e270052082580a8303d393a07e446673de8eb6ca7f815abed3900b4c94",
+    "PreconditionerProof/Counterexamples.lean": "39129f55038ee72a55c9188624f39fd1aa8973185c4bc1976c7ed5eed63b8662",
+    "PreconditionerProof/Online.lean": "8ad097f51ce48caba9ac467dae77a97e954eb687413dc541ddc435c46942e99d",
+    "PreconditionerProof/Conservative.lean": "678516e898a8ecdc55acdb0c44c8b639c7839bd63f6bcf9ddb9b41f3fffb6feb",
+    "PreconditionerProof/PhaseCorrected.lean": "eb641ac7c1754fd96f84beb79d1d0c228c0e71791198cbc1f1843b77c4696ae8",
+    "PreconditionerProof/T1Dimension.lean": "eeeed4e38179db08ce77aff46e814ceff05c9a74aa17889f6f15fed28a9dd972",
+    "PreconditionerProof/T5Monotone.lean": "b53503e158b027c1832e7f2df0cd07f4ffb339b93037e6e055ab9a7cf81d0a9a",
+    "PreconditionerProof/T7Drift.lean": "9af2d4805f1a11b0a8e18127b5b7f9153029b6e097e32d962818c158d3318f14",
+    "PreconditionerProof/T3Regret.lean": "6ba6bcdf345e81fd0d4aa9f9ac63b6bb90ab55f93afef0cb3ac689ccfe3b8e0a",
+    "PreconditionerProof/T6Confidence.lean": "872d39fd2bc41708f8a5f1742479879979a2ea7324a2b4dd4f3693434e133a1e",
+    "PreconditionerProof/T4LowerBound.lean": "6ffe4fc711f67215104aa65cade39476528848b21c559afe2f304ea1fc5209bf",
+    "PreconditionerProof.lean": "c8e523c06d551d9f4c08d0aa1a7beb48e5fae607c602adbf84310d2165666884",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "lakefile.toml": "868d02028b93193ad8633b973c3e04957dc051fa2d575ed26c73e45d4460b26e",
+    "lake-manifest.json": "0c8a042bfd6297559b71d53593c12530bb2758c8e263c9c8ff726b159e906c64",
+    "verify.ps1": "52a4465accebba7c59e329c77f694d09c518da2931974729d01d05e5399c3b91",
+    "README.md": "3ae2352cb2b0307232880285d3cce45b2bdfb2e6d3514e1e3bbce7527d562f01",
+    ".gitignore": "84cd6e8c4a13d19f68e8ef0d07941cf975ff9698e1a0c38ac45116b0ff1b095d"
+  },
+  "unchanged_from_previous_verification": [
+    "PreconditionerProof/Cost.lean",
+    "PreconditionerProof/Online.lean",
+    "PreconditionerProof/Counterexamples.lean",
+    "lean-toolchain",
+    "lakefile.toml",
+    "lake-manifest.json",
+    "verify.ps1",
+    "README.md",
+    ".gitignore"
+  ],
+  "changed_in_this_addition": [
+    "PreconditionerProof/Conservative.lean (new)",
+    "PreconditionerProof/Audit.lean (now imports Conservative and prints its headline theorems)",
+    "PreconditionerProof.lean (now imports Conservative)"
+  ],
+  "scope": "Stationary noiseless abstract policy with exact fixed rebuild cost and persistent exact age-prefix observations. Conservative predictor replaces an unobserved age by the largest known age; this is an idealization, not a claim that the deployed predictor uses it. Does not model non-stationarity, noisy estimation, phase coupling, or production-code equivalence.",
+  "caveats": [
+    "Paper sources are unchanged: neither PhaseCorrected nor T1 has been written into the manuscript yet.",
+    "T1 slack cannot be tightened without restricting to schedules that rebuild at step 0; schedule_lower_bound_exact covers that case.",
+    "PhaseCorrected assumes the additive model N(t,a,j)=mu(t)+g(a)+q(j) with exact arithmetic. Additivity is measured separately, not proved.",
+    "The statement 'conservative extrapolation never rebuilds early' was retracted on 2026-10-28 after C4 data showed dmed<delta in 76/144 cases; no Lean theorem supports it."
+  ],
+  "new_theorems_phase_corrected": 7,
+  "new_theorems_t1": 10,
+  "headline_results": [
+    {
+      "file": "PhaseCorrected.lean",
+      "theorem": "corrected_monotone",
+      "statement": "additive model + g nondecreasing => phase-corrected curve is nondecreasing within each phase",
+      "note": "mu(t) and q_j cancel in within-phase age differences; a constant offset error only shifts the level"
+    },
+    {
+      "file": "PhaseCorrected.lean",
+      "theorem": "corrected_monotone_within_noise",
+      "statement": "with per-observation noise bounded by eps, monotone up to 2*eps",
+      "note": "eps is measurable; this is the 'monotone to the noise floor' statement"
+    },
+    {
+      "file": "PhaseCorrected.lean",
+      "theorem": "drift_breaks_monotone",
+      "statement": "if the true offset drifts down with age by more than g rises, the corrected curve can fall",
+      "note": "identifies the exact failure channel, motivating the frozen-offset mechanism"
+    },
+    {
+      "file": "T1Dimension.lean",
+      "theorem": "schedule_lower_bound",
+      "statement": "every schedule costs at least T*c(K*) - rho, uniformly in T",
+      "note": "the slack is rho, not zero: a schedule that delays its first rebuild never pays it"
+    },
+    {
+      "file": "T1Dimension.lean",
+      "theorem": "fixed_period_attains",
+      "statement": "q cycles of length K cost exactly (q*K)*c(K)",
+      "note": "so inf over policies = min over fixed periods, up to one rebuild charge"
+    },
+    {
+      "file": "T5Monotone.lean",
+      "theorem": "Kstar_monotone",
+      "statement": "the largest minimizer over {1..N} is nondecreasing in rho",
+      "note": "depends on the largest-minimizer convention; on a plateau the smallest-index convention would break monotonicity"
+    },
+    {
+      "file": "T7Drift.lean",
+      "theorem": "within_diff_cancels_drift",
+      "statement": "N(t,a)-N(t,b)=g(a)-g(b): baseline drift cancels exactly in within-time age differences, for drift of arbitrary magnitude",
+      "note": "the claim that this explains the 1.2-6.5% learning cost is NOT supported by the traces and was withdrawn"
+    },
+    {
+      "file": "T3Regret.lean",
+      "theorem": "regret_constant",
+      "statement": "explore one cycle of length Kbar, then q cycles of K*: regret = Kbar*(c(Kbar)-c(K*)), independent of q and hence of T",
+      "note": "requires no monotonicity, convexity or noise assumption; the K* used is the minimiser over 1..Kbar only"
+    },
+    {
+      "file": "T6Confidence.lean",
+      "theorem": "near_optimal_two_level",
+      "statement": "empirical near-optimality within eps implies true 4*eps near-optimality, with eps = eps_a(n) + eps_d",
+      "note": "interval statements for every realisation, no probability model; eps_d is floored and cannot be reduced by sampling"
+    },
+    {
+      "file": "T4LowerBound.lean",
+      "theorem": "exploration_necessary",
+      "statement": "two curves agreeing on the observed prefix 0..m but with different optimal periods cannot both be identified by a prefix-only policy",
+      "note": "identification lower bound, not a cost lower bound; a cost-form bound would need a metric on the class and is not attempted"
+    }
+  ],
+  "new_theorems_t5": 4,
+  "new_theorems_t7": 6,
+  "new_theorems_t3": 5,
+  "new_theorems_t6": 6,
+  "new_theorems_t4": 4,
+  "theorems_per_file": {
+    "Cost.lean": 15,
+    "Online.lean": 18,
+    "Conservative.lean": 13,
+    "PhaseCorrected.lean": 7,
+    "T1Dimension.lean": 10,
+    "T5Monotone.lean": 4,
+    "T7Drift.lean": 6,
+    "T3Regret.lean": 5,
+    "T6Confidence.lean": 6,
+    "T4LowerBound.lean": 4,
+    "Counterexamples.lean": 15,
+    "Audit.lean": 1
+  },
+  "full_rebuild_verified": true
+}
